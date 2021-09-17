@@ -5,13 +5,82 @@
     { "email": "john@foo.com", "password": "changeme", "role": "USER" , "firstName": "John", "lastName": "Doe" }
   ],
 
-  "defaultData": [
-    { "name": "Basket", "quantity": 3, "owner": "john@foo.com", "condition": "excellent" },
-    { "name": "Bicycle", "quantity": 2, "owner": "john@foo.com", "condition": "poor" },
-    { "name": "Banana", "quantity": 2, "owner": "admin@foo.com", "condition": "good" },
-    { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
-  ],
   "public": {
     "development": true
-  }
+  },
+
+  "defaultData": [
+    {
+      "name": "Montelukast 10mg",
+      "type": "Medication",
+      "medicationType": "Allergy & Cold Medicines",
+      "location": "Case 2",
+      "dosage": 30,
+      "supply": 90,
+      "lot": "1234ABCD",
+      "obtained": "Purchased",
+      "reserve": false,
+      "expiration": "10/15/2021"
+    },
+    {
+      "name": "Acetaminophen 160mg/5 ml Susp",
+      "type": "Medication",
+      "medicationType": "Analgesics / Antiinflammatory",
+      "location": "Case 4",
+      "dosage": 2,
+      "supply": 2,
+      "lot": "1234ABCD",
+      "obtained": "Purchased",
+      "reserve": false,
+      "expiration": "10/15/2021"
+    },
+    {
+      "name": "Acetaminophen 160mg/5 ml Susp",
+      "type": "Medication",
+      "medicationType": "Analgesics / Antiinflammatory",
+      "location": "Case 4",
+      "dosage": 2,
+      "supply": 5,
+      "lot": "5678EFGH",
+      "obtained": "Purchased",
+      "reserve": true,
+      "expiration": "5/17/2021"
+    },
+    {
+      "name": "Azilsartan/chlorthalidone 40mg/12.5mg",
+      "type": "Medication",
+      "medicationType": "Antihypertensives",
+      "location": "Case 7",
+      "dosage": 30,
+      "supply": 57,
+      "lot": "5678EFGH",
+      "obtained": "Donated",
+      "reserve": false,
+      "expiration": "4/30/2018"
+    },
+    {
+      "name": "Theraband - Green",
+      "type": "Supply",
+      "location": "Cabinet 2",
+      "supply": 1,
+      "obtained": "Donated",
+      "reserve": false
+    },
+    {
+      "name": "Cold Packs",
+      "type": "Supply",
+      "location": "Cabinet 2",
+      "supply": 1,
+      "obtained": "Purchased",
+      "reserve": false
+    },
+    { 
+      "name": "Cold Packs",
+      "type": "Supply",
+      "location": "Cabinet 2",
+      "supply": 1,
+      "obtained": "Purchased",
+      "reserve": true
+    }
+  ]
 }
