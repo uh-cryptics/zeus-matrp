@@ -5,7 +5,23 @@ import { _ } from 'meteor/underscore';
 import BaseCollection from '../base/BaseCollection';
 
 export const inventoryTypes = ['Medication', 'Supply']
-export const medicationTypes = ['Allergy & Cold Medicines', 'Analgesics / Antiinflammatory', 'Antihypertensives'];
+export const medicationTypes = [
+  'Allergy & Cold Medicines',
+  'Analgesics / Antiinflammatory',
+  'Antihypertensives',
+  'Antimicrobials',
+  'Cardiac / Cholesterol',
+  'Dermatologic Preparations',
+  'Diabetes Meds',
+  'Ear and Eye Preparations',
+  'Emergency Kit',
+  'GI Meds',
+  'GYN Meds',
+  'Pulmonary',
+  'Smoking Cessation',
+  'Vitamins and Supplements',
+  'Misc.'
+];
 export const obtainTypes = ['Purchased', 'Donated']
 export const inventoryPublications = {
   inventory: 'Inventory',

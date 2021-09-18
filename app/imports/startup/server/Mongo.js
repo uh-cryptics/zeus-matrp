@@ -2,6 +2,9 @@ import { Meteor } from 'meteor/meteor';
 import { Inventory } from '../../api/inventory/InventoryCollection';
 /* eslint-disable no-console */
 
+const medications = JSON.parse(Assets.getText('medications.json'));
+const supplies = JSON.parse(Assets.getText('supplies.json'));
+
 // Initialize the database with a default data document.
 function addData(data) {
   console.log(`  Adding: ${data.name}`);
@@ -10,8 +13,9 @@ function addData(data) {
 
 // Initialize the InventoryCollection if empty.
 if (Inventory.count() === 0) {
-  if (Meteor.settings.defaultData) {
+  if (medications && supplies) {
     console.log('Creating default data.');
-    Meteor.settings.defaultData.map(data => addData(data));
+    medications.map(data => addData(data));
+    supplies.map(data => addData(data));
   }
 }
