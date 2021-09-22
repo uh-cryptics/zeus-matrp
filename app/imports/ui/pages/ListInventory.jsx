@@ -6,8 +6,7 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import InventoryTable from '../components/InventoryTable';
 import { Inventory } from '../../api/inventory/InventoryCollection';
 
-/** Renders a table containing all of the Stuff documents. Use <StuffItem> to render each row. */
-const ListInventory = ({ ready, stuffs }) => {
+const ListInventory = ({ ready, inventory }) => {
   const [showTable, setShowTable] = useState('medications');
 
   const handleTable = (value) => {
@@ -19,7 +18,7 @@ const ListInventory = ({ ready, stuffs }) => {
       <Header as="h1" textAlign="center">Inventory</Header>
       <Menu icon='labeled' color='blue' inverted size='huge' widths={2}>
         <Menu.Item name='medications' active={showTable === 'medications'} onClick={() => handleTable('medications')}>
-          <Icon name='syringe' size='large'/>
+          <Icon name='pills' size='large'/>
           Medications
         </Menu.Item>
         <Menu.Item name='supply' active={showTable === 'supply'} onClick={() => handleTable('supply')}>
@@ -29,14 +28,14 @@ const ListInventory = ({ ready, stuffs }) => {
       </Menu>
       <Menu attached='top' size='small' inverted>
         <Menu.Item>
-          <Input className='icon' icon='search' placeholder='Search...' />
+          <Input className='icon' icon='search' placeholder='Search...'/>
         </Menu.Item>
         <Menu.Menu position='right'>
           <Menu.Item>
             Add &nbsp;
             { (showTable === 'medications') ?
               <Icon.Group size='large'>
-                <Icon name='syringe'/>
+                <Icon name='pills'/>
                 <Icon color='blue' corner='top right' name='add'/>
               </Icon.Group>
               :
@@ -48,14 +47,14 @@ const ListInventory = ({ ready, stuffs }) => {
           </Menu.Item>
           <Menu.Item position='right'>
               Administer &nbsp;
-            <Icon name='pills'/>
+            <Icon size='large' name='user md'/>
           </Menu.Item>
         </Menu.Menu>
       </Menu>
       {(showTable === 'medications' ?
-        <InventoryTable inventory={stuffs.filter(stuff => stuff.type === 'Medication')} color='green'> </InventoryTable>
+        <InventoryTable inventory={inventory.filter(stuff => stuff.type === 'Medication')} color='green'> </InventoryTable>
         :
-        <InventoryTable inventory={stuffs.filter(stuff => stuff.type === 'Supply')} color='violet'> </InventoryTable>
+        <InventoryTable inventory={inventory.filter(stuff => stuff.type === 'Supply')} color='violet'> </InventoryTable>
       )}
 
     </Container>
@@ -66,7 +65,7 @@ const ListInventory = ({ ready, stuffs }) => {
 
 // Require an array of Stuff documents in the props.
 ListInventory.propTypes = {
-  stuffs: PropTypes.array.isRequired,
+  inventory: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
@@ -77,9 +76,9 @@ export default withTracker(() => {
   // Determine if the subscription is ready
   const ready = subscription.ready();
   // Get the Stuff documents and sort them by name.
-  const stuffs = Inventory.find({}, { sort: { name: 1 } }).fetch();
+  const inventory = Inventory.find({}, { sort: { name: 1 } }).fetch();
   return {
-    stuffs,
+    inventory,
     ready,
   };
 })(ListInventory);
