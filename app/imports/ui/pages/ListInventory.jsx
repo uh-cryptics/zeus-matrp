@@ -5,9 +5,12 @@ import PropTypes from 'prop-types';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import InventoryTable from '../components/InventoryTable';
 import { Inventory } from '../../api/inventory/InventoryCollection';
+import AddMedication from '../components/AddMedication';
 
 const ListInventory = ({ ready, inventory }) => {
   const [showTable, setShowTable] = useState('medications');
+  const [open, setOpen] = useState(false);
+  const setOpenCallback = (value) => setOpen(value);
 
   const handleTable = (value) => {
     setShowTable(value);
@@ -30,8 +33,8 @@ const ListInventory = ({ ready, inventory }) => {
         <Menu.Item>
           <Input className='icon' icon='search' placeholder='Search...'/>
         </Menu.Item>
-        <Menu.Menu position='right'>
-          <Menu.Item>
+        <Menu.Menu position='right' style={{ cursor: 'pointer' }}>
+          <Menu.Item onClick={() => { setOpen(true); }}>
             Add &nbsp;
             { (showTable === 'medications') ?
               <Icon.Group size='large'>
@@ -51,6 +54,7 @@ const ListInventory = ({ ready, inventory }) => {
           </Menu.Item>
         </Menu.Menu>
       </Menu>
+      <AddMedication set={inventory.map(item => item)} open={open} setOpen={setOpenCallback} />
       {(showTable === 'medications' ?
         <InventoryTable inventory={inventory.filter(stuff => stuff.type === 'Medication')} color='green'> </InventoryTable>
         :
