@@ -2,11 +2,37 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Table, Segment } from 'semantic-ui-react';
 import InventoryInformation from './InventoryInformation';
+import EditInventory from './EditInventory';
 
 const InventoryTable = ({ inventory, color }) => {
 
   const [itemInfo, setItemInfo] = useState(null);
   const [open, setOpen] = useState(false);
+  const [edit, setEdit] = useState(false);
+  const [deleting, setDelete] = useState(false);
+
+  const setOpenCallBack = (value, reason) => {
+    if (!value && reason === 'edit') {
+      setEdit(true);
+    }
+
+    if (!value && reason === 'delete') {
+      setDelete(true);
+    }
+    setOpen(value);
+  };
+
+  const openInventoryInfo = (item) => {
+    setItemInfo(item);
+    setOpenCallBack(true, 'open');
+  };
+
+  const setEditCallback = (value, reason) => {
+    if (reason === 'cancel') {
+      openInventoryInfo(itemInfo);
+    }
+    setEdit(value);
+  };
 
   const tableHeader = () => {
     const headers = Object.keys(inventory[0]).filter(header => header !== '_id');
@@ -22,7 +48,7 @@ const InventoryTable = ({ inventory, color }) => {
   const tableData = () => {
     const headers = Object.keys(inventory[0]).filter(header => header !== '_id');
     const listedItems = inventory.map((row, i) => {
-      const rows = row;
+      const rows = { ...row };
       delete rows._id;
       const columns = (Object.values(rows)).map((col, j) => {
         const key = `${i}_${j}`;
@@ -38,7 +64,7 @@ const InventoryTable = ({ inventory, color }) => {
         return <Table.Cell key={key} data-label={headers[j]}>{column.toString()}</Table.Cell>;
       });
       return (
-        <Table.Row key={i} onClick={() => { setItemInfo(row); setOpen(true); }} style={{ cursor: 'pointer' }}>
+        <Table.Row key={i} onClick={() => openInventoryInfo(row) } style={{ cursor: 'pointer' }}>
           {columns}
         </Table.Row>
       );
@@ -46,11 +72,10 @@ const InventoryTable = ({ inventory, color }) => {
     return (listedItems);
   };
 
-  const setOpenCallback = (value) => setOpen(value);
-
   return (
     <div>
-      <InventoryInformation item={itemInfo} open={open} setOpen={setOpenCallback}/>
+      <InventoryInformation item={itemInfo} open={open} setOpen={setOpenCallBack}/>
+      <EditInventory item={itemInfo} open={edit} setOpen={setEditCallback}/>
       <Segment attached>
         <Table celled striped selectable color={color}>
           <Table.Header>
