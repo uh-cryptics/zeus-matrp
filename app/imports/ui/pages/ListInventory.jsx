@@ -6,10 +6,12 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import InventoryTable from '../components/InventoryTable';
 import { Inventory } from '../../api/inventory/InventoryCollection';
 import AddInventory from '../components/AddInventory';
+import Administer from '../components/Administer';
 
 const ListInventory = ({ ready, inventory }) => {
   const [showTable, setShowTable] = useState('medications');
   const [open, setOpen] = useState(false);
+  const [administer, setAdminister] = useState(false);
 
   const handleTable = (value) => {
     setShowTable(value);
@@ -47,13 +49,14 @@ const ListInventory = ({ ready, inventory }) => {
               </Icon.Group>
             }
           </Menu.Item>
-          <Menu.Item position='right'>
+          <Menu.Item position='right' onClick={() => { setAdminister(true); }}>
               Administer &nbsp;
             <Icon size='large' name='user md'/>
           </Menu.Item>
         </Menu.Menu>
       </Menu>
       <AddInventory set={inventory} open={open} setOpen={setOpen} />
+      <Administer set={inventory} open={administer} setOpen={setAdminister} />
       {(showTable === 'medications' ?
         <InventoryTable inventory={inventory.filter(stuff => stuff.type === 'Medication')} color='green'> </InventoryTable>
         :
