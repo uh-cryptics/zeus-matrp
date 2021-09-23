@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Modal } from 'semantic-ui-react';
+import _ from 'lodash';
 
 const AddMedication = ({ set, open, setOpen }) => {
-  const optMedType = set.map((item, i) => ({ key: `medType${i}`, text: item.medicationType, value: item.medicationType }));
-  const locationSet = set.map((item, i) => ({ key: `loc${i}`, text: item.location, value: item.location }));
-
-  // const handleSubmit = () => {
-
-  // };
+  const uniqueMedType = _.uniq(set.filter(item => item.type === 'Medication')
+    .map(item => item.medicationType))
+    .map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
+  const uniqueLocations = _.uniq(set.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
 
   return (
     <div>
@@ -32,7 +31,7 @@ const AddMedication = ({ set, open, setOpen }) => {
                 name='medType'
                 label='Medication Type'
                 width='12'
-                options={optMedType}
+                options={uniqueMedType}
               />
             </Form.Group>
             <Form.Group widths='equal'>
@@ -43,7 +42,7 @@ const AddMedication = ({ set, open, setOpen }) => {
                 search
                 selection
                 label='Location'
-                options={locationSet}
+                options={uniqueLocations}
               />
               <Form.Input required name='supply' label='Supply' placeholder='Supply' />
               <Form.Input required name='expiration' type='date' label='Expiration' placeholder='MM/DD/YYYY' />
