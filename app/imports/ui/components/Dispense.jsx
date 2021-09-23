@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Form, Modal, Input } from 'semantic-ui-react';
 import _ from 'lodash';
 
-const Administer = ({ set, open, setOpen }) => {
+const Dispense = ({ set, open, setOpen }) => {
   const uniqueNames = _.uniq(set.map(item => item.name))
     .map((type, index) => ({ key: `name${index}`, text: type, value: type }));
 
@@ -15,7 +15,7 @@ const Administer = ({ set, open, setOpen }) => {
         open={open}
         size='small'
       >
-        <Modal.Header>Admnister Medication</Modal.Header>
+        <Modal.Header>Dispense Medication</Modal.Header>
         <Modal.Content>
           <Form>
             <Form.Field required>
@@ -36,7 +36,7 @@ const Administer = ({ set, open, setOpen }) => {
                   <Form.Dropdown
                     search
                     selection
-                    placeholder="Select a medicine to administer..."
+                    placeholder="Select a medicine to dispense..."
                     options={uniqueNames}
                   />
                 </Form.Field>
@@ -50,17 +50,17 @@ const Administer = ({ set, open, setOpen }) => {
         </Modal.Content>
         <Modal.Actions>
           <Button secondary onClick={() => setOpen(false)}>Cancel</Button>
-          <Button primary onClick={() => setOpen(false)}>Administer</Button>
+          <Button primary onClick={() => setOpen(false)}>Dispense</Button>
         </Modal.Actions>
       </Modal>
     </div>
   );
 };
 
-Administer.propTypes = {
+Dispense.propTypes = {
   set: PropTypes.array.isRequired,
   open: PropTypes.bool,
   setOpen: PropTypes.func,
 };
 
-export default Administer;
+export default Dispense;
