@@ -35,7 +35,7 @@ const InventoryTable = ({ inventory, color }) => {
   };
 
   const tableHeader = () => {
-    const headers = Object.keys(inventory[0]).filter(header => header !== '_id');
+    const headers = Object.keys(inventory[0]).filter((header) => (!(/(_id|type|obtained|reserve)/).test(header) ? header : null));
     const tableHeaders = headers.map((header, i) => {
       const key = `h${i}`;
       const newHeader = header.toUpperCase();
@@ -46,10 +46,13 @@ const InventoryTable = ({ inventory, color }) => {
   };
 
   const tableData = () => {
-    const headers = Object.keys(inventory[0]).filter(header => header !== '_id');
+    const headers = Object.keys(inventory[0]).filter(header => (!(/(_id|type|obtained|reserve)/).test(header) ? header : null));
     const listedItems = inventory.map((row, i) => {
       const rows = { ...row };
       delete rows._id;
+      delete rows.type;
+      delete rows.obtained;
+      delete rows.reserve;
       const columns = (Object.values(rows)).map((col, j) => {
         const key = `${i}_${j}`;
         let column = col;
