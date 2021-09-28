@@ -18,17 +18,18 @@ const Dispense = ({ set, open, setOpen }) => {
         <Modal.Header>Dispense Medication</Modal.Header>
         <Modal.Content>
           <Form>
-            <Form.Field required>
-              <label>Patient Name</label>
-              <Form.Group widths="equal">
+            <Form.Group widths="equal">
+              <Form.Field required>
+                <label>Patient Medical Number</label>
                 <Form.Field>
-                  <Input placeholder="First Name" name="first-name" />
+                  <Input placeholder="Medical Number" name="medical-number" />
                 </Form.Field>
-                <Form.Field>
-                  <Input placeholder="Last Name" name="last-name" />
-                </Form.Field>
-              </Form.Group>
-            </Form.Field>
+              </Form.Field>
+              <Form.Field required>
+                <label>Clinic Location</label>
+                <Input placeholder="Clinic Location" name="clinic-location"/>
+              </Form.Field>
+            </Form.Group>
             <Form.Field>
               <Form.Group widths="equal">
                 <Form.Field required>
