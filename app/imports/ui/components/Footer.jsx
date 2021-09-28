@@ -7,10 +7,9 @@ const Footer = () => {
     <footer>
       <div style={divStyle} className="ui center aligned container">
         <hr />
-        Department of Information and Computer Sciences <br />
-        University of Hawaii<br />
-        Honolulu, HI 96822 <br />
-        <a href="http://ics-software-engineering.github.io/matrp">Template Home Page</a>
+        HOME Project<br />
+        Designed by UH Cryptics <br />
+        <a style={{ color: 'blue' }} href="http://uh-cryptics.github.io">UH Cryptics Github Page</a>
       </div>
     </footer>
   );
