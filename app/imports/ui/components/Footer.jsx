@@ -7,9 +7,9 @@ const Footer = () => {
     <footer>
       <div style={divStyle} className="ui center aligned container">
         <hr />
-        HOME Project<br />
+        Homeless Outreach & Medical Education Project<br />
         Designed by UH Cryptics <br />
-        <a style={{ color: 'blue' }} href="http://uh-cryptics.github.io">UH Cryptics Github Page</a>
+        <a style={{ color: 'blue' }} href="https://github.com/uh-cryptics/zeus-matrp">ZEUS Project Page</a>
       </div>
     </footer>
   );
