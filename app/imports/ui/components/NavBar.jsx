@@ -13,7 +13,7 @@ const NavBar = ({ currentUser }) => {
   const menuStyle = { marginBottom: '10px' };
   return (
     <Menu style={menuStyle} attached="top" borderless inverted>
-      <Menu.Item id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} activeClassName="" exact to="/">
+      <Menu.Item id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} activeClassName="" exact to="/list">
         <Header inverted as='h1'>ZEUS</Header>
       </Menu.Item>
       {currentUser ? (

@@ -48,51 +48,53 @@ const Signup = ({ location }) => {
     return <Redirect to={from} />;
   }
   return (
-    <Container id={PAGE_IDS.SIGN_UP}>
-      <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
-        <Grid.Column>
-          <Header as="h2" textAlign="center">
+    <Container fluid id={PAGE_IDS.SIGN_UP} className="background-black-signin">
+      <div className="padding-fix">
+        <Grid textAlign="center" verticalAlign="middle" centered columns={4}>
+          <Grid.Column>
+            <Header as="h2" textAlign="center" color='inverted'>
             Register your account
-          </Header>
-          <Form onSubmit={submit}>
-            <Segment stacked>
-              <Form.Input
-                label="Email"
-                id={COMPONENT_IDS.SIGN_UP_FORM_EMAIL}
-                icon="user"
-                iconPosition="left"
-                name="email"
-                type="email"
-                placeholder="E-mail address"
-                onChange={handleChange}
-              />
-              <Form.Input
-                label="Password"
-                id={COMPONENT_IDS.SIGN_UP_FORM_PASSWORD}
-                icon="lock"
-                iconPosition="left"
-                name="password"
-                placeholder="Password"
-                type="password"
-                onChange={handleChange}
-              />
-              <Form.Button id={COMPONENT_IDS.SIGN_UP_FORM_SUBMIT} content="Submit" />
-            </Segment>
-          </Form>
-          <Message>
+            </Header>
+            <Form onSubmit={submit}>
+              <Segment stacked>
+                <Form.Input
+                  label="Email"
+                  id={COMPONENT_IDS.SIGN_UP_FORM_EMAIL}
+                  icon="user"
+                  iconPosition="left"
+                  name="email"
+                  type="email"
+                  placeholder="E-mail address"
+                  onChange={handleChange}
+                />
+                <Form.Input
+                  label="Password"
+                  id={COMPONENT_IDS.SIGN_UP_FORM_PASSWORD}
+                  icon="lock"
+                  iconPosition="left"
+                  name="password"
+                  placeholder="Password"
+                  type="password"
+                  onChange={handleChange}
+                />
+                <Form.Button id={COMPONENT_IDS.SIGN_UP_FORM_SUBMIT} color='blue' content="Submit" />
+              </Segment>
+            </Form>
+            <Message>
             Already have an account? Login <Link to="/signin">here</Link>
-          </Message>
-          {error === '' ? (
-            ''
-          ) : (
-            <Message
-              error
-              header="Registration was not successful"
-              content={error}
-            />
-          )}
-        </Grid.Column>
-      </Grid>
+            </Message>
+            {error === '' ? (
+              ''
+            ) : (
+              <Message
+                error
+                header="Registration was not successful"
+                content={error}
+              />
+            )}
+          </Grid.Column>
+        </Grid>
+      </div>
     </Container>
   );
 };

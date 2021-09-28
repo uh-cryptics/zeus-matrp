@@ -44,58 +44,60 @@ const Signin = ({ location }) => {
   };
 
   // Render the signin form.
-  const { from } = location.state || { from: { pathname: '/' } };
+  const { from } = location.state || { from: { pathname: '/list' } };
   // if correct authentication, redirect to page instead of login screen
   if (redirectToReferer) {
     return <Redirect to={from} />;
   }
   // Otherwise return the Login form.
   return (
-    <Container id={PAGE_IDS.SIGN_IN}>
-      <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
-        <Grid.Column>
-          <Header as="h2" textAlign="center">
+    <Container fluid id={PAGE_IDS.SIGN_IN} className="background-black-signin">
+      <div className="padding-fix">
+        <Grid textAlign="center" verticalAlign="middle" centered columns={4}>
+          <Grid.Column>
+            <Header as="h2" textAlign="center" color='inverted'>
             Login to your account
-          </Header>
-          <Form onSubmit={submit}>
-            <Segment stacked>
-              <Form.Input
-                label="Email"
-                id={COMPONENT_IDS.SIGN_IN_FORM_EMAIL}
-                icon="user"
-                iconPosition="left"
-                name="email"
-                type="email"
-                placeholder="E-mail address"
-                onChange={handleChange}
+            </Header>
+            <Form onSubmit={submit}>
+              <Segment stacked>
+                <Form.Input
+                  label="Email"
+                  id={COMPONENT_IDS.SIGN_IN_FORM_EMAIL}
+                  icon="user"
+                  iconPosition="left"
+                  name="email"
+                  type="email"
+                  placeholder="E-mail address"
+                  onChange={handleChange}
+                />
+                <Form.Input
+                  label="Password"
+                  id={COMPONENT_IDS.SIGN_IN_FORM_PASSWORD}
+                  icon="lock"
+                  iconPosition="left"
+                  name="password"
+                  placeholder="Password"
+                  type="password"
+                  onChange={handleChange}
+                />
+                <Form.Button id={COMPONENT_IDS.SIGN_IN_FORM_SUBMIT} color='blue' content="Submit" />
+              </Segment>
+            </Form>
+            <Message>
+              <Link to="/signup">Click here to Register</Link>
+            </Message>
+            {error === '' ? (
+              ''
+            ) : (
+              <Message
+                error
+                header="Login was not successful"
+                content={error}
               />
-              <Form.Input
-                label="Password"
-                id={COMPONENT_IDS.SIGN_IN_FORM_PASSWORD}
-                icon="lock"
-                iconPosition="left"
-                name="password"
-                placeholder="Password"
-                type="password"
-                onChange={handleChange}
-              />
-              <Form.Button id={COMPONENT_IDS.SIGN_IN_FORM_SUBMIT} content="Submit" />
-            </Segment>
-          </Form>
-          <Message>
-            <Link to="/signup">Click here to Register</Link>
-          </Message>
-          {error === '' ? (
-            ''
-          ) : (
-            <Message
-              error
-              header="Login was not successful"
-              content={error}
-            />
-          )}
-        </Grid.Column>
-      </Grid>
+            )}
+          </Grid.Column>
+        </Grid>
+      </div>
     </Container>
   );
 };

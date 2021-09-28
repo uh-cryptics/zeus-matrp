@@ -1,3 +1,57 @@
 body {
     background-color: #0090ba !important;
 }
+
+.background-blue {
+  background-color: #0090ba;
+  height: auto;
+}
+
+.background-blue-homepage {
+  background-size: cover;
+  background-color: #0090ba;
+  min-height: 350px;
+  max-height: 350px;
+  padding: 3%;
+}
+
+.background-black {
+  background-size: cover;
+  background-color: black;
+  min-height: 350px;
+  max-height: 350px;
+  padding: 3%;
+}
+
+.inventory-background-black {
+  background-size: cover;
+  background-color: black;
+  min-height: fit-content;
+  padding: 3%;
+}
+
+.background-black-signin {
+  background-color: black;
+}
+
+.padding-fix {
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.padding-homepage {
+  padding: 1% 1%;
+}
+
+.h1-white {
+  color: white;
+}
+
+.fontsize-big {
+  font-size: 75px;
+}
+
+.fontsize-medium {
+  font-size: 20px;
+}
+
