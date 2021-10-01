@@ -7,11 +7,12 @@ import { Roles } from 'meteor/alanning:roles';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { ROLE } from '../../api/role/Role';
 import InventoryTable from '../components/InventoryTable';
-import { Inventory } from '../../api/inventory/InventoryCollection';
 import AddInventory from '../components/AddInventory';
 import Dispense from '../components/Dispense';
+import { Medication } from '../../api/medication/MediationCollection';
+import { Supply } from '../../api/supply/SupplyCollection';
 
-const ListInventory = ({ currentUser, ready, inventory }) => {
+const ListInventory = ({ currentUser, ready, medications, supplies }) => {
   const [showTable, setShowTable] = useState('medications');
   const [open, setOpen] = useState(false);
   const [dispense, setDispense] = useState(false);
@@ -60,12 +61,12 @@ const ListInventory = ({ currentUser, ready, inventory }) => {
           </Menu.Item>
         </Menu.Menu>
       </Menu>
-      <AddInventory set={inventory} open={open} setOpen={setOpen} />
-      <Dispense set={inventory} open={dispense} setOpen={setDispense} />
+      <AddInventory set={medications.concat(supplies)} open={open} setOpen={setOpen} />
+      <Dispense set={medications.concat(supplies)} open={dispense} setOpen={setDispense} />
       {(showTable === 'medications' ?
-        <InventoryTable inventory={inventory.filter(stuff => stuff.type === 'Medication')} color='green'> </InventoryTable>
+        <InventoryTable inventory={medications} color='green'> </InventoryTable>
         :
-        <InventoryTable inventory={inventory.filter(stuff => stuff.type === 'Supply')} color='violet'> </InventoryTable>
+        <InventoryTable inventory={supplies} color='violet'> </InventoryTable>
       )}
 
     </Container>
@@ -76,7 +77,8 @@ const ListInventory = ({ currentUser, ready, inventory }) => {
 
 // Require an array of Stuff documents in the props.
 ListInventory.propTypes = {
-  inventory: PropTypes.array.isRequired,
+  medications: PropTypes.array.isRequired,
+  supplies: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
   currentUser: PropTypes.bool.isRequired,
 };
@@ -86,13 +88,16 @@ export default withTracker(() => {
   // Check what level the current user is
   const currentUser = Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]);
   // Get access to Stuff documents.
-  const subscription = Inventory.subscribeInventory();
+  const subscription = Medication.subscribeMedication();
+  const subscription2 = Supply.subscribeSupply();
   // Determine if the subscription is ready
-  const ready = subscription.ready();
-  // Get the Stuff documents and sort them by name.
-  const inventory = Inventory.find({}, { sort: { name: 1 } }).fetch();
+  const ready = subscription.ready() && subscription2.ready();
+  // Get the Medication and Supply documents and sort them by name.
+  const medications = Medication.find({}, { sort: { name: 1 } }).fetch();
+  const supplies = Supply.find({}, { sort: { name: 1 } }).fetch();
   return {
-    inventory,
+    medications,
+    supplies,
     ready,
     currentUser,
   };

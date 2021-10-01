@@ -1,200 +1,156 @@
 [
-  {
-    "name": "Theraband - Green",
-    "type": "Supply",
-    "location": "Cabinet 2",
-    "supply": 1,
-    "lot": "asdf1231",
-    "obtained": "Donated",
-    "reserve": false
-  },
-  {
-    "name": "Theraband - Yellow",
-    "type": "Supply",
-    "location": "Cabinet 2",
-    "supply": 1,
-    "lot": "asdf1231",
-    "obtained": "Purchased",
-    "reserve": false
-  },
-  {
-    "name": "Theraband - Red",
-    "type": "Supply",
-    "location": "Cabinet 2",
-    "supply": 1,
-    "lot": "asdf1231",
-    "obtained": "Donated",
-    "reserve": false
-  },
-  {
-    "name": "Theraband - Beige",
-    "type": "Supply",
-    "location": "Cabinet 2",
-    "supply": 1,
-    "lot": "asdf1231",
-    "obtained": "Donated",
-    "reserve": false
-  },
-  {
-    "name": "Hot Packs",
-    "type": "Supply",
-    "location": "Cabinet 2",
-    "supply": 0,
-    "lot": "asdf1231",
-    "obtained": "Donated",
-    "reserve": false
-  },
-  {
-    "name": "Cold Packs",
-    "type": "Supply",
-    "location": "Cabinet 2",
-    "supply": 0,
-    "lot": "asdf1231",
-    "obtained": "Purchased",
-    "reserve": false
-  },
-  {
-    "name": "ACE wrap 2\"",
-    "type": "Supply",
-    "location": "Cabinet",
-    "supply": 0,
-    "lot": "asdf1231",
-    "obtained": "Purchased",
-    "reserve": false
-  },
-  {
-    "name": "ACE wrap 3\"",
-    "type": "Supply",
-    "location": "Cabinet",
-    "supply": 0,
-    "lot": "asdf1231",
-    "obtained": "Donated",
-    "reserve": false
-  },
-  {
-    "name": "ACE wrap 4\"",
-    "type": "Supply",
-    "location": "Cabinet",
-    "supply": 0,
-    "lot": "asdf1231",
-    "obtained": "Donated",
-    "reserve": false
-  },
-  {
-    "name": "ACE wrap 6\"",
-    "type": "Supply",
-    "location": "Cabinet",
-    "supply": 0,
-    "lot": "asdf1231",
-    "obtained": "Purchased",
-    "reserve": false
-  },
-  {
-    "name": "Blood Pressure Monitors - Patient",
-    "type": "Supply",
-    "location": "Back Cabinet",
-    "supply": 3,
-    "lot": "asdf1231",
-    "obtained": "Purchased",
-    "reserve": false
-  },
-  {
-    "name": "Cavicide",
-    "type": "Supply",
-    "location": "Shower Closet",
-    "supply": 1,
-    "lot": "asdf1231",
-    "obtained": "Donated",
-    "reserve": false
-  },
-  {
-    "name": "Rapid Strep Strips",
-    "type": "Supply",
-    "location": "Refrig Closet",
-    "supply": 25,
-    "lot": "asdf1231",
-    "obtained": "Donated",
-    "reserve": false
-  },
-  {
-    "name": "Emesis Basin",
-    "type": "Supply",
-    "location": "Drawer 9",
-    "supply": 0,
-    "lot": "asdf1231",
-    "obtained": "Purchased",
-    "reserve": false
-  },
-  {
-    "name": "Hand Sanitizer - Large",
-    "type": "Supply",
-    "location": "Cabinet",
-    "supply": 0,
-    "lot": "asdf1231",
-    "obtained": "Purchased",
-    "reserve": false
-  },
-  {
-    "name": "Hand Sanitizer - Small for Patients",
-    "type": "Supply",
-    "location": "Cabinet",
-    "supply": 0,
-    "lot": "asdf1231",
-    "obtained": "Donated",
-    "reserve": false
-  },
-  {
-    "name": "Pregnancy Tests",
-    "type": "Supply",
-    "location": "Refrigerator",
-    "supply": 20,
-    "lot": "asdf1231",
-    "obtained": "Purchased",
-    "reserve": false
-  },
-  {
-    "name": "Urine Dip Sticks",
-    "type": "Supply",
-    "location": "Cabinet",
-    "supply": 0,
-    "lot": "asdf1231",
-    "obtained": "Purchased",
-    "reserve": false
-  },
-  {
-    "name": "Sensi Wrap 2\"",
-    "type": "Supply",
-    "location": "Drawer 6",
-    "supply": 6,
-    "lot": "asdf1231",
-    "obtained": "Purchased",
-    "reserve": true
-  },
-  {
-    "name": "UnaBoot",
-    "type": "Supply",
-    "location": "Cabinet",
-    "supply": 0,
-    "lot": "asdf1231",
-    "obtained": "Purchased",
-    "reserve": false
-  },
-  {
-    "name": "Thermometers - Patient Supplies",
-    "type": "Supply",
-    "location": "Case 4",
-    "supply": 3,
-    "lot": "asdf1231",
-    "obtained": "Purchased",
-    "reserve": false
-  },
-  {
-    "name": "Thermometer Sheaths",
-    "type": "Supply",
-    "location": "Case 4",
-    "supply": 2,
-    "lot": "asdf1231",
-    "obtained": "Donated",
-    "reserve": false
-  }
+    {
+        "name": "Theraband - Green",
+        "location": "Cabinet 2",
+        "quantity": 1,
+        "lot": "asdf1231",
+        "obtained": "Donated"
+    },
+    {
+        "name": "Theraband - Yellow",
+        "location": "Cabinet 2",
+        "quantity": 1,
+        "lot": "asdf1231",
+        "obtained": "Purchased"
+    },
+    {
+        "name": "Theraband - Red",
+        "location": "Cabinet 2",
+        "quantity": 1,
+        "lot": "asdf1231",
+        "obtained": "Donated"
+    },
+    {
+        "name": "Theraband - Beige",
+        "location": "Cabinet 2",
+        "quantity": 1,
+        "lot": "asdf1231",
+        "obtained": "Donated"
+    },
+    {
+        "name": "Hot Packs",
+        "location": "Cabinet 2",
+        "quantity": 0,
+        "lot": "asdf1231",
+        "obtained": "Donated"
+    },
+    {
+        "name": "Cold Packs",
+        "location": "Back Cabinet",
+        "quantity": 0,
+        "lot": "asdf1231",
+        "obtained": "Purchased"
+    },
+    {
+        "name": "ACE wrap 2\"",
+        "location": "Cabinet",
+        "quantity": 0,
+        "lot": "asdf1231",
+        "obtained": "Purchased"
+    },
+    {
+        "name": "ACE wrap 3\"",
+        "location": "Cabinet",
+        "quantity": 0,
+        "lot": "asdf1231",
+        "obtained": "Donated"
+    },
+    {
+        "name": "ACE wrap 4\"",
+        "location": "Cabinet",
+        "quantity": 0,
+        "lot": "asdf1231",
+        "obtained": "Donated"
+    },
+    {
+        "name": "ACE wrap 6\"",
+        "location": "Cabinet",
+        "quantity": 0,
+        "lot": "asdf1231",
+        "obtained": "Purchased"
+    },
+    {
+        "name": "Blood Pressure Monitors - Patient",
+        "location": "Back Cabinet",
+        "quantity": 3,
+        "lot": "asdf1231",
+        "obtained": "Purchased"
+    },
+    {
+        "name": "Cavicide",
+        "location": "Shower Closet",
+        "quantity": 1,
+        "lot": "asdf1231",
+        "obtained": "Donated"
+    },
+    {
+        "name": "Rapid Strep Strips",
+        "location": "Refrig Closet",
+        "quantity": 25,
+        "lot": "asdf1231",
+        "obtained": "Donated"
+    },
+    {
+        "name": "Emesis Basin",
+        "location": "Drawer 9",
+        "quantity": 0,
+        "lot": "asdf1231",
+        "obtained": "Purchased"
+    },
+    {
+        "name": "Hand Sanitizer - Large",
+        "location": "Cabinet",
+        "quantity": 0,
+        "lot": "asdf1231",
+        "obtained": "Purchased"
+    },
+    {
+        "name": "Hand Sanitizer - Small for Patients",
+        "location": "Cabinet",
+        "quantity": 0,
+        "lot": "asdf1231",
+        "obtained": "Donated"
+    },
+    {
+        "name": "Pregnancy Tests",
+        "location": "Refrigerator",
+        "quantity": 20,
+        "lot": "asdf1231",
+        "obtained": "Purchased"
+    },
+    {
+        "name": "Urine Dip Sticks",
+        "location": "Cabinet",
+        "quantity": 0,
+        "lot": "asdf1231",
+        "obtained": "Purchased"
+    },
+    {
+        "name": "Sensi Wrap 2\"",
+        "location": "Drawer 6",
+        "quantity": 6,
+        "lot": "asdf1231",
+        "obtained": "Purchased"
+    },
+    {
+        "name": "UnaBoot",
+        "location": "Cabinet",
+        "quantity": 0,
+        "lot": "asdf1231",
+        "obtained": "Purchased"
+    },
+    {
+        "name": "Thermometers - Patient Supplies",
+        "location": "Case 4",
+        "quantity": 3,
+        "lot": "asdf1231",
+        "obtained": "Purchased"
+    },
+    {
+        "name": "Thermometer Sheaths",
+        "location": "Case 4",
+        "quantity": 2,
+        "lot": "asdf1231",
+        "obtained": "Donated"
+    }
 ]

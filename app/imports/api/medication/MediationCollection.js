@@ -4,8 +4,8 @@ import { check } from 'meteor/check';
 import { _ } from 'meteor/underscore';
 import BaseCollection from '../base/BaseCollection';
 
-export const inventoryTypes = ['Medication', 'Supply']
-export const medicationTypes = [
+export const obtainTypes = ['Purchased', 'Donated'];
+export const types = [
   'Allergy & Cold Medicines',
   'Analgesics / Antiinflammatory',
   'Antihypertensives',
@@ -20,71 +20,56 @@ export const medicationTypes = [
   'Pulmonary',
   'Smoking Cessation',
   'Vitamins and Supplements',
-  'Misc.'
+  'Misc.',
 ];
-export const obtainTypes = ['Purchased', 'Donated']
-export const inventoryPublications = {
-  inventory: 'Inventory',
+export const medicationPublications = {
+  medication: 'Medication',
 };
 
-class InventoryCollection extends BaseCollection {
+class MedicationCollection extends BaseCollection {
   constructor() {
-    super('Inventory', new SimpleSchema({
+    super('Medication', new SimpleSchema({
       name: String,
       location: String,
-      supply: Number,
-      reserve: Boolean,
-      lot: {
-        type: String,
-        optional: true,
-      },
+      quantity: Number,
+      lot: String,
       obtained: {
         type: String,
         allowedValues: obtainTypes,
         defaultValue: 'Purchased',
       },
-      type: {
-        type: String,
-        allowedValues: inventoryTypes,
-      },
-      medicationType: {
-        type: String,
-        allowedValues: medicationTypes,
-        optional: true,
-      },
-      dosage: {
-        type: Number,
-        optional: true,
-      },
       expiration: {
         type: Date,
-        optional: true
+        optional: true,
+      },
+      type: Array,
+      'type.$': {
+        type: String,
+        allowedValues: types,
       },
     }));
   }
 
   /**
-   * Defines a new Inventory item.
+   * Defines a new Medication item.
    * @param name the name of the item.
-   * @param inventoryType what type of item.
-   * @param medicationType if type is medication, what type of medication
    * @param location the location of the item.
-   * @param supply the supply of item
+   * @param quantity the quantity of item
+   * @param obtained whether the item was purchased or donated
    * @param expiration the date that the item expires if applicable
+   * @param lot the lot number
+   * @param type the type of medication
    * @return {String} the docID of the new document.
    */
-  define({ name, type, medicationType, location, supply, expiration, obtained, dosage, lot, reserve }) {
-    const docID = this._collection.insert({ 
-      name, 
-      type, 
-      medicationType, 
-      location, 
-      supply, 
-      expiration, 
-      obtained, 
-      dosage, 
-      lot, 
-      reserve 
+  define({ name, location, quantity, expiration, obtained, lot, type }) {
+    const docID = this._collection.insert({
+      name,
+      location,
+      quantity,
+      expiration,
+      obtained,
+      lot,
+      type,
     });
 
     return docID;
@@ -94,33 +79,23 @@ class InventoryCollection extends BaseCollection {
    * Updates the given document.
    * @param docID the id of the document to update.
    * @param name the new name (optional).
-   * @param type the new type (optional).
-   * @param medicationType the new medicationType (optional).
    * @param location the new location (optional).
+   * @param quantity the new type (optional).
    * @param type the new type (optional).
-   * @param medicationType the new medicationType (optional).
    */
-  update(docID, { name, type, medicationType, location, supply, expiration, obtained, dosage, lot, reserve }) {
+  update(docID, { name, quantity, location, expiration, obtained, lot, type }) {
     const updateData = {};
     if (name) {
       updateData.name = name;
-    }
-    
-    if (type) {
-      updateData.type = type;
-    }
-
-    if (medicationType) {
-      updateData.medicationType = medicationType;
     }
 
     if (location) {
       updateData.location = location;
     }
-    
+
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
-    if (_.isNumber(supply)) {
-      updateData.supply = supply;
+    if (_.isNumber(quantity)) {
+      updateData.quantity = quantity;
     }
 
     if (expiration) {
@@ -131,18 +106,14 @@ class InventoryCollection extends BaseCollection {
       updateData.obtained = obtained;
     }
 
-    if (_.isNumber(dosage)) {
-      updateData.dosage = dosage;
+    if (type) {
+      updateData.type = type;
     }
 
     if (lot) {
       updateData.lot = lot;
     }
 
-    if (reserve) {
-      updateData.reserve = reserve;
-    }
-    
     this._collection.update(docID, { $set: updateData });
   }
 
@@ -164,10 +135,10 @@ class InventoryCollection extends BaseCollection {
    */
   publish() {
     if (Meteor.isServer) {
-      // get the InventoryCollection instance.
+      // get the MedicationCollection instance.
       const instance = this;
       /** This subscription publishes only the documents associated with the logged in user */
-      Meteor.publish(inventoryPublications.inventory, function publish() {
+      Meteor.publish(medicationPublications.medication, function publish() {
         if (this.userId) {
           return instance._collection.find({});
         }
@@ -179,9 +150,9 @@ class InventoryCollection extends BaseCollection {
   /**
    * Subscription method for stuff owned by the current user.
    */
-  subscribeInventory() {
+  subscribeMedication() {
     if (Meteor.isClient) {
-      return Meteor.subscribe(inventoryPublications.inventory);
+      return Meteor.subscribe(medicationPublications.medication);
     }
     return null;
   }
@@ -189,25 +160,22 @@ class InventoryCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{ name, type, medicationType, location, supply, expiration, obtained, dosage, lot, reserve }}
+   * @return {{ name, location, quantity, expiration, obtained, lot, type }}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
     const name = doc.name;
-    const type = doc.type;
-    const medicationType = doc.medicationType;
     const location = doc.location;
-    const supply = doc.supply;
+    const quantity = doc.quantity;
     const expiration = doc.expiration;
     const obtained = doc.obtained;
-    const dosage = doc.dosage;
     const lot = doc.lot;
-    const reserve = doc.reserve;
-    return { name, type, medicationType, location, supply, expiration, obtained, dosage, lot, reserve };
+    const type = doc.type;
+    return { name, location, quantity, expiration, obtained, lot, type };
   }
 }
 
 /**
  * Provides the singleton instance of this class to all other entities.
  */
-export const Inventory = new InventoryCollection();
+export const Medication = new MedicationCollection();
