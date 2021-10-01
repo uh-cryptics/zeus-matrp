@@ -4,11 +4,12 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import InventoryTable from '../components/InventoryTable';
-import { Inventory } from '../../api/inventory/InventoryCollection';
 import AddInventory from '../components/AddInventory';
 import Dispense from '../components/Dispense';
+import { Medication } from '../../api/medication/MediationCollection';
+import { Supply } from '../../api/supply/SupplyCollection';
 
-const ListInventory = ({ ready, inventory }) => {
+const ListInventory = ({ ready, medications, supplies }) => {
   const [showTable, setShowTable] = useState('medications');
   const [open, setOpen] = useState(false);
   const [dispense, setDispense] = useState(false);
@@ -55,12 +56,12 @@ const ListInventory = ({ ready, inventory }) => {
           </Menu.Item>
         </Menu.Menu>
       </Menu>
-      <AddInventory set={inventory} open={open} setOpen={setOpen} />
-      <Dispense set={inventory} open={dispense} setOpen={setDispense} />
+      <AddInventory set={medications.concat(supplies)} open={open} setOpen={setOpen} />
+      <Dispense set={medications.concat(supplies)} open={dispense} setOpen={setDispense} />
       {(showTable === 'medications' ?
-        <InventoryTable inventory={inventory.filter(stuff => stuff.type === 'Medication')} color='green'> </InventoryTable>
+        <InventoryTable inventory={medications} color='green'> </InventoryTable>
         :
-        <InventoryTable inventory={inventory.filter(stuff => stuff.type === 'Supply')} color='violet'> </InventoryTable>
+        <InventoryTable inventory={supplies} color='violet'> </InventoryTable>
       )}
 
     </Container>
@@ -71,20 +72,24 @@ const ListInventory = ({ ready, inventory }) => {
 
 // Require an array of Stuff documents in the props.
 ListInventory.propTypes = {
-  inventory: PropTypes.array.isRequired,
+  medications: PropTypes.array.isRequired,
+  supplies: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
 };
 
 // withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker
 export default withTracker(() => {
   // Get access to Stuff documents.
-  const subscription = Inventory.subscribeInventory();
+  const subscription = Medication.subscribeMedication();
+  const subscription2 = Supply.subscribeSupply();
   // Determine if the subscription is ready
-  const ready = subscription.ready();
-  // Get the Stuff documents and sort them by name.
-  const inventory = Inventory.find({}, { sort: { name: 1 } }).fetch();
+  const ready = subscription.ready() && subscription2.ready();
+  // Get the Medication and Supply documents and sort them by name.
+  const medications = Medication.find({}, { sort: { name: 1 } }).fetch();
+  const supplies = Supply.find({}, { sort: { name: 1 } }).fetch();
   return {
-    inventory,
+    medications,
+    supplies,
     ready,
   };
 })(ListInventory);
