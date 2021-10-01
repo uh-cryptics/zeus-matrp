@@ -1,0 +1,2301 @@
+[
+  {
+    "name": "Benzonatate Capsules",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "10/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 119,
+    "location": "Case 2"
+  },
+  {
+    "name": "Benzonatate Capsules",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "3/17",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 119,
+    "location": "Case 2"
+  },
+  {
+    "name": "Benzonatate Capsules",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "03/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 119,
+    "location": "Case 2"
+  },
+  {
+    "name": "Cetirizine Soln",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "8/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Case 2"
+  },
+  {
+    "name": "Cetirizine Soln",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "5/17",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Case 2"
+  },
+  {
+    "name": "Cetirizine Soln",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "8/30/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Case 2"
+  },
+  {
+    "name": "Cold and Flu Syrup Bottle",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "09/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1.5,
+    "location": "Case 2"
+  },
+  {
+    "name": "Cold and Flu Syrup Bottle",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "12/1/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1.5,
+    "location": "Case 2"
+  },
+  {
+    "name": "Diphenhydramine 25 mg tabs",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 415,
+    "location": "Case 2"
+  },
+  {
+    "name": "Diphenhydramine Soln",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "10/15/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 2"
+  },
+  {
+    "name": "Steroid Nasal Spray",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "8/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Case 1 "
+  },
+  {
+    "name": "Cetirizine Hydrochloride 5mg tablets",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "12/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 36,
+    "location": "Case 2"
+  },
+  {
+    "name": "Cetirizine 10 mg tablets",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "04/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 343,
+    "location": "Case 2"
+  },
+  {
+    "name": "Meclizine 12.5 mg ",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "07/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 2"
+  },
+  {
+    "name": "Meclizine 25 mg chew tabs",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "05/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 2"
+  },
+  {
+    "name": "Montelukast 10mg ",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "10/15/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 90,
+    "location": "Case 2"
+  },
+  {
+    "name": "Nasal Saline",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "07/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 1"
+  },
+  {
+    "name": "NetiPot",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Refrigerator Closet"
+  },
+  {
+    "name": "Oxymetazoline (or Phenylephrine) Nasal Spray",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "10/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Case 1"
+  },
+  {
+    "name": "Pseudoephedrine 30 mg Tabs",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 2"
+  },
+  {
+    "name": "Tussin DM Cough Syrup 4oz Bottles",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "12/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Case 2"
+  },
+  {
+    "name": "Guaifenesin 400 mg tabs",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 2"
+  },
+  {
+    "name": "Guaifenesin syrup",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "03/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 2"
+  },
+  {
+    "name": "Delsym cough syrup (Dextromethorphan Polistirex) 3oz Bottles",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "12/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 4,
+    "location": "Case 2"
+  },
+  {
+    "name": "Cough Drops",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "04/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 150,
+    "location": "Case 6"
+  },
+  {
+    "name": "Patient digital themometer",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 3"
+  },
+  {
+    "name": "Thermometer probe covers",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 3"
+  },
+  {
+    "name": "Sore Throat Spray",
+    "type": [
+      "Allergy & Cold Medicines"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 6"
+  },
+  {
+    "name": "Acetaminophen 160mg/5 ml Susp",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "09/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Case 4"
+  },
+  {
+    "name": "Acetaminophen 500 mg Caps",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "05/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 60,
+    "location": "Case 4"
+  },
+  {
+    "name": "Acetaminophen 80 mg chewable tabs",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "04/18/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 30,
+    "location": "Case 4"
+  },
+  {
+    "name": "Acetaminophen Infant Drops",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "05/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 4"
+  },
+  {
+    "name": "Allopurinol 100 mg tabs",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "10/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 4"
+  },
+  {
+    "name": "Allopurinol 300 mg tabs",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 4"
+  },
+  {
+    "name": "Aspirin 81 mg",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "09/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 300,
+    "location": "Case 4"
+  },
+  {
+    "name": "Aspirin 325 mg",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "05/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 50,
+    "location": "Case 4"
+  },
+  {
+    "name": "Cyclobenzaprine 10 mg",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "03/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 80,
+    "location": "Case 4"
+  },
+  {
+    "name": "Gabapentin 300 mg ",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "6/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 112,
+    "location": "Case 4"
+  },
+  {
+    "name": "Gabapentin 100 mg",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "05/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 4"
+  },
+  {
+    "name": "Ibuprofen 200 mg tabs",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "07/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 50,
+    "location": "Case 4"
+  },
+  {
+    "name": "Ibuprofen 800 mg tabs",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "04/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 60,
+    "location": "Case 4"
+  },
+  {
+    "name": "Ibuprofen suspension 50 mg per 1.25 mL infant",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "01/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 4"
+  },
+  {
+    "name": "Ibuprofen Suspension 100 mg per 5 mL childrens",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "10/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 4"
+  },
+  {
+    "name": "Indomethacin 25 mg caps",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 4"
+  },
+  {
+    "name": "Indomethacin 50 mg caps",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 4"
+  },
+  {
+    "name": "Kenalog 40mg/ml Injectable",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "1/1/17",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 4"
+  },
+  {
+    "name": "Lidocaine Oral Topical Solution",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "01/18/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 4"
+  },
+  {
+    "name": "Lidocaine with Epi, injectable",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "10/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Bottom Drawer"
+  },
+  {
+    "name": "Lidocaine w/o Epi, injectable",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "10/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Bottom Drawer"
+  },
+  {
+    "name": "Medrol Dose Pack (Methylprednisolone 4 mg)",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "02/18/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 4"
+  },
+  {
+    "name": "Methylprednisolone Soln",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "04/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 4"
+  },
+  {
+    "name": "Naproxen 500 mg tabs",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "1/31/19",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 30,
+    "location": "Case 4"
+  },
+  {
+    "name": "Phenazopyridine Tabs",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "8/20/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 29,
+    "location": "Case 4"
+  },
+  {
+    "name": "Prednisone 20 mg tabs",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "3/1/17",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 70,
+    "location": "Case 4"
+  },
+  {
+    "name": "Tramadol 50 mg Tabs",
+    "type": [
+      "Analgesics / Antiinflammatory"
+    ],
+    "expiration": "04/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 500,
+    "location": "Case 4"
+  },
+  {
+    "name": "Amlodipine 5 mg ",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "4/30/18",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 32,
+    "location": "Case 7"
+  },
+  {
+    "name": "Amlodipine 10 mg",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "4/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 103,
+    "location": "Case 7"
+  },
+  {
+    "name": "Amlodipine 5mg/ Atorvastatin 20 mg",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "8/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 84,
+    "location": "Case 7"
+  },
+  {
+    "name": "Chlorthalidone or Hydrochlorothiazide 25 mg tabs",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "6/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 219,
+    "location": "Case 7"
+  },
+  {
+    "name": "Furosemide 20 mg ",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "4/1/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 86,
+    "location": "Case 7"
+  },
+  {
+    "name": "Lisinopril 10 mg tab",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 7"
+  },
+  {
+    "name": "Lisinopril 20 mg tab",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "4/30/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 119,
+    "location": "Case 7"
+  },
+  {
+    "name": "Lisinopril 5 mg tab",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "04/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 7"
+  },
+  {
+    "name": "Losartan 25 mg",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 7"
+  },
+  {
+    "name": "Losartan potassium 50mg",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "02/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 90,
+    "location": "Case 7"
+  },
+  {
+    "name": "Metoprolol 25 mg",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "04/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 7"
+  },
+  {
+    "name": "Metoprolol 50 mg",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "4/30/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 115,
+    "location": "Case 7"
+  },
+  {
+    "name": "Nebivolol 5 mg",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "8/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 251,
+    "location": "Case 7"
+  },
+  {
+    "name": "Nebivolol 10 mg",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 7"
+  },
+  {
+    "name": "Lisinopril and Hydrochlorothiazide tabs 10mg/12.5mg",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "7/1/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 7"
+  },
+  {
+    "name": "Lisinopril and Hydrochlorothiazide tabs 20mg/12.5mg",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "8/1/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 40,
+    "location": "Case 7"
+  },
+  {
+    "name": "Azilsartan 80mg",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "4/1/2017",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 71,
+    "location": "Case 7"
+  },
+  {
+    "name": "Azilsartan/chlorthalidone 40mg/12.5mg",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "7/1/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 67,
+    "location": "Case 7"
+  },
+  {
+    "name": "Azilsartan/chlorthalidone 40mg/25mg",
+    "type": [
+      "Antihypertensives"
+    ],
+    "expiration": "7/1/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 70,
+    "location": "Case 7"
+  },
+  {
+    "name": "Amoxicillin 250 mg Chewables",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "09/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Freezer"
+  },
+  {
+    "name": "Amoxicillin 125 mg/5ml Susp",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "11/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Freezer"
+  },
+  {
+    "name": "Amoxicillin 250 mg/5ml Susp",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "04/18/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Freezer"
+  },
+  {
+    "name": "Amoxicillin 400 mg/5ml Susp",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "09/18/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Freezer"
+  },
+  {
+    "name": "Amoxicillin 500 mg Capsules",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "06/18/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Freezer"
+  },
+  {
+    "name": "Amoxicillin 875 mg Tab",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "12/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Freezer"
+  },
+  {
+    "name": "Amoxicillin/Clavulanate 875/125 Tabs",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "09/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 30,
+    "location": "Freezer"
+  },
+  {
+    "name": "Amox/Clavulanate 200/28.5/5 Susp",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "01/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Freezer"
+  },
+  {
+    "name": "Amox/Clavulanate 400/57/5 ml Susp",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "10/17",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Freezer"
+  },
+  {
+    "name": "Azithromycin 250 mg",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer"
+  },
+  {
+    "name": "Azithromycin 200/5cc Solution",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "03/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Freezer"
+  },
+  {
+    "name": "Ceftriaxone 500 mg Injection",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "05/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 10,
+    "location": "Freezer"
+  },
+  {
+    "name": "Cephalexin 500 mg",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "7/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 128,
+    "location": "Freezer"
+  },
+  {
+    "name": "Ciprofloxacin 500 mg",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "02/19/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 60,
+    "location": "Freezer"
+  },
+  {
+    "name": "Clindamycin 300 mg",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "5/17",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 102,
+    "location": "Freezer"
+  },
+  {
+    "name": "Fluconazole 150 mg",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "02/19/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 3,
+    "location": "Freezer"
+  },
+  {
+    "name": "Doxycycline/Minocycline 100 mg",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "10/18/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Freezer"
+  },
+  {
+    "name": "Isoniazid 300 mg tabs",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "03/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 60,
+    "location": "Freezer"
+  },
+  {
+    "name": "Ketoconazole 200 mg",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "03/18/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Freezer"
+  },
+  {
+    "name": "Metronidazole 500 mg",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "12/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Freezer"
+  },
+  {
+    "name": "Penicillin VK 250mg/5ml Soln",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "08/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Freezer"
+  },
+  {
+    "name": "Penicillin VK 500 mg Tabs",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "02/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 70,
+    "location": "Freezer"
+  },
+  {
+    "name": "Terbinafine 250 mg Tabs",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "02/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 30,
+    "location": "Freezer"
+  },
+  {
+    "name": "Trimethoprim/Sulfamethoxazole 40/200 Susp",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer"
+  },
+  {
+    "name": "Trimethroprim/Sulfamethoxazole (DS) 160/800",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "09/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 480,
+    "location": "Freezer"
+  },
+  {
+    "name": "Tamiflu 75 mg",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "04/20/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 10,
+    "location": "Freezer"
+  },
+  {
+    "name": "Valtrex 500 mg",
+    "type": [
+      "Antimicrobials"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer"
+  },
+  {
+    "name": "Lovastatin 20 mg",
+    "type": [
+      "Cardiac / Cholesterol"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 7"
+  },
+  {
+    "name": "Simvastatin 10 mg",
+    "type": [
+      "Cardiac / Cholesterol"
+    ],
+    "expiration": "9/30/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 90,
+    "location": "Case 7"
+  },
+  {
+    "name": "Simvastatin 20 mg",
+    "type": [
+      "Cardiac / Cholesterol"
+    ],
+    "expiration": "9/30/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 90,
+    "location": "Case 7"
+  },
+  {
+    "name": "Simvastatin 40 mg",
+    "type": [
+      "Cardiac / Cholesterol"
+    ],
+    "expiration": "9/30/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 90,
+    "location": "Case 7"
+  },
+  {
+    "name": "Nitroglycerin 0.4 mg tabs",
+    "type": [
+      "Cardiac / Cholesterol"
+    ],
+    "expiration": "5/31/17",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 7"
+  },
+  {
+    "name": "Bacitracin Ointment 15 gm tube",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "09/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Bacitracin Ointment packets",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "07/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 67,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Benzoyl Peroxide 10% Lotion",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "09/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Benzoyl Peroxide 10% Wash",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Chapstick",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Clotrimazole 1% Cream",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "08/18/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Desitin/Diaper Cream",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Hydrocotisone Cream 1%",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "11/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 3,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Ketoconazole 2% cream",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "11/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 3,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Medicated Lip Ointment",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "7/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Molefoam Padding",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Mupirocin 2% Ointment",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "03/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Nystatin Ointment",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Orasol Gel 20%",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Pain Relief Cream",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "10/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Permethrin 1% Shampoo",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Drawer 2-2"
+  },
+  {
+    "name": "Permethrin 5% Cream",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "08/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Proctosol-HC 2.5% Cream/Preparation-H",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "05/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Salicylic Acid Pads - Corn Remover",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Salicylic Acid Pads - Callus Remover",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Selenium Sulfide 2.5% Lotion",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "5/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Silver Sulfadiazine Cream",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "2/17",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 4,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Sting  Kill",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 6,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Tolnaftate Antifungal Powder",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "04/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Tolnaftate 1% Cream",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "04/18/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Triamcinolone 0.025% Cream",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "8/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 3,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Triamcinolone 0.1% Cream",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "2/18",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 4,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Betamethasone 0.05% Cream",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "10/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 3,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Unna Boot 3\"",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Unna Boot 4\"",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Urea Lotion",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "LacHydrin Lotion or Amlactin",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Drawer 2-3"
+  },
+  {
+    "name": "White Petrolatum USP",
+    "type": [
+      "Dermatologic Preparations"
+    ],
+    "expiration": "5/18/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Glipizide 5 mg",
+    "type": [
+      "Diabetes Meds"
+    ],
+    "expiration": "4/30/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 50,
+    "location": "Case 8"
+  },
+  {
+    "name": "Glipizide 10 mg",
+    "type": [
+      "Diabetes Meds"
+    ],
+    "expiration": "6/30/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 8"
+  },
+  {
+    "name": "Glucose Tablets",
+    "type": [
+      "Diabetes Meds"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 8"
+  },
+  {
+    "name": "Metformin ER 500 mg tabs",
+    "type": [
+      "Diabetes Meds"
+    ],
+    "expiration": "4/30/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 60,
+    "location": "Case 8"
+  },
+  {
+    "name": "SGLT2 Inhibitors (Dapagliflozin 5 mg)",
+    "type": [
+      "Diabetes Meds"
+    ],
+    "expiration": "03/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 42,
+    "location": "Case 8"
+  },
+  {
+    "name": "SGLT2 Inhibitors (Dapagliflozin 10 mg)",
+    "type": [
+      "Diabetes Meds"
+    ],
+    "expiration": "04/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 42,
+    "location": "Case 8"
+  },
+  {
+    "name": "DPP-4 Inhibitors (Sitagliptin 100 mg)",
+    "type": [
+      "Diabetes Meds"
+    ],
+    "expiration": "06/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 70,
+    "location": "Case 8"
+  },
+  {
+    "name": "Sitagliptin/Metformin 50/500 (Janumet)",
+    "type": [
+      "Diabetes Meds"
+    ],
+    "expiration": "01/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 143,
+    "location": "Case 8"
+  },
+  {
+    "name": "Sitagliptin/Metformin 100/1000 (Janumet)",
+    "type": [
+      "Diabetes Meds"
+    ],
+    "expiration": "2/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 40,
+    "location": "Case 8"
+  },
+  {
+    "name": "SGLT2 Inhibitors/DPP4 Inhibitor (10mg/5mg)",
+    "type": [
+      "Diabetes Meds"
+    ],
+    "expiration": "09/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 28,
+    "location": "Case 8"
+  },
+  {
+    "name": "SGLT2 Inhibitors/DPP4 Inhibitor (25mg/5mg)",
+    "type": [
+      "Diabetes Meds"
+    ],
+    "expiration": "09/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 28,
+    "location": "Case 8"
+  },
+  {
+    "name": "Alogliptin/Metformin (12.5/500)",
+    "type": [
+      "Diabetes Meds"
+    ],
+    "expiration": "01/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 56,
+    "location": "Case 8"
+  },
+  {
+    "name": "Carbamide Peroxide 6.5%",
+    "type": [
+      "Ear and Eye Preparations"
+    ],
+    "expiration": "09/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 1"
+  },
+  {
+    "name": "Antipyrine & Benzocaine Otic",
+    "type": [
+      "Ear and Eye Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 1"
+  },
+  {
+    "name": "Gentamycin, Cipro, or Ofloxacin Ophthalmic Soln",
+    "type": [
+      "Ear and Eye Preparations"
+    ],
+    "expiration": "7/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Case 1"
+  },
+  {
+    "name": "Artificial Tears",
+    "type": [
+      "Ear and Eye Preparations"
+    ],
+    "expiration": "11/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Case 1"
+  },
+  {
+    "name": "Neomycin/Polymyxin/Hydrocortisone (Cortisporin) Otic",
+    "type": [
+      "Ear and Eye Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 1"
+  },
+  {
+    "name": "Ear Plugs",
+    "type": [
+      "Ear and Eye Preparations"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 35,
+    "location": "Case 1"
+  },
+  {
+    "name": "Napchon (Opticlear) ",
+    "type": [
+      "Ear and Eye Preparations"
+    ],
+    "expiration": "02/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 1"
+  },
+  {
+    "name": "Sulfacetamide or Polymyxin B Ophthalmic Soln",
+    "type": [
+      "Ear and Eye Preparations"
+    ],
+    "expiration": "08/18/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Case 1"
+  },
+  {
+    "name": "Ammonia Inhalant",
+    "type": [
+      "Emergency Kit"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Emergency Kit"
+  },
+  {
+    "name": "Medicaine Sting/Bite Swab",
+    "type": [
+      "Emergency Kit"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 10,
+    "location": "Emergency Kit"
+  },
+  {
+    "name": "Epipen",
+    "type": [
+      "Emergency Kit"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Emergency Kit"
+  },
+  {
+    "name": "Epipen Jr.",
+    "type": [
+      "Emergency Kit"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Emergency Kit"
+  },
+  {
+    "name": "Diphenhydramine 50 mg/mL",
+    "type": [
+      "Emergency Kit"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Emergency Kit"
+  },
+  {
+    "name": "Antacid",
+    "type": [
+      "GI Meds"
+    ],
+    "expiration": "11/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 75,
+    "location": "Case 3"
+  },
+  {
+    "name": "Bisacodyl Suppositories",
+    "type": [
+      "GI Meds"
+    ],
+    "expiration": "10/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 10,
+    "location": "Case 3"
+  },
+  {
+    "name": "Proton Pump Inhibitor",
+    "type": [
+      "GI Meds"
+    ],
+    "expiration": "4/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 112,
+    "location": "Case 3"
+  },
+  {
+    "name": "Lactulose Solution",
+    "type": [
+      "GI Meds"
+    ],
+    "expiration": "03/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 3"
+  },
+  {
+    "name": "Pepto-Bismol",
+    "type": [
+      "GI Meds"
+    ],
+    "expiration": "08/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0.33,
+    "location": "Case 3"
+  },
+  {
+    "name": "Docusate Sodium 100 mg",
+    "type": [
+      "GI Meds"
+    ],
+    "expiration": "9/17",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 200,
+    "location": "Case 3"
+  },
+  {
+    "name": "Promethazine 25 mg",
+    "type": [
+      "GI Meds"
+    ],
+    "expiration": "12/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 3"
+  },
+  {
+    "name": "Loperamide 2 mg",
+    "type": [
+      "GI Meds"
+    ],
+    "expiration": "12/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 12,
+    "location": "Case 3"
+  },
+  {
+    "name": "Ranitidine (or other H2blocker)",
+    "type": [
+      "GI Meds"
+    ],
+    "expiration": "05/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 3"
+  },
+  {
+    "name": "Miconazole Applicator Set",
+    "type": [
+      "GYN Meds"
+    ],
+    "expiration": "06/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Case 3"
+  },
+  {
+    "name": "Reclipsen Tabs",
+    "type": [
+      "GYN Meds"
+    ],
+    "expiration": "03/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 6,
+    "location": "Case 3"
+  },
+  {
+    "name": "Apri Tabs",
+    "type": [
+      "GYN Meds"
+    ],
+    "expiration": "10/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 6,
+    "location": "Case 3"
+  },
+  {
+    "name": "Depo-Provera",
+    "type": [
+      "GYN Meds"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 3"
+  },
+  {
+    "name": "Detrol LA (Tolterodin Tartate)",
+    "type": [
+      "GYN Meds"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 3"
+  },
+  {
+    "name": "Medroxyprogesterone 10 mg",
+    "type": [
+      "GYN Meds"
+    ],
+    "expiration": "02/18/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 3"
+  },
+  {
+    "name": "PlanB",
+    "type": [
+      "GYN Meds"
+    ],
+    "expiration": "11/17/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 3"
+  },
+  {
+    "name": "Ipratropium Inhalation Soln.",
+    "type": [
+      "Pulmonary"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Refrigerator Closet"
+  },
+  {
+    "name": "Albuterol Inhalation Soln. ",
+    "type": [
+      "Pulmonary"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Refrigerator Closet"
+  },
+  {
+    "name": "Albuterol HFA (Proair/Ventolin)",
+    "type": [
+      "Pulmonary"
+    ],
+    "expiration": "1/17",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 3,
+    "location": "Case 1"
+  },
+  {
+    "name": "Steroid Inhaler",
+    "type": [
+      "Pulmonary"
+    ],
+    "expiration": "01/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 1"
+  },
+  {
+    "name": "Steroid/Long Acting Beta Agonist (Child)",
+    "type": [
+      "Pulmonary"
+    ],
+    "expiration": "4/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Case 1"
+  },
+  {
+    "name": "Steroid/Long Acting Beta Agonist (Adult)",
+    "type": [
+      "Pulmonary"
+    ],
+    "expiration": "3/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 3,
+    "location": "Case 1"
+  },
+  {
+    "name": "Tiotropium or Ipratropium",
+    "type": [
+      "Pulmonary"
+    ],
+    "expiration": "11/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 1,
+    "location": "Case 1"
+  },
+  {
+    "name": "Ipratropium/Albuterol",
+    "type": [
+      "Pulmonary"
+    ],
+    "expiration": "07/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 2,
+    "location": "Case 1"
+  },
+  {
+    "name": "Buproprion ER 150 mg",
+    "type": [
+      "Smoking Cessation"
+    ],
+    "expiration": "10/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 120,
+    "location": "Case 5"
+  },
+  {
+    "name": "Nicotine Gum 2 mg",
+    "type": [
+      "Smoking Cessation"
+    ],
+    "expiration": "02/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 200,
+    "location": "Case 5"
+  },
+  {
+    "name": "Nicotine Gum 4 mg",
+    "type": [
+      "Smoking Cessation"
+    ],
+    "expiration": "02/16/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 200,
+    "location": "Case 5"
+  },
+  {
+    "name": "Nicotine Patch 7 mg",
+    "type": [
+      "Smoking Cessation"
+    ],
+    "expiration": "11/16",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 57,
+    "location": "Case 5"
+  },
+  {
+    "name": "Nicotine Patch 14 mg",
+    "type": [
+      "Smoking Cessation"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 5"
+  },
+  {
+    "name": "Nicotine Patch 21 mg",
+    "type": [
+      "Smoking Cessation"
+    ],
+    "expiration": "07/18/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 42,
+    "location": "Case 5"
+  },
+  {
+    "name": "Multivitamins - Adult",
+    "type": [
+      "Vitamins and Supplements"
+    ],
+    "expiration": "5/18",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 210,
+    "location": "Case 6"
+  },
+  {
+    "name": "Multivitamins - Adult Gummies",
+    "type": [
+      "Vitamins and Supplements"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Refrigerator"
+  },
+  {
+    "name": "Multivitamins - Children's Gummies",
+    "type": [
+      "Vitamins and Supplements"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Refrigerator"
+  },
+  {
+    "name": "Multivitamins - Kids Chewable",
+    "type": [
+      "Vitamins and Supplements"
+    ],
+    "expiration": "05/18/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 250,
+    "location": "Case 6"
+  },
+  {
+    "name": "Calcium Supplements",
+    "type": [
+      "Vitamins and Supplements"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Refrigerator"
+  },
+  {
+    "name": "Prenatal Vitamins",
+    "type": [
+      "Vitamins and Supplements"
+    ],
+    "expiration": "11/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 100,
+    "location": "Case 6"
+  },
+  {
+    "name": "Fiber Capsules",
+    "type": [
+      "Vitamins and Supplements"
+    ],
+    "expiration": "12/16",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 180,
+    "location": "Case 6"
+  },
+  {
+    "name": "Fluoride 0.25 mg drops",
+    "type": [
+      "Vitamins and Supplements"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 6"
+  },
+  {
+    "name": "Fluoride .5 mg ",
+    "type": [
+      "Vitamins and Supplements"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 6"
+  },
+  {
+    "name": "Fluoride 1 mg",
+    "type": [
+      "Vitamins and Supplements"
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Case 6"
+  },
+  {
+    "name": "Iron 27 mg",
+    "type": [
+      "Vitamins and Supplements"
+    ],
+    "expiration": "07/16/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 200,
+    "location": "Case 6"
+  },
+  {
+    "name": "Melatonin 3 mg",
+    "type": [
+      "Vitamins and Supplements"
+    ],
+    "expiration": "12/17/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 120,
+    "location": "Case 6"
+  },
+  {
+    "name": "Corn removers/cushions",
+    "type": [
+      "Misc."
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 18,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "Callus cushions/removers",
+    "type": [
+      "Misc."
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Purchased",
+    "lot": "5678EFGH",
+    "quantity": 6,
+    "location": "Freezer-Derm"
+  },
+  {
+    "name": "condoms",
+    "type": [
+      "Misc."
+    ],
+    "expiration": "9/30/2021",
+    "obtained": "Donated",
+    "lot": "5678EFGH",
+    "quantity": 0,
+    "location": "Cabinet"
+  }
+]
