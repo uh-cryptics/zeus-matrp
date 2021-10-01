@@ -4,11 +4,8 @@ import { Button, Form, Modal } from 'semantic-ui-react';
 import _ from 'lodash';
 
 const AddMedication = ({ set, open, setOpen }) => {
-  const uniqueMedType = _.uniq(set.filter(item => item.type === 'Medication')
-    .map(item => item.medicationType))
-    .map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
+  const uniqueMedType = _.uniq(_.flatten(set.map(item => item.type))).map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
   const uniqueLocations = _.uniq(set.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
-
   return (
     <div>
       <Modal
@@ -21,19 +18,15 @@ const AddMedication = ({ set, open, setOpen }) => {
         <Modal.Content>
           <Form>
             <Form.Input required name='name' label='Name' placeholder='Aspirin 100mg Tablets' />
-            <Form.Group>
-              <Form.Field required name='type' label='Type' control='select' width='4'>
-                <option value='Medication'>Medication</option>
-                <option value='Supply'>Supply</option>
-              </Form.Field>
-              <Form.Select
-                required
-                name='medType'
-                label='Medication Type'
-                width='12'
-                options={uniqueMedType}
-              />
-            </Form.Group>
+            <Form.Dropdown
+              required
+              multiple
+              name='type'
+              label='Medication Type'
+              search
+              selection
+              options={uniqueMedType}
+            />
             <Form.Group widths='equal'>
               <Form.Dropdown
                 required
@@ -44,7 +37,7 @@ const AddMedication = ({ set, open, setOpen }) => {
                 label='Location'
                 options={uniqueLocations}
               />
-              <Form.Input required name='supply' label='Supply' placeholder='Supply' />
+              <Form.Input required name='quantity' label='Quantity' placeholder='Quantity' />
               <Form.Input required name='expiration' type='date' label='Expiration' placeholder='MM/DD/YYYY' />
             </Form.Group>
             <Form.Group widths='equal'>
@@ -52,19 +45,7 @@ const AddMedication = ({ set, open, setOpen }) => {
                 <option value='Donated'>Donated</option>
                 <option value='Purchased'>Purchased</option>
               </Form.Field>
-              <Form.Input required name='dosage' label='Recommend Dosage' min={1} type='number' placeholder='Number' />
               <Form.Input required name='lot' label='LOT' placeholder='1A2B3C4D' />
-            </Form.Group>
-            <Form.Group name='reserve'>
-              <label>Reserve</label>
-              <Form.Radio
-                label='Yes'
-                value='true'
-              />
-              <Form.Radio
-                label='No'
-                value='false'
-              />
             </Form.Group>
           </Form>
         </Modal.Content>
