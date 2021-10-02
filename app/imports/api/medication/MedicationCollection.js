@@ -3,6 +3,7 @@ import SimpleSchema from 'simpl-schema';
 import { check } from 'meteor/check';
 import { _ } from 'meteor/underscore';
 import BaseCollection from '../base/BaseCollection';
+import { ROLE } from '../role/Role';
 
 export const obtainTypes = ['Purchased', 'Donated'];
 export const types = [
@@ -172,6 +173,10 @@ class MedicationCollection extends BaseCollection {
     const lot = doc.lot;
     const type = doc.type;
     return { name, location, quantity, expiration, obtained, lot, type };
+  }
+
+  assertValidRoleForMethod(userId) {
+    this.assertRole(userId, [ROLE.ADMIN, ROLE.USER]);
   }
 }
 
