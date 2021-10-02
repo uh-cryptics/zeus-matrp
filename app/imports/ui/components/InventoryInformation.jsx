@@ -6,14 +6,14 @@ import { Roles } from 'meteor/alanning:roles';
 import { Button, Header, Icon, Modal } from 'semantic-ui-react';
 import { ROLE } from '../../api/role/Role';
 
-const InventoryInformation = ({ currentUser, item, open, setOpen }) => (item ?
+const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (item ?
   <Modal
     closeIcon
     open={open}
     onOpen={() => setOpen(true)}
     onClose={() => setOpen(false)}
     size='small'>
-    <Header icon={item.type === 'Medication' ? 'pills' : 'first aid'} content={item.name} />
+    <Header icon={table === 'medications' ? 'pills' : 'first aid'} content={item.name} />
     <Modal.Content>
       {Object.keys(item).map((keys, index) => [<span key={`span_${index}`}>{keys.toUpperCase()}: {item[keys] instanceof Date ?
         item[keys].toLocaleDateString() : item[keys].toString()}</span>, <br key={`br_${index}`} />])}
@@ -39,6 +39,7 @@ const InventoryInformation = ({ currentUser, item, open, setOpen }) => (item ?
 );
 
 InventoryInformation.propTypes = {
+  table: PropTypes.string,
   item: PropTypes.object,
   open: PropTypes.bool,
   setOpen: PropTypes.func,

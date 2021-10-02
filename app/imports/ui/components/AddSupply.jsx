@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Form, Modal } from 'semantic-ui-react';
 import _ from 'lodash';
 
-const AddMedication = ({ set, open, setOpen }) => {
-  const uniqueMedType = _.uniq(_.flatten(set.map(item => item.type))).map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
+const AddSupply = ({ set, open, setOpen }) => {
   const uniqueLocations = _.uniq(set.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
   return (
     <div>
@@ -14,19 +13,10 @@ const AddMedication = ({ set, open, setOpen }) => {
         open={open}
         size='small'
       >
-        <Modal.Header>Add Item</Modal.Header>
+        <Modal.Header>Add Supply</Modal.Header>
         <Modal.Content>
           <Form>
-            <Form.Input required name='name' label='Name' placeholder='Aspirin 100mg Tablets' />
-            <Form.Dropdown
-              required
-              multiple
-              name='type'
-              label='Medication Type'
-              search
-              selection
-              options={uniqueMedType}
-            />
+            <Form.Input required name='name' label='Name' placeholder='Theraband - Green' />
             <Form.Group widths='equal'>
               <Form.Dropdown
                 required
@@ -38,7 +28,6 @@ const AddMedication = ({ set, open, setOpen }) => {
                 options={uniqueLocations}
               />
               <Form.Input required name='quantity' label='Quantity' placeholder='Quantity' />
-              <Form.Input required name='expiration' type='date' label='Expiration' placeholder='MM/DD/YYYY' />
             </Form.Group>
             <Form.Group widths='equal'>
               <Form.Field required name='obtained' label='Obtained' control='select'>
@@ -66,10 +55,10 @@ const AddMedication = ({ set, open, setOpen }) => {
   );
 };
 
-AddMedication.propTypes = {
+AddSupply.propTypes = {
   set: PropTypes.array.isRequired,
   open: PropTypes.bool,
   setOpen: PropTypes.func,
 };
 
-export default AddMedication;
+export default AddSupply;

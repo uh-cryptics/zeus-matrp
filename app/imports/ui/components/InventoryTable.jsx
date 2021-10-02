@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Table, Segment } from 'semantic-ui-react';
 import InventoryInformation from './InventoryInformation';
-import EditInventory from './EditInventory';
+import EditMedication from './EditMedication';
+import EditSupply from './EditSupply';
 
-const InventoryTable = ({ inventory, color }) => {
+const InventoryTable = ({ inventory, table }) => {
 
   const [itemInfo, setItemInfo] = useState(null);
   const [open, setOpen] = useState(false);
@@ -61,13 +62,13 @@ const InventoryTable = ({ inventory, color }) => {
         }
 
         if (typeof (column) === 'undefined' || column === null || column === '') {
-          return <Table.Cell key={key}/>;
+          return <Table.Cell key={key} />;
         }
 
         return <Table.Cell key={key} data-label={headers[j]}>{column.toString()}</Table.Cell>;
       });
       return (
-        <Table.Row key={i} onClick={() => openInventoryInfo(row) } style={{ cursor: 'pointer' }}>
+        <Table.Row key={i} onClick={() => openInventoryInfo(row)} style={{ cursor: 'pointer' }}>
           {columns}
         </Table.Row>
       );
@@ -77,17 +78,21 @@ const InventoryTable = ({ inventory, color }) => {
 
   return (
     <div>
-      <InventoryInformation item={itemInfo} open={open} setOpen={setOpenCallBack}/>
-      <EditInventory item={itemInfo} open={edit} setOpen={setEditCallback}/>
+      <InventoryInformation table={table} item={itemInfo} open={open} setOpen={setOpenCallBack} />
+      {(table === 'medications') ?
+        <EditMedication item={itemInfo} open={edit} setOpen={setEditCallback} />
+        :
+        <EditSupply item={itemInfo} open={edit} setOpen={setEditCallback} />
+      }
       <Segment attached>
-        <Table celled striped selectable color={color}>
+        <Table celled striped selectable color={table === 'medications' ? 'green' : 'violet'}>
           <Table.Header>
             <Table.Row>
-              { tableHeader() }
+              {tableHeader()}
             </Table.Row>
           </Table.Header>
           <Table.Body>
-            { tableData() }
+            {tableData()}
           </Table.Body>
         </Table>
       </Segment>
@@ -97,7 +102,7 @@ const InventoryTable = ({ inventory, color }) => {
 
 InventoryTable.propTypes = {
   inventory: PropTypes.array.isRequired,
-  color: PropTypes.string.isRequired,
+  table: PropTypes.string.isRequired,
 };
 
 export default InventoryTable;
