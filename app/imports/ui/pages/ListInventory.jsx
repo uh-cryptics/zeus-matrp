@@ -8,10 +8,11 @@ import { PAGE_IDS } from '../utilities/PageIDs';
 import { ROLE } from '../../api/role/Role';
 import InventoryTable from '../components/InventoryTable';
 import AddMedication from '../components/AddMedication';
-import Dispense from '../components/Dispense';
-import { Medication } from '../../api/medication/MediationCollection';
+import DispenseMedication from '../components/DispenseMedication';
+import { Medication } from '../../api/medication/MedicationCollection';
 import { Supply } from '../../api/supply/SupplyCollection';
 import AddSupply from '../components/AddSupply';
+import DispenseSupply from '../components/DispenseSupply';
 
 const ListInventory = ({ currentUser, ready, medications, supplies }) => {
   const [showTable, setShowTable] = useState('medications');
@@ -73,7 +74,11 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
           <InventoryTable inventory={supplies} table={showTable}> </InventoryTable>
         </>
       }
-      <Dispense set={medications.concat(supplies)} open={dispense} setOpen={setDispense} />
+      {(showTable === 'medications') ?
+        <DispenseMedication set={medications} open={dispense} setOpen={setDispense} />
+        :
+        <DispenseSupply set={supplies} open={dispense} setOpen={setDispense} />
+      }
     </Container>
   ) :
     <Loader active>Getting data</Loader>

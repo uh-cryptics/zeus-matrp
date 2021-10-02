@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Modal, Input, Message, Segment } from 'semantic-ui-react';
+import { Button, Form, Modal, Input, Message, Segment, Icon } from 'semantic-ui-react';
 import _ from 'lodash';
 import swal from 'sweetalert';
 import { History } from '../../api/history/HistoryCollection';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
+import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
+import { Supply } from '../../api/supply/SupplyCollection';
 
-const Dispense = ({ set, open, setOpen }) => {
-  const uniqueNames = _.uniq(set.map(item => item.name))
-    .map((type, index) => ({ key: `name${index}`, text: type, value: type }));
+const DispenseSupply = ({ set, open, setOpen }) => {
+  const uniqueNames = _.uniq(set.map(item => ({ _id: item._id, name: item.name })))
+    .map((type) => ({ key: type._id, text: type.name, value: type._id }));
   const uniqueLot = _.uniq(set.map(item => item.lot)).map((lot, i) => ({ key: `loc${i}`, text: lot, value: lot }));
 
   const [patientNumber, setPatientNumber] = useState('');
@@ -31,15 +32,23 @@ const Dispense = ({ set, open, setOpen }) => {
   };
 
   const submit = () => {
-    const collectionName = History.getCollectionName();
-    if (patientNumber && clinicLocation && lotNumber && item && _.isNumber(amount) && provider) {
-      const definitionData = { patientNumber, clinicLocation, lotNumber, item, amount, provider };
-      defineMethod.callPromise({ collectionName, definitionData })
-        .catch(e => swal('Error', e.message, 'error'))
-        .then(() => {
-          swal('Success', `Dispensed ${item}`, 'success');
-          clear();
-        });
+    if (patientNumber && clinicLocation && item && _.isNumber(amount) && provider) {
+      const itemName = _.find(uniqueNames, (i) => i.key === item).text;
+      const oldAmount = Supply.findDoc(item).quantity;
+      if (oldAmount < amount) {
+        swal('Error', `There is not enough inventory to dispense ${amount} ${itemName}`, 'error')
+      } else {
+        const definitionData = { patientNumber, clinicLocation, lotNumber, item: itemName, amount, provider };
+        defineMethod.callPromise({ collectionName: History.getCollectionName(), definitionData })
+          .catch(e => swal('Error', e.message, 'error'))
+          .then(() => {
+            swal('Success', `Dispensed ${amount} ${itemName}`, 'success');
+          });
+        const updateData = { id: item, quantity: oldAmount - amount };
+        updateMethod.callPromise({ collectionName: Supply.getCollectionName(), updateData })
+          .catch(e => swal('Error', e.message, 'error'))
+          .then(() => clear());
+      }
     } else {
       setError({ has: true, message: 'Please input all required fields' });
     }
@@ -54,7 +63,14 @@ const Dispense = ({ set, open, setOpen }) => {
         open={open}
         size='small'
       >
-        <Modal.Header>Dispense</Modal.Header>
+        <Modal.Header>
+          <Icon.Group size='large'>
+            <Icon color='blue' name='user md' />
+            <Icon corner='top right' name='first aid' />
+          </Icon.Group>
+          &nbsp;
+          Dispense Supply
+        </Modal.Header>
         <Modal.Content>
           <Form error={error.has}>
             <Segment>
@@ -76,7 +92,7 @@ const Dispense = ({ set, open, setOpen }) => {
               </Form.Group>
               <Form.Field>
                 <Form.Group widths="equal">
-                  <Form.Field required>
+                  <Form.Field>
                     <label>LOT</label>
                     <Form.Dropdown
                       search
@@ -93,8 +109,8 @@ const Dispense = ({ set, open, setOpen }) => {
                       search
                       selection
                       placeholder="Select a medicine or supply to dispense..."
-                      options={uniqueNames
-                      }value={item}
+                      options={uniqueNames}
+                      value={item}
                       onChange={(e, data) => setItem(data.value)}
                     />
                   </Form.Field>
@@ -117,10 +133,10 @@ const Dispense = ({ set, open, setOpen }) => {
   );
 };
 
-Dispense.propTypes = {
+DispenseSupply.propTypes = {
   set: PropTypes.array.isRequired,
   open: PropTypes.bool,
   setOpen: PropTypes.func,
 };
 
-export default Dispense;
+export default DispenseSupply;
