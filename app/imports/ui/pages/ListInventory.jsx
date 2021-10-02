@@ -7,10 +7,11 @@ import { Roles } from 'meteor/alanning:roles';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { ROLE } from '../../api/role/Role';
 import InventoryTable from '../components/InventoryTable';
-import AddInventory from '../components/AddInventory';
+import AddMedication from '../components/AddMedication';
 import Dispense from '../components/Dispense';
 import { Medication } from '../../api/medication/MediationCollection';
 import { Supply } from '../../api/supply/SupplyCollection';
+import AddSupply from '../components/AddSupply';
 
 const ListInventory = ({ currentUser, ready, medications, supplies }) => {
   const [showTable, setShowTable] = useState('medications');
@@ -61,14 +62,18 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
           </Menu.Item>
         </Menu.Menu>
       </Menu>
-      <AddInventory set={medications.concat(supplies)} open={open} setOpen={setOpen} />
-      <Dispense set={medications.concat(supplies)} open={dispense} setOpen={setDispense} />
-      {(showTable === 'medications' ?
-        <InventoryTable inventory={medications} color='green'> </InventoryTable>
+      {(showTable === 'medications') ?
+        <>
+          <AddMedication set={medications.concat(supplies)} open={open} setOpen={setOpen} />
+          <InventoryTable inventory={medications} table={showTable}> </InventoryTable>
+        </>
         :
-        <InventoryTable inventory={supplies} color='violet'> </InventoryTable>
-      )}
-
+        <>
+          <AddSupply set={medications.concat(supplies)} open={open} setOpen={setOpen} />
+          <InventoryTable inventory={supplies} table={showTable}> </InventoryTable>
+        </>
+      }
+      <Dispense set={medications.concat(supplies)} open={dispense} setOpen={setDispense} />
     </Container>
   ) :
     <Loader active>Getting data</Loader>
