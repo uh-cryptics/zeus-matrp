@@ -3,6 +3,7 @@ import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
 import { Medication } from '../medication/MediationCollection';
 import { Supply } from '../supply/SupplyCollection';
+import { History } from '../history/HistoryCollection';
 
 class MATRPClass {
   collections;
@@ -17,6 +18,7 @@ class MATRPClass {
       AdminProfiles,
       Medication,
       Supply,
+      History,
       UserProfiles,
     ];
     /*
@@ -27,6 +29,7 @@ class MATRPClass {
       UserProfiles,
       Medication,
       Supply,
+      History,
     ];
 
     /*
