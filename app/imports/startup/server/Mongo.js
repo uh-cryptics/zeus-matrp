@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import { Medication } from '../../api/medication/MediationCollection';
+import { Medication } from '../../api/medication/MedicationCollection';
 import { Supply } from '../../api/supply/SupplyCollection';
 /* eslint-disable no-console */
 

@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { AdminProfiles } from '../user/AdminProfileCollection';
 import { UserProfiles } from '../user/UserProfileCollection';
-import { Medication } from '../medication/MediationCollection';
+import { Medication } from '../medication/MedicationCollection';
 import { Supply } from '../supply/SupplyCollection';
 import { History } from '../history/HistoryCollection';
 
