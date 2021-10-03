@@ -7,7 +7,7 @@ import swal from 'sweetalert';
 import { Supply } from '../../api/supply/SupplyCollection';
 
 const AddSupply = ({ set, open, setOpen }) => {
-  const uniqueLocations = _.uniq(set.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
+  const [locations, setLocations] = useState(_.uniq(set.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
 
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
@@ -42,8 +42,9 @@ const AddSupply = ({ set, open, setOpen }) => {
   return (
     <div>
       <Modal
-        onClose={() => setOpen(false)}
+        onClose={() => clear()}
         onOpen={() => setOpen(true)}
+        closeIcon
         open={open}
         size='small'
       >
@@ -66,8 +67,10 @@ const AddSupply = ({ set, open, setOpen }) => {
                 search
                 selection
                 label='Location'
-                options={uniqueLocations}
+                allowAdditions
+                options={locations}
                 value={location}
+                onAddItem={(e, { value }) => setLocations(locations.concat([{ key: `loc${locations.length}`, text: value, value: value }]))}
                 onChange={(e, data) => setLocation(data.value)}
               />
               <Form.Input required name='quantity' label='Quantity' placeholder='Quantity' value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value, 10))} />

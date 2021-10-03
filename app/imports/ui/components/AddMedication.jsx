@@ -8,7 +8,7 @@ import { Medication, types } from '../../api/medication/MedicationCollection';
 
 const AddMedication = ({ set, open, setOpen }) => {
   const uniqueMedType = types.map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
-  const uniqueLocations = _.uniq(set.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
+  const [locations, setLocations] = useState(_.uniq(set.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
 
   const [name, setName] = useState('');
   const [type, setType] = useState([]);
@@ -47,7 +47,8 @@ const AddMedication = ({ set, open, setOpen }) => {
   return (
     <div>
       <Modal
-        onClose={() => setOpen(false)}
+        closeIcon
+        onClose={() => clear()}
         onOpen={() => setOpen(true)}
         open={open}
         size='small'
@@ -81,9 +82,11 @@ const AddMedication = ({ set, open, setOpen }) => {
                 placeholder='Select Location'
                 search
                 selection
+                allowAdditions
                 label='Location'
-                options={uniqueLocations}
+                options={locations}
                 value={location}
+                onAddItem={(e, { value }) => setLocations(locations.concat([{ key: `loc${locations.length}`, text: value, value: value }]))}
                 onChange={(e, data) => setLocation(data.value)}
               />
               <Form.Input required name='quantity' label='Quantity' placeholder='Quantity'

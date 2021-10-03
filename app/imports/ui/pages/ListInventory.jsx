@@ -65,12 +65,12 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
       </Menu>
       {(showTable === 'medications') ?
         <>
-          <AddMedication set={medications.concat(supplies)} open={open} setOpen={setOpen} />
+          <AddMedication set={medications} open={open} setOpen={setOpen} />
           <InventoryTable inventory={medications} table={showTable}> </InventoryTable>
         </>
         :
         <>
-          <AddSupply set={medications.concat(supplies)} open={open} setOpen={setOpen} />
+          <AddSupply set={supplies} open={open} setOpen={setOpen} />
           <InventoryTable inventory={supplies} table={showTable}> </InventoryTable>
         </>
       }
