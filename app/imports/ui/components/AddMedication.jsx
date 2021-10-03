@@ -4,10 +4,10 @@ import { Button, Form, Icon, Message, Modal } from 'semantic-ui-react';
 import _ from 'lodash';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
-import { Medication } from '../../api/medication/MedicationCollection';
+import { Medication, types } from '../../api/medication/MedicationCollection';
 
 const AddMedication = ({ set, open, setOpen }) => {
-  const uniqueMedType = _.uniq(_.flatten(set.map(item => item.type))).map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
+  const uniqueMedType = types.map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
   const uniqueLocations = _.uniq(set.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
 
   const [name, setName] = useState('');
