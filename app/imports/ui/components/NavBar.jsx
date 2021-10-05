@@ -14,7 +14,7 @@ const NavBar = ({ currentUser }) => {
   return (
     <Menu style={menuStyle} attached="top" borderless inverted>
       <Menu.Item id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} activeClassName="" exact to="/list">
-        <Header inverted as='h1'>ZEUS</Header>
+        <Header inverted color="black" as='h1'>ZEUS</Header>
       </Menu.Item>
       {currentUser ? (
         [// [<Menu.Item id={COMPONENT_IDS.NAVBAR_ADD_STUFF} as={NavLink} activeClassName="active" exact to="/add" key='add'>Add Stuff</Menu.Item>,
