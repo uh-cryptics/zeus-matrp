@@ -12,7 +12,7 @@ import { COMPONENT_IDS } from '../utilities/ComponentIDs';
 const NavBar = ({ currentUser }) => {
   const menuStyle = { marginBottom: '10px' };
   return (
-    <Menu style={menuStyle} attached="top" borderless inverted>
+    <Menu style={menuStyle} attached="top" borderless inverted color="black">
       <Menu.Item id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} activeClassName="" exact to="/list">
         <Header inverted color="black" as='h1'>ZEUS</Header>
       </Menu.Item>
