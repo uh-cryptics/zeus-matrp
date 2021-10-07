@@ -1,27 +1,26 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Table, Segment, Input, Menu } from 'semantic-ui-react';
+import { Table, Segment } from 'semantic-ui-react';
 import InventoryInformation from './InventoryInformation';
 import EditMedication from './EditMedication';
 import EditSupply from './EditSupply';
 import DeleteMedication from './DeleteMedication';
 import DeleteSupply from './DeleteSupply';
 
-const InventoryTable = ({ inventory, table }) => {
-
+const InventoryTable = ({ inventory, table, setting }) => {
   const [itemInfo, setItemInfo] = useState(null);
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState(false);
   const [deleting, setDelete] = useState(false);
-  const [searchTerm, setSearchTerm] = useState('');
+  // const [setting, setSearchTerm] = useState('');
 
-  const searchTable = () => (
-    <Menu.Item>
-      <Input className='icon' icon='search' placeholder='Search...' onChange={(e) => {
-        setSearchTerm(e.target.value);
-      }}/>
-    </Menu.Item>
-  );
+  // const searchTable = () => (
+  //   <Menu.Item>
+  //     <Input className='icon' icon='search' placeholder='Search...' onChange={(e) => {
+  //       setSearchTerm(setting);
+  //     }}/>
+  //   </Menu.Item>
+  // );
 
   const setOpenCallBack = (value, reason) => {
     if (!value && reason === 'edit') {
@@ -67,11 +66,11 @@ const InventoryTable = ({ inventory, table }) => {
   const tableData = () => {
     const headers = Object.keys(inventory[0]).filter(header => (!(/(_id|type|obtained)/).test(header) ? header : null));
     const listedItems = inventory.filter((value => {
-      if (searchTerm === '') {
+      if (setting === '') {
         return value;
-      } if (value.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          value.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          value.lot.toLowerCase().includes(searchTerm.toLowerCase())) {
+      } if (value.name.toLowerCase().includes(setting.toLowerCase()) ||
+          value.location.toLowerCase().includes(setting.toLowerCase()) ||
+          value.lot.toLowerCase().includes(setting.toLowerCase())) {
         return value;
       }
     })).map((row, i) => {
@@ -116,7 +115,6 @@ const InventoryTable = ({ inventory, table }) => {
         <DeleteSupply item={itemInfo} open={deleting} setOpen={setDeleteCallback} />
       }
       <Segment attached>
-        {searchTable()}
         <Table celled striped selectable color={table === 'medications' ? 'green' : 'violet'}>
           <Table.Header>
             <Table.Row>
@@ -135,6 +133,7 @@ const InventoryTable = ({ inventory, table }) => {
 InventoryTable.propTypes = {
   inventory: PropTypes.array.isRequired,
   table: PropTypes.string.isRequired,
+  setting: PropTypes.string.isRequired,
 };
 
 export default InventoryTable;

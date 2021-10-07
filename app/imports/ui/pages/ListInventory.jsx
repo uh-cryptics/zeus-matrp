@@ -18,6 +18,7 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
   const [showTable, setShowTable] = useState('medications');
   const [open, setOpen] = useState(false);
   const [dispense, setDispense] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleTable = (value) => {
     setShowTable(value);
@@ -40,6 +41,11 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
         {/* <Menu.Item>
           <Input className='icon' icon='search' placeholder='Search...' />
         </Menu.Item> Commenting out searchbar for now, will transfer functionality from InventoryTable */}
+        <Menu.Item>
+          <Input className='icon' icon='search' placeholder='Search...' onChange={(e) => {
+            setSearchTerm(e.target.value);
+          }}/>
+        </Menu.Item>
         <Menu.Menu position='right' style={{ cursor: 'pointer' }}>
           {currentUser ?
             <Menu.Item onClick={() => { setOpen(true); }}>
@@ -66,12 +72,12 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
       {(showTable === 'medications') ?
         <>
           <AddMedication set={medications} open={open} setOpen={setOpen} />
-          <InventoryTable inventory={medications} table={showTable}> </InventoryTable>
+          <InventoryTable inventory={medications} table={showTable} setting={searchTerm}/>
         </>
         :
         <>
           <AddSupply set={supplies} open={open} setOpen={setOpen} />
-          <InventoryTable inventory={supplies} table={showTable}> </InventoryTable>
+          <InventoryTable inventory={supplies} table={showTable} setting={searchTerm}/>
         </>
       }
       {(showTable === 'medications') ?
