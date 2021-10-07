@@ -15,7 +15,10 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
     size='small'>
     <Header icon={table === 'medications' ? 'pills' : 'first aid'} content={item.name} />
     <Modal.Content>
-      {Object.keys(item).map((keys, index) => [<span key={`span_${index}`}>{keys.toUpperCase()}: {item[keys] instanceof Date ?
+      {Object.keys(item).map((keys, index) => keys === 'quantity' && item[keys] < 11 ?
+      [<span key={`span_${index}`} style={{color:"red"}}>{keys.toUpperCase()}: {item[keys].toString() + ' (WARNING: Low Inventory)'}</span>,
+        <br key={`br_${index}`} />] :
+      [<span key={`span_${index}`}>{keys.toUpperCase()}: {item[keys] instanceof Date ?
         item[keys].toLocaleDateString() : item[keys].toString()}</span>, <br key={`br_${index}`} />])}
     </Modal.Content>
     {currentUser ?
