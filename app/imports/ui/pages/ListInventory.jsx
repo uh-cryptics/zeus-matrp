@@ -37,9 +37,9 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
         </Menu.Item>
       </Menu>
       <Menu attached='top' size='small' inverted>
-        <Menu.Item>
+        {/* <Menu.Item>
           <Input className='icon' icon='search' placeholder='Search...' />
-        </Menu.Item>
+        </Menu.Item> Commenting out searchbar for now, will transfer functionality from InventoryTable */}
         <Menu.Menu position='right' style={{ cursor: 'pointer' }}>
           {currentUser ?
             <Menu.Item onClick={() => { setOpen(true); }}>
