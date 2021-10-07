@@ -4,6 +4,8 @@ import { Table, Segment, Input, Menu } from 'semantic-ui-react';
 import InventoryInformation from './InventoryInformation';
 import EditMedication from './EditMedication';
 import EditSupply from './EditSupply';
+import DeleteMedication from './DeleteMedication';
+import DeleteSupply from './DeleteSupply';
 
 const InventoryTable = ({ inventory, table }) => {
 
@@ -42,6 +44,13 @@ const InventoryTable = ({ inventory, table }) => {
       openInventoryInfo(itemInfo);
     }
     setEdit(value);
+  };
+
+  const setDeleteCallback = (value, reason) => {
+    if (reason === 'cancel') {
+      openInventoryInfo(itemInfo);
+    }
+    setDelete(value);
   };
 
   const tableHeader = () => {
@@ -100,6 +109,11 @@ const InventoryTable = ({ inventory, table }) => {
         <EditMedication item={itemInfo} open={edit} setOpen={setEditCallback} />
         :
         <EditSupply item={itemInfo} open={edit} setOpen={setEditCallback} />
+      }
+      {(table === 'medications') ?
+        <DeleteMedication item={itemInfo} open={deleting} setOpen={setDeleteCallback} />
+        :
+        <DeleteSupply item={itemInfo} open={deleting} setOpen={setDeleteCallback} />
       }
       <Segment attached>
         {searchTable()}
