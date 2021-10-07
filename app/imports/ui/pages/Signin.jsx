@@ -55,7 +55,7 @@ const Signin = ({ location }) => {
       <div className="padding-fix">
         <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
-            <Header as="h2" textAlign="center" color='inverted'>
+            <Header as="h2" textAlign="center" color='black' inverted>
             Login to your account
             </Header>
             <Form onSubmit={submit}>

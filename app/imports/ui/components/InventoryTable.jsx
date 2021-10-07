@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Table, Segment } from 'semantic-ui-react';
+import { Table, Segment, Input, Menu } from 'semantic-ui-react';
 import InventoryInformation from './InventoryInformation';
 import EditMedication from './EditMedication';
 import EditSupply from './EditSupply';
+import DeleteMedication from './DeleteMedication';
+import DeleteSupply from './DeleteSupply';
 
 const InventoryTable = ({ inventory, table }) => {
 
@@ -11,6 +13,15 @@ const InventoryTable = ({ inventory, table }) => {
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState(false);
   const [deleting, setDelete] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const searchTable = () => (
+    <Menu.Item>
+      <Input className='icon' icon='search' placeholder='Search...' onChange={(e) => {
+        setSearchTerm(e.target.value);
+      }}/>
+    </Menu.Item>
+  );
 
   const setOpenCallBack = (value, reason) => {
     if (!value && reason === 'edit') {
@@ -35,6 +46,13 @@ const InventoryTable = ({ inventory, table }) => {
     setEdit(value);
   };
 
+  const setDeleteCallback = (value, reason) => {
+    if (reason === 'cancel') {
+      openInventoryInfo(itemInfo);
+    }
+    setDelete(value);
+  };
+
   const tableHeader = () => {
     const headers = Object.keys(inventory[0]).filter((header) => (!(/(_id|type|obtained)/).test(header) ? header : null));
     const tableHeaders = headers.map((header, i) => {
@@ -48,7 +66,15 @@ const InventoryTable = ({ inventory, table }) => {
 
   const tableData = () => {
     const headers = Object.keys(inventory[0]).filter(header => (!(/(_id|type|obtained)/).test(header) ? header : null));
-    const listedItems = inventory.map((row, i) => {
+    const listedItems = inventory.filter((value => {
+      if (searchTerm === '') {
+        return value;
+      } if (value.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          value.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          value.lot.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return value;
+      }
+    })).map((row, i) => {
       const rows = { ...row };
       delete rows._id;
       delete rows.type;
@@ -84,7 +110,13 @@ const InventoryTable = ({ inventory, table }) => {
         :
         <EditSupply item={itemInfo} open={edit} setOpen={setEditCallback} />
       }
+      {(table === 'medications') ?
+        <DeleteMedication item={itemInfo} open={deleting} setOpen={setDeleteCallback} />
+        :
+        <DeleteSupply item={itemInfo} open={deleting} setOpen={setDeleteCallback} />
+      }
       <Segment attached>
+        {searchTable()}
         <Table celled striped selectable color={table === 'medications' ? 'green' : 'violet'}>
           <Table.Header>
             <Table.Row>
