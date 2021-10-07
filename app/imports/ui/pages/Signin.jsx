@@ -53,9 +53,9 @@ const Signin = ({ location }) => {
   return (
     <Container fluid id={PAGE_IDS.SIGN_IN} className="background-black-signin">
       <div className="padding-fix">
-        <Grid textAlign="center" verticalAlign="middle" centered columns={4}>
+        <Grid textAlign="center" verticalAlign="middle" centered columns={2}>
           <Grid.Column>
-            <Header as="h2" textAlign="center" color='inverted'>
+            <Header as="h2" textAlign="center" color='black' inverted>
             Login to your account
             </Header>
             <Form onSubmit={submit}>

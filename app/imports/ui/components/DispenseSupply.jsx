@@ -116,7 +116,7 @@ const DispenseSupply = ({ set, open, setOpen }) => {
                   </Form.Field>
                   <Form.Field required width="5">
                     <label>Amount</label>
-                    <Input type="number" name="amount" placeholder="#" value={amount} onChange={(e) => setAmount(parseInt(e.target.value, 10))}/>
+                    <Input type="number" name="amount" placeholder="1" value={amount} onChange={(e) => setAmount(parseInt(e.target.value, 10))}/>
                   </Form.Field>
                 </Form.Group>
               </Form.Field>
