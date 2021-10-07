@@ -20,7 +20,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
     </Modal.Content>
     {currentUser ?
       <Modal.Actions>
-        <Button color='red' onClick={() => setOpen(false)}>
+        <Button color='red' onClick={() => setOpen(false, 'delete')}>
           <Icon name='trash' /> Delete
         </Button>
         <Button color='blue' onClick={() => setOpen(false, 'edit')}>
