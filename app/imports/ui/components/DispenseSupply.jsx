@@ -42,7 +42,7 @@ const DispenseSupply = ({ set, open, setOpen }) => {
         defineMethod.callPromise({ collectionName: History.getCollectionName(), definitionData })
           .catch(e => swal('Error', e.message, 'error'))
           .then(() => {
-            swal('Success', `Dispensed ${amount} ${itemName}`, 'success');
+            swal({title: 'Success', text: `Dispensed ${amount} ${itemName}`, icon: 'success', timer: 1500});
           });
         const updateData = { id: item, quantity: oldAmount - amount };
         updateMethod.callPromise({ collectionName: Supply.getCollectionName(), updateData })

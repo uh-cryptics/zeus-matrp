@@ -14,18 +14,17 @@ const EditMedication = ({ item, open, setOpen }) => {
     const [type, setType] = useState(item.type);
     const [expDate, setExpDate] = useState(moment(item.expiration).format('YYYY-MM-DD'));
     const [location, setLocation] = useState(item.location);
+    const [locations, setLocations] = useState(_.uniq(Medication.find().map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
     const [quantity, setQuantity] = useState(item.quantity);
     const [error, setError] = useState({ has: false, message: '' });
     const uniqueMedType = types.map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
-    const uniqueLocations = _.uniq(Medication.find().map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
 
     const submit = () => {
-      console.log(name && type && expDate && location && _.isNumber(quantity) && (type.length > 0));
       if (name && type && expDate && location && _.isNumber(quantity) && (type.length > 0)) {
         const updateData = { id: item._id, name, type, expiration: moment(expDate).format('MM/DD/YYYY'), location, quantity };
         updateMethod.callPromise({ collectionName: Medication.getCollectionName(), updateData })
           .catch(error => swal('Error', error.message, 'error'))
-          .then(() => swal('Success', 'Item updated successfully', 'success').then(() => clear()));
+          .then(() => swal({title: 'Success', text: 'Item updated successfully', icon: 'success', timer: 1500}).then(() => clear()));
       } else {
         setError({ has: true, message: 'Please input all required fields' });
       }
@@ -91,7 +90,9 @@ const EditMedication = ({ item, open, setOpen }) => {
                 search
                 selection
                 label='Location'
-                options={uniqueLocations}
+                allowAdditions
+                onAddItem={(e, { value }) => setLocations(locations.concat([{ key: `loc${locations.length}`, text: value, value: value }]))}
+                options={locations}
                 value={location}
                 onChange={(e, data) => setLocation(data.value)}
               />
@@ -101,7 +102,7 @@ const EditMedication = ({ item, open, setOpen }) => {
             <Form.Group widths="equal">
               <Form.Field required>
                 <label>Supply</label>
-                <Input type="number" placeholder={item.quantity} onChange={(e) => setQuantity(parseInt(e.target.value), 10)} value={quantity}/>
+                <Input type="number" placeholder={item.quantity} min="0" onChange={(e) => setQuantity(_.toNumber(e.target.value))} value={quantity}/>
               </Form.Field>
             </Form.Group>
           </Form.Field>

@@ -20,7 +20,7 @@ const EditSupply = ({ item, open, setOpen }) => {
         const updateData = { id: item._id, name, location, quantity };
         updateMethod.callPromise({ collectionName: Supply.getCollectionName(), updateData })
           .catch(error => swal('Error', error.message, 'error'))
-          .then(() => swal('Success', 'Item updated successfully', 'success').then(() => clear()));
+          .then(() => swal({title: 'Success', text: 'Item updated successfully', icon: 'success', timer: 1500}).then(() => clear()));
       } else {
         setError({ has: true, message: 'Please input all required fields' });
       }

@@ -22,7 +22,7 @@ const AddSupply = ({ set, open, setOpen }) => {
       defineMethod.callPromise({ collectionName: Supply.getCollectionName(), definitionData })
         .catch(e => swal('Error', e.message, 'error'))
         .then(() => {
-          swal('Success', `Added ${name}`, 'success').then(() => clear());
+          swal({title: 'Success', text: `Added ${name}`, icon: 'success', timer: 1500}).then(() => clear());
         });
     } else {
       setError({ has: true, message: 'Please input all required fields' });
