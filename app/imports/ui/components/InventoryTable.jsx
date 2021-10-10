@@ -92,8 +92,9 @@ const InventoryTable = ({ inventory, table, setting }) => {
 
         return <Table.Cell key={key} data-label={headers[j]}>{column.toString()}</Table.Cell>;
       });
+      const notify = row.quantity < 5 ? 'error' : row.quantity < 11 ? 'warning' : '';
       return (
-        <Table.Row key={i} onClick={() => openInventoryInfo(row)} style={{ cursor: 'pointer' }}>
+        <Table.Row key={i} onClick={() => openInventoryInfo(row)} style={{ cursor: 'pointer' }} warning={notify === 'warning'} error={notify === 'error'}>
           {columns}
         </Table.Row>
       );
