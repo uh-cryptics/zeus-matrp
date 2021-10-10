@@ -28,6 +28,10 @@ class SupplyCollection extends BaseCollection {
         type: Date,
         optional: true,
       },
+      unit: {
+        type: String,
+        optional: true,
+      },
     }));
   }
 
@@ -38,9 +42,11 @@ class SupplyCollection extends BaseCollection {
    * @param quantity the supply of item
    * @param expiration the date that the item expires if applicable
    * @param lot the lot number
+   * @param obtained whether the item was purchased or donated
+   * @param unit the unit of the supply
    * @return {String} the docID of the new document.
    */
-  define({ name, location, quantity, expiration, obtained, lot }) {
+  define({ name, location, quantity, expiration, obtained, lot, unit }) {
     const docID = this._collection.insert({
       name,
       location,
@@ -48,6 +54,7 @@ class SupplyCollection extends BaseCollection {
       expiration,
       obtained,
       lot,
+      unit,
     });
 
     return docID;
@@ -62,8 +69,9 @@ class SupplyCollection extends BaseCollection {
    * @param expiration the new expiration (optional).
    * @param obtained the new obtained (optional).
    * @param lot the new lot (optional).
+   * @param unit the unit of the item (optional).
    */
-  update(docID, { name, quantity, location, expiration, obtained, lot }) {
+  update(docID, { name, quantity, location, expiration, obtained, lot, unit }) {
     const updateData = {};
     if (name) {
       updateData.name = name;
@@ -76,6 +84,10 @@ class SupplyCollection extends BaseCollection {
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
     if (_.isNumber(quantity)) {
       updateData.quantity = quantity;
+    }
+
+    if (unit) {
+      updateData.unit = unit;
     }
 
     if (expiration) {
@@ -146,7 +158,8 @@ class SupplyCollection extends BaseCollection {
     const expiration = doc.expiration;
     const obtained = doc.obtained;
     const lot = doc.lot;
-    return { name, location, quantity, expiration, obtained, lot };
+    const unit = doc.unit;
+    return { name, location, quantity, expiration, obtained, lot, unit };
   }
 }
 
