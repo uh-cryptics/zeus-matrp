@@ -32,20 +32,23 @@ const DispenseMedication = ({ set, open, setOpen }) => {
   };
 
   const submit = () => {
-    if (patientNumber && clinicLocation && lotNumber && item && _.isNumber(amount) && provider) {
+    if (patientNumber && clinicLocation && lotNumber && item && amount && provider) {
       const itemName = _.find(uniqueNames, (i) => i.key === item).text;
-      const oldAmount = Medication.findDoc(item).quantity;
-      if (oldAmount < amount) {
-        swal('Error', `There is not enough inventory to dispense ${amount} ${itemName}`, 'error')
+      const oldAmount = _.find(set, (item) => item._id === item).quantity;
+      const newAmount = _.toNumber(amount);
+      if (oldAmount < newAmount) {
+        swal('Error', `There is not enough inventory to dispense ${newAmount} ${itemName}`, 'error')
       } else {
-        const definitionData = { patientNumber, clinicLocation, lotNumber, item: itemName, amount, provider };
-        defineMethod.callPromise({ collectionName: History.getCollectionName(), definitionData })
+        const definitionData = { patientNumber, clinicLocation, lotNumber, item: itemName, newAmount, provider };
+        let collectionName = History.getCollectionName();
+        defineMethod.callPromise({ collectionName, definitionData })
           .catch(e => swal('Error', e.message, 'error'))
           .then(() => {
-            swal({title: 'Success', text: `Dispensed ${amount} ${itemName}`, icon: 'success', timer: 1500});
+            swal({title: 'Success', text: `Dispensed ${newAmount} ${itemName}`, icon: 'success', timer: 1500});
           });
-        const updateData = { id: item, quantity: oldAmount - amount };
-        updateMethod.callPromise({ collectionName: Medication.getCollectionName(), updateData })
+        const updateData = { id: item, quantity: oldAmount - newAmount };
+        collectionName = Medication.getCollectionName();
+        updateMethod.callPromise({ collectionName, updateData })
           .catch(e => swal('Error', e.message, 'error'))
           .then(() => clear());
       }
@@ -116,7 +119,7 @@ const DispenseMedication = ({ set, open, setOpen }) => {
                   </Form.Field>
                   <Form.Field required width="5">
                     <label>Amount</label>
-                    <Input type="number" name="amount" placeholder="1" value={amount} onChange={(e) => setAmount(parseInt(e.target.value, 10))}/>
+                    <Input type="number" name="amount" placeholder="1" value={amount} onChange={(e) => setAmount(e.target.value, 10)}/>
                   </Form.Field>
                 </Form.Group>
               </Form.Field>

@@ -6,20 +6,23 @@ import { defineMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
 import { Supply } from '../../api/supply/SupplyCollection';
 
-const AddSupply = ({ set, open, setOpen }) => {
-  const [locations, setLocations] = useState(_.uniq(set.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
+const AddSupply = ({ supplies, open, setOpen }) => {
+  const [locations, setLocations] = useState(_.uniq(supplies.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
+  const [units, setUnits] = useState(_.uniq(supplies.map(item => item.unit)).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit })));
 
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [quantity, setQuantity] = useState('');
   const [obtained, setObtained] = useState('Donated');
   const [lot, setLot] = useState('');
+  const [unit, setUnit] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
 
   const submit = () => {
-    if (name && location && _.isNumber(quantity) && obtained && lot) {
-      const definitionData = { name, location, quantity, obtained, lot };
-      defineMethod.callPromise({ collectionName: Supply.getCollectionName(), definitionData })
+    if (name && location && quantity && obtained && lot) {
+      const definitionData = { name, location, quantity: _.toNumber(quantity), obtained, lot, unit };
+      const collectionName = Supply.getCollectionName();
+      defineMethod.callPromise({ collectionName, definitionData })
         .catch(e => swal('Error', e.message, 'error'))
         .then(() => {
           swal({title: 'Success', text: `Added ${name}`, icon: 'success', timer: 1500}).then(() => clear());
@@ -35,6 +38,7 @@ const AddSupply = ({ set, open, setOpen }) => {
     setQuantity('');
     setObtained('Donated');
     setLot('');
+    setUnit('');
     setError({ has: false, message: '' });
     setOpen(false);
   };
@@ -73,7 +77,21 @@ const AddSupply = ({ set, open, setOpen }) => {
                 onAddItem={(e, { value }) => setLocations(locations.concat([{ key: `loc${locations.length}`, text: value, value: value }]))}
                 onChange={(e, data) => setLocation(data.value)}
               />
-              <Form.Input required name='quantity' label='Quantity' placeholder='Quantity' value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value, 10))} />
+            </Form.Group>
+            <Form.Group widths='equal'>
+              <Form.Input required name='quantity' label='Quantity' placeholder='Quantity' value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+              <Form.Dropdown
+                name='unit'
+                placeholder='Select Unit'
+                search
+                selection
+                allowAdditions
+                label='Unit'
+                options={units}
+                value={unit}
+                onAddItem={(e, { value }) => setUnits(units.concat([{ key: `unit${units.length}`, text: value, value: value }]))}
+                onChange={(e, data) => setUnit(data.value)}
+              />
             </Form.Group>
             <Form.Group widths='equal'>
               <Form.Field required name='obtained' label='Obtained' control='select' value={obtained} onChange={(e) => setObtained(e.target.value)}>
@@ -103,7 +121,7 @@ const AddSupply = ({ set, open, setOpen }) => {
 };
 
 AddSupply.propTypes = {
-  set: PropTypes.array.isRequired,
+  supplies: PropTypes.array.isRequired,
   open: PropTypes.bool,
   setOpen: PropTypes.func,
 };

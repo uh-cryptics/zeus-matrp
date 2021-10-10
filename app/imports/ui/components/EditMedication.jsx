@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Header, Icon, Input, Loader, Message, Modal, Select } from 'semantic-ui-react';
+import { Button, Form, Header, Icon, Input, Message, Modal } from 'semantic-ui-react';
 import { Medication, types } from '../../api/medication/MedicationCollection';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
 import moment from 'moment';
 import _ from 'lodash';
 
-const EditMedication = ({ item, open, setOpen }) => {
+const EditMedication = ({ item, open, setOpen, medications }) => {
 
   if (open) {
     const [name, setName] = useState(item.name);
     const [type, setType] = useState(item.type);
     const [expDate, setExpDate] = useState(moment(item.expiration).format('YYYY-MM-DD'));
     const [location, setLocation] = useState(item.location);
-    const [locations, setLocations] = useState(_.uniq(Medication.find().map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
+    const [units, setUnits] = useState(_.uniq(medications.map(item => item.unit)).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit })));
+    const [locations, setLocations] = useState(_.uniq(medications.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
     const [quantity, setQuantity] = useState(item.quantity);
+    const [unit, setUnit] = useState(item.unit);
     const [error, setError] = useState({ has: false, message: '' });
     const uniqueMedType = types.map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
 
     const submit = () => {
-      if (name && type && expDate && location && _.isNumber(quantity) && (type.length > 0)) {
-        const updateData = { id: item._id, name, type, expiration: moment(expDate).format('MM/DD/YYYY'), location, quantity };
-        updateMethod.callPromise({ collectionName: Medication.getCollectionName(), updateData })
+      if (name && type && expDate && location && quantity && (type.length > 0)) {
+        const updateData = { id: item._id, name, type, expiration: moment(expDate).format('MM/DD/YYYY'), location, quantity: _.toNumber(quantity), unit };
+        const collectionName = Medication.getCollectionName();
+        updateMethod.callPromise({ collectionName, updateData })
           .catch(error => swal('Error', error.message, 'error'))
           .then(() => swal({title: 'Success', text: 'Item updated successfully', icon: 'success', timer: 1500}).then(() => clear()));
       } else {
@@ -102,8 +105,20 @@ const EditMedication = ({ item, open, setOpen }) => {
             <Form.Group widths="equal">
               <Form.Field required>
                 <label>Supply</label>
-                <Input type="number" placeholder={item.quantity} min="0" onChange={(e) => setQuantity(_.toNumber(e.target.value))} value={quantity}/>
+                <Input type="number" placeholder={item.quantity} min="0" onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
               </Form.Field>
+              <Form.Dropdown
+                name='unit'
+                placeholder='Select Unit'
+                search
+                selection
+                allowAdditions
+                label='Unit'
+                options={units}
+                value={unit}
+                onAddItem={(e, { value }) => setUnits(units.concat([{ key: `unit${units.length}`, text: value, value: value }]))}
+                onChange={(e, data) => setUnit(data.value)}
+              />
             </Form.Group>
           </Form.Field>
           <Message error header='Error' content={error.message}/>
@@ -119,7 +134,7 @@ const EditMedication = ({ item, open, setOpen }) => {
       </Modal.Actions>
     </Modal>;
   } else {
-    return <></>
+    return <></>;
   }
 };
 
@@ -127,6 +142,7 @@ EditMedication.propTypes = {
   open: PropTypes.bool,
   setOpen: PropTypes.func,
   item: PropTypes.object,
+  medications: PropTypes.array,
 };
 
 export default EditMedication;

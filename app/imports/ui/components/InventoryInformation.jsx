@@ -21,7 +21,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
       [<span key={`span_${index}`}>{keys.toUpperCase()}: {item[keys] instanceof Date ?
         item[keys].toLocaleDateString() : item[keys].toString()}</span>, <br key={`br_${index}`} />])}
     </Modal.Content>
-    {currentUser ?
+    { currentUser ?
       <Modal.Actions>
         <Button color='red' onClick={() => setOpen(false, 'delete')}>
           <Icon name='trash' /> Delete

@@ -106,9 +106,9 @@ const InventoryTable = ({ inventory, table, setting }) => {
     <div>
       <InventoryInformation table={table} item={itemInfo} open={open} setOpen={setOpenCallBack} />
       {(table === 'medications') ?
-        <EditMedication item={itemInfo} open={edit} setOpen={setEditCallback} />
+        <EditMedication item={itemInfo} open={edit} setOpen={setEditCallback} medications={inventory} />
         :
-        <EditSupply item={itemInfo} open={edit} setOpen={setEditCallback} />
+        <EditSupply item={itemInfo} open={edit} setOpen={setEditCallback} supplies={inventory}/>
       }
       {(table === 'medications') ?
         <DeleteMedication item={itemInfo} open={deleting} setOpen={setDeleteCallback} />

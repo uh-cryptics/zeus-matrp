@@ -6,10 +6,10 @@ import { defineMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
 import { Medication, types } from '../../api/medication/MedicationCollection';
 
-const AddMedication = ({ set, open, setOpen }) => {
+const AddMedication = ({ medications, open, setOpen }) => {
   const uniqueMedType = types.map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
-  const [locations, setLocations] = useState(_.uniq(set.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
-
+  const [locations, setLocations] = useState(_.uniq(medications.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
+  const [units, setUnits] = useState(_.uniq(medications.map(item => item.unit)).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit })));
   const [name, setName] = useState('');
   const [type, setType] = useState([]);
   const [location, setLocation] = useState('');
@@ -17,12 +17,14 @@ const AddMedication = ({ set, open, setOpen }) => {
   const [expiration, setExpiration] = useState('');
   const [obtained, setObtained] = useState('Donated');
   const [lot, setLot] = useState('');
+  const [unit, setUnit] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
 
   const submit = () => {
-    if (name && (type.length > 0) && location && _.isNumber(quantity) && expiration && obtained && lot) {
-      const definitionData = { name, type, location, quantity, expiration, obtained, lot };
-      defineMethod.callPromise({ collectionName: Medication.getCollectionName(), definitionData })
+    if (name && (type.length > 0) && location && quantity && expiration && obtained && lot) {
+      const definitionData = { name, type, location, quantity: _.toNumber(quantity), expiration, obtained, lot, unit };
+      const collectionName = Medication.getCollectionName();
+      defineMethod.callPromise({ collectionName, definitionData })
         .catch(e => swal('Error', e.message, 'error'))
         .then(() => {
           swal({title: 'Success', text: `Added ${name}`, icon: 'success', timer: 1500}).then(() => clear());
@@ -40,6 +42,7 @@ const AddMedication = ({ set, open, setOpen }) => {
     setExpiration('');
     setObtained('Donated');
     setLot('');
+    setUnit('');
     setError({ has: false, message: '' });
     setOpen(false);
   };
@@ -89,12 +92,26 @@ const AddMedication = ({ set, open, setOpen }) => {
                 onAddItem={(e, { value }) => setLocations(locations.concat([{ key: `loc${locations.length}`, text: value, value: value }]))}
                 onChange={(e, data) => setLocation(data.value)}
               />
-              <Form.Input required name='quantity' label='Quantity' placeholder='Quantity'
-                          value={quantity}
-                          onChange={(e) => setQuantity(parseInt(e.target.value, 10))}/>
               <Form.Input required name='expiration' type='date' label='Expiration' placeholder='MM/DD/YYYY'
                           value={expiration}
                           onChange={(e) => setExpiration(e.target.value)} />
+            </Form.Group>
+            <Form.Group widths='equal'>
+              <Form.Input required name='quantity' label='Quantity' placeholder='Quantity'
+                          value={quantity}
+                          onChange={(e) => setQuantity(e.target.value)}/>
+              <Form.Dropdown
+                name='unit'
+                placeholder='Select Unit'
+                search
+                selection
+                allowAdditions
+                label='Unit'
+                options={units}
+                value={unit}
+                onAddItem={(e, { value }) => setUnits(units.concat([{ key: `unit${units.length}`, text: value, value: value }]))}
+                onChange={(e, data) => setUnit(data.value)}
+              />
             </Form.Group>
             <Form.Group widths='equal'>
               <Form.Field required name='obtained' label='Obtained' control='select'
@@ -128,7 +145,7 @@ const AddMedication = ({ set, open, setOpen }) => {
 };
 
 AddMedication.propTypes = {
-  set: PropTypes.array.isRequired,
+  medications: PropTypes.array.isRequired,
   open: PropTypes.bool,
   setOpen: PropTypes.func,
 };
