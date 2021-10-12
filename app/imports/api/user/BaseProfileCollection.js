@@ -7,6 +7,7 @@ import { Users } from './UserCollection';
 
 const rolesToCollectionNames = {};
 rolesToCollectionNames[ROLE.ADMIN] = 'AdminProfileCollection';
+rolesToCollectionNames[ROLE.PROVIDER] = 'ProviderProfileCollection';
 rolesToCollectionNames[ROLE.USER] = 'UserProfileCollection';
 
 class BaseProfileCollection extends BaseCollection {

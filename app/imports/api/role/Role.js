@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 
 export const ROLE = {
   ADMIN: 'ADMIN',
+  PROVIDER: 'PROVIDER',
   USER: 'USER',
 };
 

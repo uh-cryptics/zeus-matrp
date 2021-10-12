@@ -4,26 +4,29 @@ import BaseProfileCollection from './BaseProfileCollection';
 import { ROLE } from '../role/Role';
 import { Users } from './UserCollection';
 
-class UserProfileCollection extends BaseProfileCollection {
+class ProviderProfileCollection extends BaseProfileCollection {
   constructor() {
-    super('UserProfile', new SimpleSchema({}));
+    super('ProviderProfile', new SimpleSchema({}));
   }
 
   /**
-   * Defines the profile associated with an User and the associated Meteor account.
+   * Defines the profile associated with an Provider and the associated Meteor account.
    * @param email The email associated with this profile. Will be the username.
    * @param password The password for this user.
    * @param firstName The first name.
    * @param lastName The last name.
+   * @param uhNumber The optional UH Number a provider may have.
    */
-  define({ email, firstName, lastName, password }) {
+  define({ email, uhNumber, firstName, lastName, password }) {
     if (Meteor.isServer) {
+      // console.log('define', email, firstName, lastName, password);
       const username = email;
+      const uhIdNumber = uhNumber;
       const user = this.findOne({ email, firstName, lastName });
       if (!user) {
-        const role = ROLE.USER;
+        const role = ROLE.PROVIDER;
         const profileID = this._collection.insert({ email, firstName, lastName, userID: this.getFakeUserId(), role });
-        const userID = Users.define({ username, role, password });
+        const userID = Users.define({ username, uhIdNumber, role, password });
         this._collection.update(profileID, { $set: { userID } });
         return profileID;
       }
@@ -33,8 +36,8 @@ class UserProfileCollection extends BaseProfileCollection {
   }
 
   /**
-   * Updates the UserProfile. You cannot change the email or role.
-   * @param docID the id of the UserProfile
+   * Updates the ProviderProfile. You cannot change the email or role.
+   * @param docID the id of the ProviderProfile
    * @param firstName new first name (optional).
    * @param lastName new last name (optional).
    */
@@ -63,13 +66,13 @@ class UserProfileCollection extends BaseProfileCollection {
   }
 
   /**
-   * Implementation of assertValidRoleForMethod. Asserts that userId is logged in as an Admin or User.
+   * Implementation of assertValidRoleForMethod. Asserts that userId is logged in as an Admin or Provider.
    * This is used in the define, update, and removeIt Meteor methods associated with each class.
    * @param userId The userId of the logged in user. Can be null or undefined
-   * @throws { Meteor.Error } If there is no logged in user, or the user is not an Admin or User.
+   * @throws { Meteor.Error } If there is no logged in user, or the user is not an Admin or Provider.
    */
   assertValidRoleForMethod(userId) {
-    this.assertRole(userId, [ROLE.ADMIN, ROLE.USER]);
+    this.assertRole(userId, [ROLE.ADMIN, ROLE.PROVIDER]);
   }
 
   /**
@@ -81,16 +84,16 @@ class UserProfileCollection extends BaseProfileCollection {
   checkIntegrity() {
     const problems = [];
     this.find().forEach((doc) => {
-      if (doc.role !== ROLE.USER) {
-        problems.push(`UserProfile instance does not have ROLE.USER: ${doc}`);
+      if (doc.role !== ROLE.PROVIDER) {
+        problems.push(`ProviderProfile instance does not have ROLE.PROVIDER: ${doc}`);
       }
     });
     return problems;
   }
 
   /**
-   * Returns an object representing the UserProfile docID in a format acceptable to define().
-   * @param docID The docID of a UserProfile
+   * Returns an object representing the ProviderProfile docID in a format acceptable to define().
+   * @param docID The docID of a ProviderProfile
    * @returns { Object } An object representing the definition of docID.
    */
   dumpOne(docID) {
@@ -104,6 +107,6 @@ class UserProfileCollection extends BaseProfileCollection {
 
 /**
  * Profides the singleton instance of this class to all other entities.
- * @type {UserProfileCollection}
+ * @type {ProviderProfileCollection}
  */
-export const UserProfiles = new UserProfileCollection();
+export const ProviderProfiles = new ProviderProfileCollection();
