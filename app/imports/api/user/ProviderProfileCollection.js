@@ -72,7 +72,7 @@ class ProviderProfileCollection extends BaseProfileCollection {
    * @throws { Meteor.Error } If there is no logged in user, or the user is not an Admin or Provider.
    */
   assertValidRoleForMethod(userId) {
-    this.assertRole(userId, [ROLE.ADMIN, ROLE.PROVIDER]);
+    this.assertRole(userId, [ROLE.PROVIDER]);
   }
 
   /**

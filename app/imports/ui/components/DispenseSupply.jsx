@@ -31,20 +31,29 @@ const DispenseSupply = ({ set, open, setOpen }) => {
     setOpen(false);
   };
 
+  const findLOT = (product) => {
+    setItem(product);
+
+    const itemChoosen = uniqueNames.find((i) => i.key === product);
+    const index = _.indexOf(uniqueNames, itemChoosen);
+
+    setLotNumber(uniqueLot[index].text);
+  };
+
   const submit = () => {
     if (patientNumber && clinicLocation && item && amount && provider) {
       const itemName = _.find(uniqueNames, (i) => i.key === item).text;
-      const oldAmount = _.find(set, (item) => item._id === item).quantity;
+      const oldAmount = _.find(set, (product) => product._id === item).quantity;
       const newAmount = _.toNumber(amount);
       if (oldAmount < newAmount) {
         swal('Error', `There is not enough inventory to dispense ${newAmount} ${itemName}`, 'error')
       } else {
-        const definitionData = { patientNumber, clinicLocation, lotNumber, item: itemName, newAmount, provider };
+        const definitionData = { patientNumber, clinicLocation, lotNumber, item: itemName, amount: newAmount, provider };
         let collectionName = History.getCollectionName();
         defineMethod.callPromise({ collectionName, definitionData })
           .catch(e => swal('Error', e.message, 'error'))
           .then(() => {
-            swal({title: 'Success', text: `Dispensed ${newAmount} ${itemName}`, icon: 'success', timer: 1500});
+            swal({ title: 'Success', text: `Dispensed ${newAmount} ${itemName}`, icon: 'success', timer: 1500 });
           });
         const updateData = { id: item, quantity: oldAmount - newAmount };
         collectionName = Supply.getCollectionName();
@@ -61,7 +70,10 @@ const DispenseSupply = ({ set, open, setOpen }) => {
     <div>
       <Modal
         closeIcon
-        onClose={() => setOpen(false)}
+        onClose={() => {
+          setOpen(false);
+          clear();
+        }}
         onOpen={() => setOpen(true)}
         open={open}
         size='small'
@@ -100,6 +112,7 @@ const DispenseSupply = ({ set, open, setOpen }) => {
                     <Form.Dropdown
                       search
                       selection
+                      disabled
                       placeholder="5678EFGH"
                       options={uniqueLot}
                       value={lotNumber}
@@ -114,7 +127,7 @@ const DispenseSupply = ({ set, open, setOpen }) => {
                       placeholder="Select a medicine or supply to dispense..."
                       options={uniqueNames}
                       value={item}
-                      onChange={(e, data) => setItem(data.value)}
+                      onChange={(e, data) => findLOT(data.value)}
                     />
                   </Form.Field>
                   <Form.Field required width="5">
