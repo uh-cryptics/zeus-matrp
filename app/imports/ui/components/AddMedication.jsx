@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Icon, Message, Modal } from 'semantic-ui-react';
 import _ from 'lodash';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
+import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { Medication, types } from '../../api/medication/MedicationCollection';
 
 const AddMedication = ({ medications, open, setOpen }) => {
@@ -18,16 +18,17 @@ const AddMedication = ({ medications, open, setOpen }) => {
   const [obtained, setObtained] = useState('Donated');
   const [lot, setLot] = useState('');
   const [unit, setUnit] = useState('');
+  const [note, setNote] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
 
   const submit = () => {
-    if (name && (type.length > 0) && location && quantity && expiration && obtained && lot) {
-      const definitionData = { name, type, location, quantity: _.toNumber(quantity), expiration, obtained, lot, unit };
+    if (name && (type.length > 0) && location && quantity && expiration && obtained && lot && note) {
+      const definitionData = { name, type, location, quantity: _.toNumber(quantity), expiration, obtained, lot, unit, note };
       const collectionName = Medication.getCollectionName();
       defineMethod.callPromise({ collectionName, definitionData })
         .catch(e => swal('Error', e.message, 'error'))
         .then(() => {
-          swal({title: 'Success', text: `Added ${name}`, icon: 'success', timer: 1500}).then(() => clear());
+          swal({ title: 'Success', text: `Added ${name}`, icon: 'success', timer: 1500 }).then(() => clear());
         });
     } else {
       setError({ has: true, message: 'Please input all required fields' });
@@ -43,6 +44,7 @@ const AddMedication = ({ medications, open, setOpen }) => {
     setObtained('Donated');
     setLot('');
     setUnit('');
+    setNote('');
     setError({ has: false, message: '' });
     setOpen(false);
   };
@@ -93,13 +95,13 @@ const AddMedication = ({ medications, open, setOpen }) => {
                 onChange={(e, data) => setLocation(data.value)}
               />
               <Form.Input required name='expiration' type='date' label='Expiration' placeholder='MM/DD/YYYY'
-                          value={expiration}
-                          onChange={(e) => setExpiration(e.target.value)} />
+                value={expiration}
+                onChange={(e) => setExpiration(e.target.value)} />
             </Form.Group>
             <Form.Group widths='equal'>
               <Form.Input required name='quantity' label='Quantity' placeholder='Quantity'
-                          value={quantity}
-                          onChange={(e) => setQuantity(e.target.value)}/>
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}/>
               <Form.Dropdown
                 name='unit'
                 placeholder='Select Unit'
@@ -115,15 +117,16 @@ const AddMedication = ({ medications, open, setOpen }) => {
             </Form.Group>
             <Form.Group widths='equal'>
               <Form.Field required name='obtained' label='Obtained' control='select'
-                          value={obtained}
-                          onChange={(e) => setObtained(e.target.value)}>
+                value={obtained}
+                onChange={(e) => setObtained(e.target.value)}>
                 <option value='Donated'>Donated</option>
                 <option value='Purchased'>Purchased</option>
               </Form.Field>
               <Form.Input required name='lot' label='LOT' placeholder='1A2B3C4D'
-                          value={lot}
-                          onChange={(e) => setLot(e.target.value)}/>
+                value={lot}
+                onChange={(e) => setLot(e.target.value)}/>
             </Form.Group>
+            <Form.Input note='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
             <Message error header='Error' content={error.message}/>
           </Form>
         </Modal.Content>

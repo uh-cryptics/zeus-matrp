@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Header, Icon, Input, Message, Modal } from 'semantic-ui-react';
-import { Medication, types } from '../../api/medication/MedicationCollection';
-import { updateMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
 import moment from 'moment';
 import _ from 'lodash';
+import { updateMethod } from '../../api/base/BaseCollection.methods';
+import { Medication, types } from '../../api/medication/MedicationCollection';
 
 const EditMedication = ({ item, open, setOpen, medications }) => {
 
@@ -18,16 +18,17 @@ const EditMedication = ({ item, open, setOpen, medications }) => {
     const [locations, setLocations] = useState(_.uniq(medications.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
     const [quantity, setQuantity] = useState(item.quantity);
     const [unit, setUnit] = useState(item.unit);
+    const [note, setNote] = useState('');
     const [error, setError] = useState({ has: false, message: '' });
     const uniqueMedType = types.map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
 
     const submit = () => {
-      if (name && type && expDate && location && quantity && (type.length > 0)) {
-        const updateData = { id: item._id, name, type, expiration: moment(expDate).format('MM/DD/YYYY'), location, quantity: _.toNumber(quantity), unit };
+      if (name && type && expDate && location && quantity && (type.length > 0) && note) {
+        const updateData = { id: item._id, name, type, expiration: moment(expDate).format('MM/DD/YYYY'), location, quantity: _.toNumber(quantity), unit, note };
         const collectionName = Medication.getCollectionName();
         updateMethod.callPromise({ collectionName, updateData })
           .catch(error => swal('Error', error.message, 'error'))
-          .then(() => swal({title: 'Success', text: 'Item updated successfully', icon: 'success', timer: 1500}).then(() => clear()));
+          .then(() => swal({ title: 'Success', text: 'Item updated successfully', icon: 'success', timer: 1500 }).then(() => clear()));
       } else {
         setError({ has: true, message: 'Please input all required fields' });
       }
@@ -39,6 +40,7 @@ const EditMedication = ({ item, open, setOpen, medications }) => {
       setExpDate('');
       setLocation('');
       setQuantity('');
+      setNote('');
       setOpen(false, reason);
     };
 
@@ -120,6 +122,7 @@ const EditMedication = ({ item, open, setOpen, medications }) => {
                 onChange={(e, data) => setUnit(data.value)}
               />
             </Form.Group>
+            <Form.Input note='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
           </Form.Field>
           <Message error header='Error' content={error.message}/>
         </Form>
@@ -133,9 +136,9 @@ const EditMedication = ({ item, open, setOpen, medications }) => {
         </Button>
       </Modal.Actions>
     </Modal>;
-  } else {
-    return <></>;
   }
+  return <></>;
+
 };
 
 EditMedication.propTypes = {

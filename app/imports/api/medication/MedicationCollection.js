@@ -52,6 +52,10 @@ class MedicationCollection extends BaseCollection {
         type: String,
         optional: true,
       },
+      note: {
+        type: String,
+        optional: true,
+      },
     }));
   }
 
@@ -65,9 +69,10 @@ class MedicationCollection extends BaseCollection {
    * @param lot the lot number
    * @param type the type of medication
    * @param unit the unit of the item.
+   * @param note the note of the item.
    * @return {String} the docID of the new document.
    */
-  define({ name, location, quantity, expiration, obtained, lot, type, unit }) {
+  define({ name, location, quantity, expiration, obtained, lot, type, unit, note }) {
     const docID = this._collection.insert({
       name,
       location,
@@ -77,6 +82,7 @@ class MedicationCollection extends BaseCollection {
       lot,
       type,
       unit,
+      note,
     });
 
     return docID;
@@ -93,8 +99,9 @@ class MedicationCollection extends BaseCollection {
    * @param lot the new lot (optional).
    * @param type the new type (optional).
    * @param unit the new unit (optional).
+   * @param note the new unit (optional).
    */
-  update(docID, { name, quantity, location, expiration, obtained, lot, type, unit }) {
+  update(docID, { name, quantity, location, expiration, obtained, lot, type, unit, note }) {
     const updateData = {};
     if (name) {
       updateData.name = name;
@@ -127,6 +134,10 @@ class MedicationCollection extends BaseCollection {
 
     if (lot) {
       updateData.lot = lot;
+    }
+
+    if (note) {
+      updateData.note = note;
     }
 
     this._collection.update(docID, { $set: updateData });
@@ -175,7 +186,7 @@ class MedicationCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{ name, location, quantity, expiration, obtained, lot, type, unit }}
+   * @return {{ name, location, quantity, expiration, obtained, lot, type, unit, note }}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
@@ -187,7 +198,8 @@ class MedicationCollection extends BaseCollection {
     const lot = doc.lot;
     const type = doc.type;
     const unit = doc.unit;
-    return { name, location, quantity, expiration, obtained, lot, type, unit };
+    const note = doc.note;
+    return { name, location, quantity, expiration, obtained, lot, type, unit, note };
   }
 
   assertValidRoleForMethod(userId) {
