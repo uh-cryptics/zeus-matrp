@@ -25,20 +25,22 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
   };
 
   const openInventoryInfo = (item) => {
-    setItemInfo(item);
+    if (item) {
+      setItemInfo(item);
+    }
     setOpenCallBack(true, 'open');
   };
 
   const setEditCallback = (value, reason) => {
     if (reason === 'cancel') {
-      openInventoryInfo(itemInfo);
+      openInventoryInfo();
     }
     setEdit(value);
   };
 
   const setDeleteCallback = (value, reason) => {
     if (reason === 'cancel') {
-      openInventoryInfo(itemInfo);
+      openInventoryInfo();
     }
     setDelete(value);
   };
