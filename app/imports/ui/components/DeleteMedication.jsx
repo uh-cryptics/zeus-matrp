@@ -17,7 +17,7 @@ const DeleteMedication = ({ item, open, setOpen }) => {
     const submit = () => {
       removeItMethod.callPromise({ collectionName: Medication.getCollectionName(), instance: itemID })
         .catch(error => swal('Error', error.message, 'error'))
-        .then(() => swal({title: 'Success', text: 'Item successfully deleted', icon: 'success', timer: 1500}).then(() => clear()));
+        .then(() => swal({ title: 'Success', text: 'Item successfully deleted', icon: 'success', timer: 1500 }).then(() => clear()));
     };
 
     return <Modal
