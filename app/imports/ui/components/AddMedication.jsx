@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 import { Button, Form, Icon, Message, Modal } from 'semantic-ui-react';
 import _ from 'lodash';
 import swal from 'sweetalert';
+import { filterOutUndefined, sortList } from '../utilities/ListFunctions';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { Medication, types } from '../../api/medication/MedicationCollection';
 
 const AddMedication = ({ medications, open, setOpen }) => {
-  const uniqueMedType = types.map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
-  const [locations, setLocations] = useState(_.uniq(medications.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
-  const [units, setUnits] = useState(_.uniq(medications.map(item => item.unit)).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit })));
+  const uniqueMedType = sortList(types.map((type, index) => ({ key: `medType${index}`, text: type, value: type })), (t) => t.text.toLowerCase());
+  const uniqueLocations = _.uniq(medications.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
+  const uniqueUnits = filterOutUndefined(_.uniq(medications.map(item => item.unit)).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit })));
+
+  const [locations, setLocations] = useState(sortList(uniqueLocations, (t) => t.text.toLowerCase()));
+  const [units, setUnits] = useState(sortList(uniqueUnits, (t) => t.text.toLowerCase()));
   const [name, setName] = useState('');
   const [type, setType] = useState([]);
   const [location, setLocation] = useState('');
@@ -19,6 +23,19 @@ const AddMedication = ({ medications, open, setOpen }) => {
   const [lot, setLot] = useState('');
   const [unit, setUnit] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
+
+  const clear = () => {
+    setName('');
+    setType([]);
+    setLocation('');
+    setQuantity('');
+    setExpiration('');
+    setObtained('Donated');
+    setLot('');
+    setUnit('');
+    setError({ has: false, message: '' });
+    setOpen(false);
+  };
 
   const submit = () => {
     if (name && (type.length > 0) && location && quantity && expiration && obtained && lot) {
@@ -32,19 +49,6 @@ const AddMedication = ({ medications, open, setOpen }) => {
     } else {
       setError({ has: true, message: 'Please input all required fields' });
     }
-  };
-
-  const clear = () => {
-    setName('');
-    setType([]);
-    setLocation('');
-    setQuantity('');
-    setExpiration('');
-    setObtained('Donated');
-    setLot('');
-    setUnit('');
-    setError({ has: false, message: '' });
-    setOpen(false);
   };
 
   return (
@@ -89,7 +93,7 @@ const AddMedication = ({ medications, open, setOpen }) => {
                 label='Location'
                 options={locations}
                 value={location}
-                onAddItem={(e, { value }) => setLocations(locations.concat([{ key: `loc${locations.length}`, text: value, value: value }]))}
+                onAddItem={(e, { value }) => setLocations(sortList(locations.concat([{ key: `loc${locations.length}`, text: value, value: value }]), (t) => t.text.toLowerCase()))}
                 onChange={(e, data) => setLocation(data.value)}
               />
               <Form.Input required name='expiration' type='date' label='Expiration' placeholder='MM/DD/YYYY'
@@ -109,7 +113,7 @@ const AddMedication = ({ medications, open, setOpen }) => {
                 label='Unit'
                 options={units}
                 value={unit}
-                onAddItem={(e, { value }) => setUnits(units.concat([{ key: `unit${units.length}`, text: value, value: value }]))}
+                onAddItem={(e, { value }) => setUnits(sortList(units.concat([{ key: `unit${units.length}`, text: value, value: value }]), (t) => t.text.toLowerCase()))}
                 onChange={(e, data) => setUnit(data.value)}
               />
             </Form.Group>
