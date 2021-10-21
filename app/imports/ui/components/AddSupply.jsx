@@ -16,11 +16,12 @@ const AddSupply = ({ supplies, open, setOpen }) => {
   const [obtained, setObtained] = useState('Donated');
   const [lot, setLot] = useState('');
   const [unit, setUnit] = useState('');
+  const [note, setNote] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
 
   const submit = () => {
-    if (name && location && quantity && obtained && lot) {
-      const definitionData = { name, location, quantity: _.toNumber(quantity), obtained, lot, unit };
+    if (name && location && quantity && obtained && lot && note) {
+      const definitionData = { name, location, quantity: _.toNumber(quantity), obtained, lot, unit, note };
       const collectionName = Supply.getCollectionName();
       defineMethod.callPromise({ collectionName, definitionData })
         .catch(e => swal('Error', e.message, 'error'))
@@ -39,6 +40,7 @@ const AddSupply = ({ supplies, open, setOpen }) => {
     setObtained('Donated');
     setLot('');
     setUnit('');
+    setNote('');
     setError({ has: false, message: '' });
     setOpen(false);
   };
@@ -100,6 +102,7 @@ const AddSupply = ({ supplies, open, setOpen }) => {
               </Form.Field>
               <Form.Input required name='lot' label='LOT' placeholder='1A2B3C4D' value={lot} onChange={(e) => setLot(e.target.value)}/>
             </Form.Group>
+            <Form.Input note='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
             <Message error header='Error' content={error.message}/>
           </Form>
         </Modal.Content>

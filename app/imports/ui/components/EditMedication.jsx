@@ -18,7 +18,7 @@ const EditMedication = ({ item, open, setOpen, medications }) => {
     const [locations, setLocations] = useState(_.uniq(medications.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
     const [quantity, setQuantity] = useState(item.quantity);
     const [unit, setUnit] = useState(item.unit);
-    const [note, setNote] = useState('');
+    const [note, setNote] = useState(item.note);
     const [error, setError] = useState({ has: false, message: '' });
     const uniqueMedType = types.map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
 

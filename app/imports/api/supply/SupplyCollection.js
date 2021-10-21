@@ -32,6 +32,10 @@ class SupplyCollection extends BaseCollection {
         type: String,
         optional: true,
       },
+      note: {
+        type: String,
+        optional: true,
+      },
     }));
   }
 
@@ -44,9 +48,10 @@ class SupplyCollection extends BaseCollection {
    * @param lot the lot number
    * @param obtained whether the item was purchased or donated
    * @param unit the unit of the supply
+   * @param note the note of the item.
    * @return {String} the docID of the new document.
    */
-  define({ name, location, quantity, expiration, obtained, lot, unit }) {
+  define({ name, location, quantity, expiration, obtained, lot, unit, note }) {
     const docID = this._collection.insert({
       name,
       location,
@@ -55,6 +60,7 @@ class SupplyCollection extends BaseCollection {
       obtained,
       lot,
       unit,
+      note,
     });
 
     return docID;
@@ -69,9 +75,10 @@ class SupplyCollection extends BaseCollection {
    * @param expiration the new expiration (optional).
    * @param obtained the new obtained (optional).
    * @param lot the new lot (optional).
+   * @param note the new unit (optional).
    * @param unit the unit of the item (optional).
    */
-  update(docID, { name, quantity, location, expiration, obtained, lot, unit }) {
+  update(docID, { name, quantity, location, expiration, obtained, lot, unit, note }) {
     const updateData = {};
     if (name) {
       updateData.name = name;
@@ -100,6 +107,10 @@ class SupplyCollection extends BaseCollection {
 
     if (lot) {
       updateData.lot = lot;
+    }
+
+    if (note) {
+      updateData.note = note;
     }
 
     this._collection.update(docID, { $set: updateData });
@@ -148,7 +159,7 @@ class SupplyCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{ name, location, quantity, expiration, obtained, lot }}
+   * @return {{ name, location, quantity, expiration, obtained, lot, note }}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
@@ -159,7 +170,8 @@ class SupplyCollection extends BaseCollection {
     const obtained = doc.obtained;
     const lot = doc.lot;
     const unit = doc.unit;
-    return { name, location, quantity, expiration, obtained, lot, unit };
+    const note = doc.note;
+    return { name, location, quantity, expiration, obtained, lot, unit, note };
   }
 }
 

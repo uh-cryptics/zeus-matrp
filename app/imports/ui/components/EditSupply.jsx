@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Header, Icon, Input, Message, Modal } from 'semantic-ui-react';
 import _ from 'lodash';
-import { updateMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
+import { updateMethod } from '../../api/base/BaseCollection.methods';
 import { Supply } from '../../api/supply/SupplyCollection';
 
 const EditSupply = ({ item, open, setOpen, supplies }) => {
@@ -15,15 +15,16 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
     const [locations, setLocations] = useState(_.uniq(supplies.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
     const [quantity, setQuantity] = useState(item.quantity);
     const [unit, setUnit] = useState(item.unit);
+    const [note, setNote] = useState(item.note);
     const [error, setError] = useState({ has: false, message: '' });
 
     const submit = () => {
-      if (name && location && quantity) {
-        const updateData = { id: item._id, name, location, quantity: _.toNumber(quantity), unit };
+      if (name && location && quantity && note) {
+        const updateData = { id: item._id, name, location, quantity: _.toNumber(quantity), unit, note };
         const collectionName = Supply.getCollectionName();
         updateMethod.callPromise({ collectionName, updateData })
           .catch(error => swal('Error', error.message, 'error'))
-          .then(() => swal({title: 'Success', text: 'Item updated successfully', icon: 'success', timer: 1500}).then(() => clear()));
+          .then(() => swal({ title: 'Success', text: 'Item updated successfully', icon: 'success', timer: 1500 }).then(() => clear()));
       } else {
         setError({ has: true, message: 'Please input all required fields' });
       }
@@ -34,6 +35,7 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
       setLocation('');
       setQuantity('');
       setUnit('');
+      setNote('');
       setOpen(false, reason);
     };
 
@@ -97,6 +99,7 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
               />
             </Form.Group>
           </Form.Field>
+          <Form.Input note='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
           <Message error header='Error' content={error.message}/>
         </Form>
       </Modal.Content>
@@ -108,10 +111,10 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
           <Icon name='save'/> Save
         </Button>
       </Modal.Actions>
-    </Modal>
-  } else {
-    return <></>
+    </Modal>;
   }
+  return <></>;
+
 };
 
 EditSupply.propTypes = {
