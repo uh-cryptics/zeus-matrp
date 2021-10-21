@@ -4,12 +4,13 @@ import { Button, Form, Modal, Input, Message, Segment, Icon } from 'semantic-ui-
 import _ from 'lodash';
 import swal from 'sweetalert';
 import { History } from '../../api/history/HistoryCollection';
+import { sortList } from '../utilities/ListFunctions';
 import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { Medication } from '../../api/medication/MedicationCollection';
 
 const DispenseMedication = ({ set, open, setOpen }) => {
-  const uniqueNames = _.uniq(set.map(item => ({ _id: item._id, name: item.name })))
-    .map((type) => ({ key: type._id, text: type.name, value: type._id }));
+  const uniqueNames = sortList(_.uniq(set.map(item => ({ _id: item._id, name: item.name })))
+    .map((type) => ({ key: type._id, text: type.name, value: type._id })), (t) => t.text.toLowerCase());
   const uniqueLot = _.uniq(set.map(item => item.lot)).map((lot, i) => ({ key: `loc${i}`, text: lot, value: lot }));
 
   const [patientNumber, setPatientNumber] = useState('');
@@ -93,21 +94,23 @@ const DispenseMedication = ({ set, open, setOpen }) => {
                 <Form.Field required>
                   <label>Patient Medical Number</label>
                   <Form.Field>
-                    <Input placeholder="Medical Number" name="medical-number" onChange={(e) => setPatientNumber(e.target.value)} value={patientNumber}/>
+                    <Input placeholder="Medical Number" name="medical-number" onChange={(e) => setPatientNumber(e.target.value)} value={patientNumber} />
                   </Form.Field>
                 </Form.Field>
+              </Form.Group>
+              <Form.Group widths="equal">
                 <Form.Field required>
                   <label>Provider</label>
-                  <Input placeholder="Provider" name="provider" value={provider} onChange={(e) => setProvider(e.target.value)}/>
+                  <Input placeholder="Provider" name="provider" value={provider} onChange={(e) => setProvider(e.target.value)} />
                 </Form.Field>
                 <Form.Field required width='10'>
                   <label>Clinic Location</label>
-                  <Input placeholder="Clinic Location" name="clinic-location" value={clinicLocation} onChange={(e) => setClinicLocation(e.target.value)}/>
+                  <Input placeholder="Clinic Location" name="clinic-location" value={clinicLocation} onChange={(e) => setClinicLocation(e.target.value)} />
                 </Form.Field>
               </Form.Group>
               <Form.Field>
                 <Form.Group widths="equal">
-                  <Form.Field required>
+                  <Form.Field required width="5">
                     <label>LOT</label>
                     <Form.Dropdown
                       search
@@ -132,11 +135,11 @@ const DispenseMedication = ({ set, open, setOpen }) => {
                   </Form.Field>
                   <Form.Field required width="5">
                     <label>Amount</label>
-                    <Input type="number" name="amount" placeholder="1" value={amount} onChange={(e) => setAmount(e.target.value, 10)}/>
+                    <Input type="number" name="amount" placeholder="1" value={amount} onChange={(e) => setAmount(e.target.value, 10)} />
                   </Form.Field>
                 </Form.Group>
               </Form.Field>
-              <Message error header='Error' content={error.message}/>
+              <Message error header='Error' content={error.message} />
             </Segment>
           </Form>
         </Modal.Content>
