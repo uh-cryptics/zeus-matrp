@@ -11,7 +11,6 @@ import { Medication, types } from '../../api/medication/MedicationCollection';
 const EditMedication = ({ item, open, setOpen, medications }) => {
 
   if (open) {
-
     const uniqueLocations = _.uniq(medications.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
     const uniqueUnits = filterOutUndefined(_.uniq(medications.map(med => med.unit)).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit })));
 
@@ -23,12 +22,13 @@ const EditMedication = ({ item, open, setOpen, medications }) => {
     const [locations, setLocations] = useState(sortList(uniqueLocations, (t) => t.text.toLowerCase()));
     const [quantity, setQuantity] = useState(item.quantity);
     const [unit, setUnit] = useState(item.unit);
+    const [note, setNote] = useState(item.note);
     const [error, setError] = useState({ has: false, message: '' });
     const uniqueMedType = types.map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
 
     const submit = () => {
-      if (name && type && expDate && location && quantity && (type.length > 0)) {
-        const updateData = { id: item._id, name, type, expiration: moment(expDate).format('MM/DD/YYYY'), location, quantity: _.toNumber(quantity), unit };
+      if (name && type && expDate && location && quantity && (type.length > 0) && note) {
+        const updateData = { id: item._id, name, type, expiration: moment(expDate).format('MM/DD/YYYY'), location, quantity: _.toNumber(quantity), unit, note };
         const collectionName = Medication.getCollectionName();
         updateMethod.callPromise({ collectionName, updateData })
           .catch(error => swal('Error', error.message, 'error'))
@@ -44,6 +44,7 @@ const EditMedication = ({ item, open, setOpen, medications }) => {
       setExpDate('');
       setLocation('');
       setQuantity('');
+      setNote('');
       setOpen(false, reason);
     };
 
@@ -125,6 +126,7 @@ const EditMedication = ({ item, open, setOpen, medications }) => {
                 onChange={(e, data) => setUnit(data.value)}
               />
             </Form.Group>
+            <Form.Input note='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
           </Form.Field>
           <Message error header='Error' content={error.message}/>
         </Form>

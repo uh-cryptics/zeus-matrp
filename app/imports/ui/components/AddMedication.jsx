@@ -22,7 +22,22 @@ const AddMedication = ({ medications, open, setOpen }) => {
   const [obtained, setObtained] = useState('Donated');
   const [lot, setLot] = useState('');
   const [unit, setUnit] = useState('');
+  const [note, setNote] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
+
+  const submit = () => {
+    if (name && (type.length > 0) && location && quantity && expiration && obtained && lot && note) {
+      const definitionData = { name, type, location, quantity: _.toNumber(quantity), expiration, obtained, lot, unit, note };
+      const collectionName = Medication.getCollectionName();
+      defineMethod.callPromise({ collectionName, definitionData })
+        .catch(e => swal('Error', e.message, 'error'))
+        .then(() => {
+          swal({ title: 'Success', text: `Added ${name}`, icon: 'success', timer: 1500 }).then(() => clear());
+        });
+    } else {
+      setError({ has: true, message: 'Please input all required fields' });
+    }
+  };
 
   const clear = () => {
     setName('');
@@ -33,22 +48,9 @@ const AddMedication = ({ medications, open, setOpen }) => {
     setObtained('Donated');
     setLot('');
     setUnit('');
+    setNote('');
     setError({ has: false, message: '' });
     setOpen(false);
-  };
-
-  const submit = () => {
-    if (name && (type.length > 0) && location && quantity && expiration && obtained && lot) {
-      const definitionData = { name, type, location, quantity: _.toNumber(quantity), expiration, obtained, lot, unit };
-      const collectionName = Medication.getCollectionName();
-      defineMethod.callPromise({ collectionName, definitionData })
-        .catch(e => swal('Error', e.message, 'error'))
-        .then(() => {
-          swal({ title: 'Success', text: `Added ${name}`, icon: 'success', timer: 1500 }).then(() => clear());
-        });
-    } else {
-      setError({ has: true, message: 'Please input all required fields' });
-    }
   };
 
   return (
@@ -128,6 +130,7 @@ const AddMedication = ({ medications, open, setOpen }) => {
                 value={lot}
                 onChange={(e) => setLot(e.target.value)}/>
             </Form.Group>
+            <Form.Input note='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
             <Message error header='Error' content={error.message}/>
           </Form>
         </Modal.Content>

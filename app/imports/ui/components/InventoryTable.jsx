@@ -46,10 +46,11 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
   };
 
   const tableHeader = () => {
-    const headers = Object.keys(inventory[0]).filter((header) => (!(/(_id|type|obtained)/).test(header) ? header : null));
+    const headers = Object.keys(inventory[0]).filter((header) => (!(/(_id|type|obtained|note)/).test(header) ? header : null));
     if (headers[headers.length - 1] !== 'unit') {
       headers.push('unit');
     }
+
     const tableHeaders = headers.map((header, i) => {
       const key = `h${i}`;
       const newHeader = header.toUpperCase();
@@ -60,7 +61,7 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
   };
 
   const tableData = () => {
-    const headers = Object.keys(inventory[0]).filter(header => (!(/(_id|type|obtained)/).test(header) ? header : null));
+    const headers = Object.keys(inventory[0]).filter(header => (!(/(_id|type|obtained|note)/).test(header) ? header : null));
     const listedItems = inventory.filter((value => {
       if (setting === '' && filter === 'Low') {
         return value.quantity < 11;
@@ -103,6 +104,7 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
       delete rows._id;
       delete rows.type;
       delete rows.obtained;
+      delete rows.note;
       delete rows.reserve;
       if (rows.unit === undefined) {
         rows.unit = 'N/A';

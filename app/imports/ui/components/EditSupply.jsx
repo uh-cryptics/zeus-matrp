@@ -19,19 +19,12 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
     const [locations, setLocations] = useState(sortList(uniqueLocations, (t) => t.text.toLowerCase()));
     const [quantity, setQuantity] = useState(item.quantity);
     const [unit, setUnit] = useState(item.unit);
+    const [note, setNote] = useState(item.note);
     const [error, setError] = useState({ has: false, message: '' });
 
-    const clear = (reason) => {
-      setName('');
-      setLocation('');
-      setQuantity('');
-      setUnit('');
-      setOpen(false, reason);
-    };
-
     const submit = () => {
-      if (name && location && quantity) {
-        const updateData = { id: item._id, name, location, quantity: _.toNumber(quantity), unit };
+      if (name && location && quantity && note) {
+        const updateData = { id: item._id, name, location, quantity: _.toNumber(quantity), unit, note };
         const collectionName = Supply.getCollectionName();
         updateMethod.callPromise({ collectionName, updateData })
           .catch(error => swal('Error', error.message, 'error'))
@@ -39,6 +32,15 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
       } else {
         setError({ has: true, message: 'Please input all required fields' });
       }
+    };
+
+    const clear = (reason) => {
+      setName('');
+      setLocation('');
+      setQuantity('');
+      setUnit('');
+      setNote('');
+      setOpen(false, reason);
     };
 
     return <Modal
@@ -101,6 +103,7 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
               />
             </Form.Group>
           </Form.Field>
+          <Form.Input note='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
           <Message error header='Error' content={error.message}/>
         </Form>
       </Modal.Content>

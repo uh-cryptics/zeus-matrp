@@ -10,7 +10,6 @@ import { Supply } from '../../api/supply/SupplyCollection';
 const AddSupply = ({ supplies, open, setOpen }) => {
   const uniqueLocations = _.uniq(supplies.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
   const uniqueUnits = filterOutUndefined(_.uniq(supplies.filter(item => item.unit !== undefined).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit }))));
-
   const [locations, setLocations] = useState(sortList(uniqueLocations, (t) => t.text.toLowerCase()));
   const [units, setUnits] = useState(sortList(uniqueUnits), (t) => t.text.toLowerCase());
   const [name, setName] = useState('');
@@ -19,23 +18,15 @@ const AddSupply = ({ supplies, open, setOpen }) => {
   const [obtained, setObtained] = useState('Donated');
   const [lot, setLot] = useState('');
   const [unit, setUnit] = useState('');
+  const [note, setNote] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
 
-  const clear = () => {
-    setName('');
-    setLocation('');
-    setQuantity('');
-    setObtained('Donated');
-    setLot('');
-    setUnit('');
-    setError({ has: false, message: '' });
-    setOpen(false);
-  };
-
   const submit = () => {
-    if (name && location && quantity && obtained && lot) {
+
+    if (name && location && quantity && obtained && lot && note) {
       console.log(unit);
-      const definitionData = { name, location, quantity: _.toNumber(quantity), obtained, lot, unit: unit };
+      const definitionData = { name, location, quantity: _.toNumber(quantity), obtained, lot, unit: unit, note };
+
       const collectionName = Supply.getCollectionName();
       defineMethod.callPromise({ collectionName, definitionData })
         .catch(e => swal('Error', e.message, 'error'))
@@ -45,6 +36,18 @@ const AddSupply = ({ supplies, open, setOpen }) => {
     } else {
       setError({ has: true, message: 'Please input all required fields' });
     }
+  };
+
+  const clear = () => {
+    setName('');
+    setLocation('');
+    setQuantity('');
+    setObtained('Donated');
+    setLot('');
+    setUnit('');
+    setNote('');
+    setError({ has: false, message: '' });
+    setOpen(false);
   };
 
   return (
@@ -105,6 +108,7 @@ const AddSupply = ({ supplies, open, setOpen }) => {
               </Form.Field>
               <Form.Input required name='lot' label='LOT' placeholder='1A2B3C4D' value={lot} onChange={(e) => setLot(e.target.value)}/>
             </Form.Group>
+            <Form.Input note='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
             <Message error header='Error' content={error.message}/>
           </Form>
         </Modal.Content>
