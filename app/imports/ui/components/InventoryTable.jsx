@@ -7,7 +7,7 @@ import EditSupply from './EditSupply';
 import DeleteMedication from './DeleteMedication';
 import DeleteSupply from './DeleteSupply';
 
-const InventoryTable = ({ inventory, table, setting }) => {
+const InventoryTable = ({ inventory, table, setting, filter }) => {
   const [itemInfo, setItemInfo] = useState(null);
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -59,12 +59,41 @@ const InventoryTable = ({ inventory, table, setting }) => {
   const tableData = () => {
     const headers = Object.keys(inventory[0]).filter(header => (!(/(_id|type|obtained)/).test(header) ? header : null));
     const listedItems = inventory.filter((value => {
-      if (setting === '') {
-        return value;
-      } if (value.name.toLowerCase().includes(setting.toLowerCase()) ||
-          value.location.toLowerCase().includes(setting.toLowerCase()) ||
-          value.lot.toLowerCase().includes(setting.toLowerCase())) {
-        return value;
+      if (setting === '' && filter === 'Low') {
+        return value.quantity < 11;
+      }
+      if (filter === 'Low') {
+        if (value.name.toLowerCase().includes(setting.toLowerCase())) {
+          return value.name && value.quantity < 11;
+        }
+      }
+      if (filter === '' || filter === 'All') {
+        if (value.name.toLowerCase().includes(setting.toLowerCase()) ||
+            value.quantity.toString().includes(setting) ||
+            value.location.toLowerCase().includes(setting.toLowerCase()) ||
+            value.lot.toLowerCase().includes(setting.toLowerCase())) {
+          return value;
+        }
+      }
+      if (filter === 'Name') {
+        if (value.name.toLowerCase().includes(setting.toLowerCase())) {
+          return value;
+        }
+      }
+      if (filter === 'Location') {
+        if (value.location.toLowerCase().includes(setting.toLowerCase())) {
+          return value;
+        }
+      }
+      if (filter === 'Quantity') {
+        if (value.quantity.toString().includes(setting)) {
+          return value;
+        }
+      }
+      if (filter === 'Lot') {
+        if (value.lot.toLowerCase().includes(setting.toLowerCase())) {
+          return value;
+        }
       }
     })).map((row, i) => {
       const rows = { ...row };
@@ -128,6 +157,7 @@ InventoryTable.propTypes = {
   inventory: PropTypes.array.isRequired,
   table: PropTypes.string.isRequired,
   setting: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
 };
 
 export default InventoryTable;
