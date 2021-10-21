@@ -12,15 +12,6 @@ const InventoryTable = ({ inventory, table, setting }) => {
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState(false);
   const [deleting, setDelete] = useState(false);
-  // const [setting, setSearchTerm] = useState('');
-
-  // const searchTable = () => (
-  //   <Menu.Item>
-  //     <Input className='icon' icon='search' placeholder='Search...' onChange={(e) => {
-  //       setSearchTerm(setting);
-  //     }}/>
-  //   </Menu.Item>
-  // );
 
   const setOpenCallBack = (value, reason) => {
     if (!value && reason === 'edit') {
@@ -34,20 +25,22 @@ const InventoryTable = ({ inventory, table, setting }) => {
   };
 
   const openInventoryInfo = (item) => {
-    setItemInfo(item);
+    if (item) {
+      setItemInfo(item);
+    }
     setOpenCallBack(true, 'open');
   };
 
   const setEditCallback = (value, reason) => {
     if (reason === 'cancel') {
-      openInventoryInfo(itemInfo);
+      openInventoryInfo();
     }
     setEdit(value);
   };
 
   const setDeleteCallback = (value, reason) => {
     if (reason === 'cancel') {
-      openInventoryInfo(itemInfo);
+      openInventoryInfo();
     }
     setDelete(value);
   };
