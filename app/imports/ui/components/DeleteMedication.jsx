@@ -21,10 +21,8 @@ const DeleteMedication = ({ item, open, setOpen }) => {
     };
 
     return <Modal
-      closeIcon
       open={open}
       onOpen={() => setOpen(true)}
-      onClose={() => clear()}
       size='small'>
       <Header>
         <Icon.Group size='large'>
