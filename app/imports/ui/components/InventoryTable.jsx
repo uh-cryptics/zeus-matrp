@@ -57,11 +57,13 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
   const tableData = () => {
     const headers = Object.keys(inventory[0]).filter(header => (!(/(_id|type|obtained)/).test(header) ? header : null));
     const listedItems = inventory.filter((value => {
-      if (setting === '') {
-        if (filter === 'Low') {
-          return value.quantity < 11;
+      if (setting === '' && filter === 'Low') {
+        return value.quantity < 11;
+      }
+      if (filter === 'Low') {
+        if (value.name.toLowerCase().includes(setting.toLowerCase())) {
+          return value.name && value.quantity < 11;
         }
-        return value;
       }
       if (filter === '' || filter === 'All') {
         if (value.name.toLowerCase().includes(setting.toLowerCase()) ||

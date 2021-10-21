@@ -80,7 +80,6 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
         <Menu.Item>
           <Dropdown
             className='icon'
-            iconPosition='right'
             icon='filter'
             floating
             labeled
