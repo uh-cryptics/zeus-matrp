@@ -46,7 +46,7 @@ const DispenseSupply = ({ set, open, setOpen }) => {
       const oldAmount = _.find(set, (product) => product._id === item).quantity;
       const newAmount = _.toNumber(amount);
       if (oldAmount < newAmount) {
-        swal('Error', `There is not enough inventory to dispense ${newAmount} ${itemName}`, 'error')
+        swal('Error', `There is not enough inventory to dispense ${newAmount} ${itemName}`, 'error');
       } else {
         const definitionData = { patientNumber, clinicLocation, lotNumber, item: itemName, amount: newAmount, provider };
         let collectionName = History.getCollectionName();
@@ -142,7 +142,13 @@ const DispenseSupply = ({ set, open, setOpen }) => {
         </Modal.Content>
         <Modal.Actions>
           <Button secondary onClick={() => clear()}>Cancel</Button>
-          <Button primary onClick={() => submit()}>Dispense</Button>
+          <Button
+            content="Dispense"
+            labelPosition='right'
+            icon='checkmark'
+            primary
+            onClick={() => submit()}
+          />
         </Modal.Actions>
       </Modal>
     </div>

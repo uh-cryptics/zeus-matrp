@@ -112,7 +112,7 @@ const AddSupply = ({ supplies, open, setOpen }) => {
             labelPosition='right'
             icon='checkmark'
             onClick={() => submit()}
-            positive
+            primary
           />
         </Modal.Actions>
       </Modal>

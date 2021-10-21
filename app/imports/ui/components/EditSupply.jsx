@@ -101,7 +101,7 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button color='red' onClick={() => clear()}>
+        <Button color='black' onClick={() => clear()}>
           <Icon name='cancel'/> Cancel
         </Button>
         <Button color='blue' onClick={() => submit()}>

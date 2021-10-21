@@ -142,7 +142,13 @@ const DispenseMedication = ({ set, open, setOpen }) => {
         </Modal.Content>
         <Modal.Actions>
           <Button secondary onClick={() => clear()}>Cancel</Button>
-          <Button primary onClick={() => submit()}>Dispense</Button>
+          <Button
+            content="Dispense"
+            labelPosition='right'
+            icon='checkmark'
+            primary
+            onClick={() => submit()}
+          />
         </Modal.Actions>
       </Modal>
     </div>

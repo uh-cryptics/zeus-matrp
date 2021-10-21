@@ -125,7 +125,7 @@ const EditMedication = ({ item, open, setOpen, medications }) => {
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button color='red' onClick={() => clear('cancel')}>
+        <Button color='black' onClick={() => clear('cancel')}>
           <Icon name='cancel'/> Cancel
         </Button>
         <Button color='blue' onClick={() => submit()}>

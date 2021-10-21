@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Icon, Message, Modal } from 'semantic-ui-react';
 import _ from 'lodash';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
+import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { Medication, types } from '../../api/medication/MedicationCollection';
 
 const AddMedication = ({ medications, open, setOpen }) => {
@@ -27,7 +27,7 @@ const AddMedication = ({ medications, open, setOpen }) => {
       defineMethod.callPromise({ collectionName, definitionData })
         .catch(e => swal('Error', e.message, 'error'))
         .then(() => {
-          swal({title: 'Success', text: `Added ${name}`, icon: 'success', timer: 1500}).then(() => clear());
+          swal({ title: 'Success', text: `Added ${name}`, icon: 'success', timer: 1500 }).then(() => clear());
         });
     } else {
       setError({ has: true, message: 'Please input all required fields' });
@@ -93,13 +93,13 @@ const AddMedication = ({ medications, open, setOpen }) => {
                 onChange={(e, data) => setLocation(data.value)}
               />
               <Form.Input required name='expiration' type='date' label='Expiration' placeholder='MM/DD/YYYY'
-                          value={expiration}
-                          onChange={(e) => setExpiration(e.target.value)} />
+                value={expiration}
+                onChange={(e) => setExpiration(e.target.value)} />
             </Form.Group>
             <Form.Group widths='equal'>
               <Form.Input required name='quantity' label='Quantity' placeholder='Quantity'
-                          value={quantity}
-                          onChange={(e) => setQuantity(e.target.value)}/>
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}/>
               <Form.Dropdown
                 name='unit'
                 placeholder='Select Unit'
@@ -115,14 +115,14 @@ const AddMedication = ({ medications, open, setOpen }) => {
             </Form.Group>
             <Form.Group widths='equal'>
               <Form.Field required name='obtained' label='Obtained' control='select'
-                          value={obtained}
-                          onChange={(e) => setObtained(e.target.value)}>
+                value={obtained}
+                onChange={(e) => setObtained(e.target.value)}>
                 <option value='Donated'>Donated</option>
                 <option value='Purchased'>Purchased</option>
               </Form.Field>
               <Form.Input required name='lot' label='LOT' placeholder='1A2B3C4D'
-                          value={lot}
-                          onChange={(e) => setLot(e.target.value)}/>
+                value={lot}
+                onChange={(e) => setLot(e.target.value)}/>
             </Form.Group>
             <Message error header='Error' content={error.message}/>
           </Form>
@@ -136,7 +136,7 @@ const AddMedication = ({ medications, open, setOpen }) => {
             labelPosition='right'
             icon='checkmark'
             onClick={() => submit()}
-            positive
+            primary
           />
         </Modal.Actions>
       </Modal>
