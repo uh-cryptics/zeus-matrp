@@ -4,8 +4,8 @@ import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Roles } from 'meteor/alanning:roles';
 import { Button, Grid, Header, Icon, List, Modal } from 'semantic-ui-react';
-import { ROLE } from '../../api/role/Role';
 import moment from 'moment';
+import { ROLE } from '../../api/role/Role';
 
 const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (item ?
   <Modal
@@ -74,8 +74,6 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
                 </Header.Subheader>
               </Header>
             </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
             <Grid.Column>
               <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
                 Obtained
@@ -85,8 +83,14 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
               </Header>
             </Grid.Column>
           </Grid.Row>
+          <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
+            Note
+            <Header.Subheader>
+              {item.note}
+            </Header.Subheader>
+          </Header>
         </Grid>
-      :
+        :
         <Grid columns={3} divided>
           <Grid.Row>
             <Grid.Column>
@@ -134,19 +138,27 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
               </Header>
             </Grid.Column>
             <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
+              <Grid>
+                <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
                 Obtained
-                <Header.Subheader>
-                  {item.obtained}
-                </Header.Subheader>
-              </Header>
+                  <Header.Subheader>
+                    {item.obtained}
+                  </Header.Subheader>
+                </Header>
+              </Grid>
             </Grid.Column>
           </Grid.Row>
+          <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
+              Note
+            <Header.Subheader>
+              {item.note}
+            </Header.Subheader>
+          </Header>
+
         </Grid>
       }
 
-      {/*{Object.keys(item).filter(key => key !== '_id').map(keys => <Header content={_.startCase(keys)} subheader={item[keys]}/>)}*/}
-
+      {/* {Object.keys(item).filter(key => key !== '_id').map(keys => <Header content={_.startCase(keys)} subheader={item[keys]}/>)} */}
 
     </Modal.Content>
     { currentUser ?

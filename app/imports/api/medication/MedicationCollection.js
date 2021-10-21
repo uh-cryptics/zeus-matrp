@@ -99,7 +99,7 @@ class MedicationCollection extends BaseCollection {
    * @param lot the new lot (optional).
    * @param type the new type (optional).
    * @param unit the new unit (optional).
-   * @param note the new unit (optional).
+   * @param note the new note (optional).
    */
   update(docID, { name, quantity, location, expiration, obtained, lot, type, unit, note }) {
     const updateData = {};
