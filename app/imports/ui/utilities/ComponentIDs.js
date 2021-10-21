@@ -16,5 +16,10 @@ export const COMPONENT_IDS = {
   SIGN_IN_FORM_SUBMIT: 'sign-in-form-submit',
   SIGN_UP_FORM_EMAIL: 'sign-up-form-email',
   SIGN_UP_FORM_PASSWORD: 'sign-up-form-password',
+  SIGN_UP_FORM_FIRSTNAME: 'sign-up-form-firstname',
+  SIGN_UP_FORM_LASTNAME: 'sign-up-form-lastname',
+  SIGN_UP_FORM_UHNUMBER: 'sign-up-form-uhnumber',
+  SIGN_UP_FORM_PROVIDER_ROLE: 'sign-up-form-provider-role',
+  SIGN_UP_FORM_USER_ROLE: 'sign-up-form-user-role',
   SIGN_UP_FORM_SUBMIT: 'sign-up-form-submit',
 };
