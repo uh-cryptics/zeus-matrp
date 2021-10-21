@@ -5,14 +5,17 @@ import _ from 'lodash';
 import swal from 'sweetalert';
 import { updateMethod } from '../../api/base/BaseCollection.methods';
 import { Supply } from '../../api/supply/SupplyCollection';
+import { filterOutUndefined, sortList } from '../utilities/ListFunctions';
 
 const EditSupply = ({ item, open, setOpen, supplies }) => {
 
   if (open) {
+    const uniqueLocations = _.uniq(supplies.map(supply => supply.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
+    const uniqueUnits = filterOutUndefined(_.uniq(supplies.map(supply => supply.unit).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit }))));
     const [name, setName] = useState(item.name);
     const [location, setLocation] = useState(item.location);
-    const [units, setUnits] = useState(_.uniq(supplies.map(item => item.unit)).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit })));
-    const [locations, setLocations] = useState(_.uniq(supplies.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
+    const [units, setUnits] = useState(sortList(uniqueUnits));
+    const [locations, setLocations] = useState(sortList(uniqueLocations, (t) => t.text.toLowerCase()));
     const [quantity, setQuantity] = useState(item.quantity);
     const [unit, setUnit] = useState(item.unit);
     const [note, setNote] = useState(item.note);
@@ -72,7 +75,7 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
                 selection
                 label='Location'
                 allowAdditions
-                onAddItem={(e, { value }) => setLocations(locations.concat([{ key: `loc${locations.length}`, text: value, value: value }]))}
+                onAddItem={(e, { value }) => setLocations(sortList(locations.concat([{ key: `loc${locations.length}`, text: value, value: value }]), (t) => t.text.toLowerCase()))}
                 options={locations}
                 value={location}
                 onChange={(e, data) => setLocation(data.value)}
@@ -94,7 +97,7 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
                 label='Unit'
                 options={units}
                 value={unit}
-                onAddItem={(e, { value }) => setUnits(units.concat([{ key: `unit${units.length}`, text: value, value: value }]))}
+                onAddItem={(e, { value }) => setUnits(sortList(units.concat([{ key: `unit${units.length}`, text: value, value: value }]), (t) => t.text.toLowerCase()))}
                 onChange={(e, data) => setUnit(data.value)}
               />
             </Form.Group>
@@ -104,7 +107,7 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button color='red' onClick={() => clear()}>
+        <Button color='black' onClick={() => clear()}>
           <Icon name='cancel'/> Cancel
         </Button>
         <Button color='blue' onClick={() => submit()}>

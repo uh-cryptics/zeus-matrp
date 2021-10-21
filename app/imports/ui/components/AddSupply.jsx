@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Icon, Message, Modal } from 'semantic-ui-react';
 import _ from 'lodash';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
+import { filterOutUndefined, sortList } from '../utilities/ListFunctions';
+import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { Supply } from '../../api/supply/SupplyCollection';
 
 const AddSupply = ({ supplies, open, setOpen }) => {
-  const [locations, setLocations] = useState(_.uniq(supplies.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location })));
-  const [units, setUnits] = useState(_.uniq(supplies.map(item => item.unit)).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit })));
+  const uniqueLocations = _.uniq(supplies.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
+  const uniqueUnits = filterOutUndefined(_.uniq(supplies.filter(item => item.unit !== undefined).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit }))));
 
+  const [locations, setLocations] = useState(sortList(uniqueLocations, (t) => t.text.toLowerCase()));
+  const [units, setUnits] = useState(sortList(uniqueUnits), (t) => t.text.toLowerCase());
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -22,11 +25,14 @@ const AddSupply = ({ supplies, open, setOpen }) => {
   const submit = () => {
     if (name && location && quantity && obtained && lot && note) {
       const definitionData = { name, location, quantity: _.toNumber(quantity), obtained, lot, unit, note };
+
+      console.log(unit);
+
       const collectionName = Supply.getCollectionName();
       defineMethod.callPromise({ collectionName, definitionData })
         .catch(e => swal('Error', e.message, 'error'))
         .then(() => {
-          swal({title: 'Success', text: `Added ${name}`, icon: 'success', timer: 1500}).then(() => clear());
+          swal({ title: 'Success', text: `Added ${name}`, icon: 'success', timer: 1500 }).then(() => clear());
         });
     } else {
       setError({ has: true, message: 'Please input all required fields' });
@@ -76,7 +82,7 @@ const AddSupply = ({ supplies, open, setOpen }) => {
                 allowAdditions
                 options={locations}
                 value={location}
-                onAddItem={(e, { value }) => setLocations(locations.concat([{ key: `loc${locations.length}`, text: value, value: value }]))}
+                onAddItem={(e, { value }) => setLocations(sortList(locations.concat([{ key: `loc${locations.length}`, text: value, value: value }]), (t) => t.text.toLowerCase()))}
                 onChange={(e, data) => setLocation(data.value)}
               />
             </Form.Group>
@@ -91,7 +97,8 @@ const AddSupply = ({ supplies, open, setOpen }) => {
                 label='Unit'
                 options={units}
                 value={unit}
-                onAddItem={(e, { value }) => setUnits(units.concat([{ key: `unit${units.length}`, text: value, value: value }]))}
+                // Something wack happens it one item
+                onAddItem={(e, { value }) => setUnits(sortList(units.concat([{ key: `unit${units.length}`, text: value, value: value }]), (t) => t.text.toLowerCase()))}
                 onChange={(e, data) => setUnit(data.value)}
               />
             </Form.Group>
@@ -115,7 +122,7 @@ const AddSupply = ({ supplies, open, setOpen }) => {
             labelPosition='right'
             icon='checkmark'
             onClick={() => submit()}
-            positive
+            primary
           />
         </Modal.Actions>
       </Modal>
