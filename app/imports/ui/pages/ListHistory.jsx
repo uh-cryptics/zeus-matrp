@@ -15,14 +15,14 @@ const ListHistory = ({ ready, histories }) => {
   return ((ready) ? (
     <Container id={PAGE_IDS.LIST_STUFF}>
       <Header as="h1" textAlign="center">History</Header>
-      <Menu attached='top' size='small' inverted>
+      { histories && histories.length > 0 ? (<Menu attached='top' size='small' inverted>
         <Menu.Item>
           <Input className='icon' icon='search' placeholder='Search...' onChange={(e) => {
             setSearchTerm(e.target.value);
           }}/>
         </Menu.Item>
-      </Menu>
-      <HistoryTable inventory={histories} setting={searchTerm} filter={'All'}/>
+      </Menu>) : (<Header as="h2" textAlign="center">Nothing Administered Yet</Header>) }
+      { histories && histories.length > 0 ? (<HistoryTable inventory={histories} setting={searchTerm} filter={'All'}/>) : '' }
     </Container>
   ) :
     <Loader active>Getting data</Loader>
