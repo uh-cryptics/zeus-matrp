@@ -16,7 +16,8 @@ const AddSupply = ({ supplies, open, setOpen }) => {
   const [location, setLocation] = useState('');
   const [quantity, setQuantity] = useState('');
   const [obtained, setObtained] = useState('Donated');
-  const [lot, setLot] = useState('');
+  const [lot, setLot] = useState([]);
+  const [lots, setLots] = useState([]);
   const [unit, setUnit] = useState('');
   const [note, setNote] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
@@ -43,7 +44,7 @@ const AddSupply = ({ supplies, open, setOpen }) => {
     setLocation('');
     setQuantity('');
     setObtained('Donated');
-    setLot('');
+    setLot([]);
     setUnit('');
     setNote('');
     setError({ has: false, message: '' });
@@ -106,7 +107,20 @@ const AddSupply = ({ supplies, open, setOpen }) => {
                 <option value='Donated'>Donated</option>
                 <option value='Purchased'>Purchased</option>
               </Form.Field>
-              <Form.Input required name='lot' label='LOT' placeholder='1A2B3C4D' value={lot} onChange={(e) => setLot(e.target.value)}/>
+              <Form.Dropdown
+                required
+                name='lot'
+                label='LOT'
+                placeholder='1A2B3C4D'
+                multiple
+                search
+                selection
+                allowAdditions
+                options={lots}
+                value={lot}
+                onAddItem={(e, { value }) => setLots(lots.concat([{ key: `lot${lot.length}`, text: value, value: value }]))}
+                onChange={(e, data) => setLot(data.value)}
+              />
             </Form.Group>
             <Form.Input note='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
             <Message error header='Error' content={error.message}/>

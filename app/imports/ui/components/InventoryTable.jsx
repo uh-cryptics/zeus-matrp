@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Table, Segment } from 'semantic-ui-react';
+import _ from 'lodash';
 import InventoryInformation from './InventoryInformation';
 import EditMedication from './EditMedication';
 import EditSupply from './EditSupply';
@@ -72,10 +73,18 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
         }
       }
       if (filter === '' || filter === 'All') {
-        if (value.name.toLowerCase().includes(setting.toLowerCase()) ||
-            value.quantity.toString().includes(setting) ||
-            value.location.toLowerCase().includes(setting.toLowerCase()) ||
-            value.lot.toLowerCase().includes(setting.toLowerCase())) {
+        // Goes through each value's set of lot numbers and checks if it includes what is typed. It returns an array of boolean values
+        // and looks for a true if one of the lots per item matches. If so, it should appear.
+        const lotsPerItem = _.find(value.lot.map((item) => {
+          if (item.toLowerCase().includes(setting.toLowerCase())) { return true; } return false;
+        }), function (e) { return e === true; });
+
+        if (
+          value.name.toLowerCase().includes(setting.toLowerCase()) ||
+          value.quantity.toString().includes(setting) ||
+          value.location.toLowerCase().includes(setting.toLowerCase()) ||
+          lotsPerItem
+        ) {
           return value;
         }
       }
@@ -95,9 +104,15 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
         }
       }
       if (filter === 'Lot') {
-        if (value.lot.toLowerCase().includes(setting.toLowerCase())) {
-          return value;
-        }
+        let result;
+        // Maps through each item's lot number and checking if it matches the user's search
+        if (value.lot.map((item) => {
+          if (item.toLowerCase().includes(setting.toLowerCase())) {
+            result = value;
+            return value;
+          }
+          return null;
+        }) !== null) return result;
       }
     })).map((row, i) => {
       const rows = { ...row };
@@ -122,6 +137,7 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
 
         return <Table.Cell key={key} data-label={headers[j]}>{column.toString()}</Table.Cell>;
       });
+      // eslint-disable-next-line no-nested-ternary
       const notify = row.quantity < 5 ? 'error' : row.quantity < 11 ? 'warning' : '';
       return (
         <Table.Row key={i} onClick={() => openInventoryInfo(row)} style={{ cursor: 'pointer' }} warning={notify === 'warning'} error={notify === 'error'}>
@@ -138,7 +154,7 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
       {(table === 'medications') ?
         <EditMedication item={itemInfo} open={edit} setOpen={setEditCallback} medications={inventory} />
         :
-        <EditSupply item={itemInfo} open={edit} setOpen={setEditCallback} supplies={inventory}/>
+        <EditSupply item={itemInfo} open={edit} setOpen={setEditCallback} supplies={inventory} />
       }
       {(table === 'medications') ?
         <DeleteMedication item={itemInfo} open={deleting} setOpen={setDeleteCallback} />

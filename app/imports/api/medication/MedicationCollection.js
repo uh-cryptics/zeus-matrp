@@ -33,7 +33,10 @@ class MedicationCollection extends BaseCollection {
       name: String,
       location: String,
       quantity: Number,
-      lot: String,
+      lot: Array,
+      'lot.$': {
+        type: String,
+      },
       obtained: {
         type: String,
         allowedValues: obtainTypes,

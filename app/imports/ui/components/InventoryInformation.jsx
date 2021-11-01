@@ -62,7 +62,9 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
               <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
                   Lot
                 <Header.Subheader>
-                  {item.lot}
+                  <List>
+                    {item.lot.map((number, index) => <List.Item key={index}>{number}</List.Item>)}
+                  </List>
                 </Header.Subheader>
               </Header>
             </Grid.Column>
