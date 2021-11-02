@@ -8,7 +8,7 @@ import { sortList } from '../utilities/ListFunctions';
 import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { Medication } from '../../api/medication/MedicationCollection';
 
-const DispenseMedication = ({ set, open, setOpen }) => {
+const DispenseMedication = ({ set, open, setOpen, fullName }) => {
   const uniqueNames = sortList(_.uniq(set.map(item => ({ _id: item._id, name: item.name })))
     .map((type) => ({ key: type._id, text: type.name, value: type._id })), (t) => t.text.toLowerCase());
   const uniqueLot = _.uniq(_.flattenDeep(set.map(item => item.lot))).map((lot, i) => ({ key: `loc${i}`, text: lot, value: lot }));
@@ -19,8 +19,8 @@ const DispenseMedication = ({ set, open, setOpen }) => {
   const [lotNumber, setLotNumber] = useState('');
   const [item, setItem] = useState('');
   const [amount, setAmount] = useState('');
-  const [provider, setProvider] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
+  const space = ' ';
 
   const resetList = () => {
     setLotList(uniqueLot);
@@ -33,7 +33,6 @@ const DispenseMedication = ({ set, open, setOpen }) => {
     setLotNumber('');
     setItem('');
     setAmount('');
-    setProvider('');
     setError({ has: false, message: '' });
     setOpen(false);
   };
@@ -62,14 +61,14 @@ const DispenseMedication = ({ set, open, setOpen }) => {
   };
 
   const submit = () => {
-    if (patientNumber && clinicLocation && lotNumber && item && amount && provider) {
+    if (patientNumber && clinicLocation && lotNumber && item && amount && fullName) {
       const itemName = _.find(uniqueNames, (i) => i.key === item).text;
       const oldAmount = _.find(set, (product) => product._id === item).quantity;
       const newAmount = _.toNumber(amount);
       if (oldAmount < newAmount) {
         swal('Error', `There is not enough inventory to dispense ${newAmount} ${itemName}`, 'error');
       } else {
-        const definitionData = { patientNumber, clinicLocation, lotNumber, item: itemName, amount: newAmount, provider };
+        const definitionData = { patientNumber, clinicLocation, lotNumber, item: itemName, amount: newAmount, provider: fullName.firstName + space + fullName.lastName };
         let collectionName = History.getCollectionName();
         defineMethod.callPromise({ collectionName, definitionData })
           .catch(e => swal('Error', e.message, 'error'))
@@ -121,7 +120,12 @@ const DispenseMedication = ({ set, open, setOpen }) => {
               <Form.Group widths="equal">
                 <Form.Field required>
                   <label>Provider</label>
-                  <Input placeholder="Provider" name="provider" value={provider} onChange={(e) => setProvider(e.target.value)} />
+                  {fullName ?
+                    <Input placeholder="Provider" name="provider" value={fullName.firstName + space + fullName.lastName} disabled/>
+                    :
+                    <>
+                    </>
+                  }
                 </Form.Field>
                 <Form.Field required width='10'>
                   <label>Clinic Location</label>
@@ -183,6 +187,7 @@ DispenseMedication.propTypes = {
   set: PropTypes.array.isRequired,
   open: PropTypes.bool,
   setOpen: PropTypes.func,
+  fullName: PropTypes.object,
 };
 
 export default DispenseMedication;
