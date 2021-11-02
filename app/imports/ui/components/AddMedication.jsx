@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Icon, Message, Modal } from 'semantic-ui-react';
 import _ from 'lodash';
+import QRCode from 'qrcode';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
 import { Medication, types } from '../../api/medication/MedicationCollection';
+
+let qrCode;
+    QRCode.toDataURL(`http://localhost:3000/`)
+      .then(url => {
+        qrCode = url;
+      });
 
 const AddMedication = ({ set, open, setOpen }) => {
   const uniqueMedType = types.map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
@@ -25,7 +32,11 @@ const AddMedication = ({ set, open, setOpen }) => {
       defineMethod.callPromise({ collectionName: Medication.getCollectionName(), definitionData })
         .catch(e => swal('Error', e.message, 'error'))
         .then(() => {
-          swal('Success', `Added ${name}`, 'success').then(() => clear());
+          swal({
+            title: 'Success',
+            text: 'Order added successfully. Save QRCode for dispensing.',
+            icon: qrCode,
+          }).then(() => clear());
         });
     } else {
       setError({ has: true, message: 'Please input all required fields' });
