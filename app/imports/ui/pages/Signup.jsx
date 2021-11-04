@@ -5,13 +5,11 @@ import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-rea
 import { Accounts } from 'meteor/accounts-base';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
-import { ROLE } from '../../api/role/Role';
 
 /**
  * Signup component is similar to signin component, but we create a new user instead.
  */
 const Signup = ({ location }) => {
-  const [role, setRole] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [uhNumber, setUHNumber] = useState('');
@@ -23,9 +21,6 @@ const Signup = ({ location }) => {
   // Update the form controls each time the user interacts with them.
   const handleChange = (e, { name, value }) => {
     switch (name) {
-    case 'role':
-      setRole(value);
-      break;
     case 'firstName':
       setFirstName(value);
       break;
@@ -48,7 +43,7 @@ const Signup = ({ location }) => {
 
   /* Handle Signup submission. Create user account and a profile entry, then redirect to the home page. */
   const submit = () => {
-    Accounts.createUser({ role, firstName, lastName, uhNumber, email, username: email, password }, (err) => {
+    Accounts.createUser({ firstName, lastName, uhNumber, email, username: email, password }, (err) => {
       if (err) {
         setError(err.reason);
       } else {
@@ -75,25 +70,6 @@ const Signup = ({ location }) => {
             </Header>
             <Form onSubmit={submit}>
               <Segment stacked>
-                <Form.Group inline>
-                  <label>Are you a provider?</label>
-                  <Form.Radio
-                    label='Yes'
-                    id={COMPONENT_IDS.SIGN_UP_FORM_PROVIDER_ROLE}
-                    value={ROLE.PROVIDER}
-                    checked={role === ROLE.PROVIDER}
-                    name='role'
-                    onChange={handleChange}
-                  />
-                  <Form.Radio
-                    label='No'
-                    id={COMPONENT_IDS.SIGN_UP_FORM_USER_ROLE}
-                    value={ROLE.USER}
-                    checked={role === ROLE.USER}
-                    name='role'
-                    onChange={handleChange}
-                  />
-                </Form.Group>
                 <Form.Group widths='equal'>
                   <Form.Input
                     label="First Name"
