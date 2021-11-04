@@ -42,14 +42,13 @@ const DispenseMedication = ({ set, open, setOpen }) => {
     setItem(product);
     // Setting lot dropdown back to original list, just in case user switches to different item instead of previously selected
     resetList();
-
-    const itemChoosen = uniqueNames.find((i) => i.key === product);
-    const index = _.indexOf(uniqueNames, itemChoosen);
     // Finds the item with the same _id in the collection as the product variable and returns the lot(s)
     // Iterates through each lot number in the find and filters the lotList in the dropdown with matching lot numbers.
     // Lastly, flattens the result by one so it is just an array of objects.
     const lots = _.flatten((set.find((i) => i._id === product).lot).map((j) => uniqueLot.filter((i) => i.value === j)));
     setLotList(lots);
+    // Grabbing index of lot num in entire list
+    const index = _.findIndex(uniqueLot, lots[0]);
     setLotNumber(uniqueLot[index].text);
   };
 
@@ -135,13 +134,11 @@ const DispenseMedication = ({ set, open, setOpen }) => {
                     <Form.Dropdown
                       search
                       selection
-                      disabled={lotList.length === 1}
                       placeholder="Lot Number"
                       options={lotList}
                       value={lotNumber}
                       onChange={(e, data) => findItem(data.value)}
                     />
-                    <Button onClick={resetList} disabled={lotList.length === uniqueLot.length}>Reset LOT List</Button>
                   </Form.Field>
                   <Form.Field required>
                     <label>Item</label>
