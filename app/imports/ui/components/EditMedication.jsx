@@ -126,7 +126,7 @@ const EditMedication = ({ item, open, setOpen, medications }) => {
                 onChange={(e, data) => setUnit(data.value)}
               />
             </Form.Group>
-            <Form.Input note='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
+            <Form.TextArea name='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
           </Form.Field>
           <Message error header='Error' content={error.message}/>
         </Form>

@@ -103,7 +103,7 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
               />
             </Form.Group>
           </Form.Field>
-          <Form.Input note='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
+          <Form.TextArea name='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
           <Message error header='Error' content={error.message}/>
         </Form>
       </Modal.Content>

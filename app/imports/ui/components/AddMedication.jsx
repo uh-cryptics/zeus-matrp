@@ -142,7 +142,7 @@ const AddMedication = ({ medications, open, setOpen }) => {
                 onChange={(e, data) => setLot(data.value)}
               />
             </Form.Group>
-            <Form.Input note='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
+            <Form.TextArea name='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
             <Message error header='Error' content={error.message}/>
           </Form>
         </Modal.Content>
