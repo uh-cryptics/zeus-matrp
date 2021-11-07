@@ -6,7 +6,6 @@ import QRCode from 'qrcode';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
 import { filterOutUndefined, sortList } from '../utilities/ListFunctions';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { Medication, types } from '../../api/medication/MedicationCollection';
 
 let qrCode;
@@ -41,7 +40,7 @@ const AddMedication = ({ medications, open, setOpen }) => {
       const definitionData = { name, type, location, quantity: _.toNumber(quantity), expiration, obtained, lot, unit, note };
       const collectionName = Medication.getCollectionName();
       defineMethod.callPromise({ collectionName, definitionData })
-        .catch(e => swal('Error', e.message, 'error'))
+        .catch(e =>('Error', e.message, 'error'))
         .then(() => {
 
           swal({
