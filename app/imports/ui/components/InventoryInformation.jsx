@@ -3,8 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Roles } from 'meteor/alanning:roles';
-import { Button, Grid, Header, Icon, List, Modal } from 'semantic-ui-react';
-import moment from 'moment';
+import { Button, Header, Icon, Modal } from 'semantic-ui-react';
 import { ROLE } from '../../api/role/Role';
 
 const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (item ?
@@ -16,151 +15,11 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
     size='small'>
     <Header icon={table === 'medications' ? 'pills' : 'first aid'} content={item.name} />
     <Modal.Content>
-
-      {table === 'medications' ?
-        <Grid columns={3} divided>
-          <Grid.Row>
-            <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Name
-                <Header.Subheader>
-                  {item.name}
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-            <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Type
-                <Header.Subheader>
-                  <List>
-                    {item.type?.map((t, index) => <List.Item key={index}>{t}</List.Item>)}
-                  </List>
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Quantity
-                <Header.Subheader>
-                  {item.quantity}&nbsp;{item.unit}
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-            <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Location
-                <Header.Subheader>
-                  {item.location}
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Lot
-                <Header.Subheader>
-                  <List>
-                    {item.lot.map((number, index) => <List.Item key={index}>{number}</List.Item>)}
-                  </List>
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-            <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Expiration
-                <Header.Subheader>
-                  {moment(item.expiration).format('LL')}
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-            <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Obtained
-                <Header.Subheader>
-                  {item.obtained}
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-          </Grid.Row>
-          <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-            Note
-            <Header.Subheader>
-              {item.note}
-            </Header.Subheader>
-          </Header>
-        </Grid>
-        :
-        <Grid columns={3} divided>
-          <Grid.Row>
-            <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Name
-                <Header.Subheader>
-                  {item.name}
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-            <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Quantity
-                <Header.Subheader>
-                  {item.quantity}&nbsp;{item.unit}
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Location
-                <Header.Subheader>
-                  {item.location}
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-            <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Lot
-                <Header.Subheader>
-                  <List>
-                    {item.lot.map((number, index) => <List.Item key={index}>{number}</List.Item>)}
-                  </List>
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Expiration
-                <Header.Subheader>
-                  {item.expiration ? moment(item.expiration).format('LL') : 'N/A'}
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-            <Grid.Column>
-              <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Obtained
-                <Header.Subheader>
-                  {item.obtained}
-                </Header.Subheader>
-              </Header>
-            </Grid.Column>
-          </Grid.Row>
-          <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-            Note
-            <Header.Subheader>
-              {item.note}
-            </Header.Subheader>
-          </Header>
-        </Grid>
-      }
-
-      {/* {Object.keys(item).filter(key => key !== '_id').map(keys => <Header content={_.startCase(keys)} subheader={item[keys]}/>)} */}
-
+      {Object.keys(item).map((keys, index) => keys === 'quantity' && item[keys] < 11 ?
+      [<span key={`span_${index}`} style={{color:"red"}}>{keys.toUpperCase()}: {item[keys].toString() + ' (WARNING: Low Inventory)'}</span>,
+        <br key={`br_${index}`} />] :
+      [<span key={`span_${index}`}>{keys.toUpperCase()}: {item[keys] instanceof Date ?
+        item[keys].toLocaleDateString() : item[keys].toString()}</span>, <br key={`br_${index}`} />])}
     </Modal.Content>
     {currentUser ?
       <Modal.Actions>
@@ -168,7 +27,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
           <Icon name='trash' /> Delete
         </Button>
         <Button color='blue' onClick={() => setOpen(false, 'edit')}>
-          <Icon name='edit' /> Edit
+          <Icon name='edit' /> Editç
         </Button>
       </Modal.Actions>
       :

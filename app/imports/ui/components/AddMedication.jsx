@@ -42,10 +42,15 @@ const AddMedication = ({ medications, open, setOpen }) => {
       defineMethod.callPromise({ collectionName, definitionData })
         .catch(e =>('Error', e.message, 'error'))
         .then(() => {
+          // if this doesnt work then its fucked
+          // [] todo: search medication collection for item that matches definitionData
+          //          get the id of the item found
+          // replace lines 13 - 15 here
+          // make the qr url to end with id
 
           swal({
             title: 'Success',
-            text: 'Order added successfully. Save QRCode for dispensing.',
+            text: `Added ${name}`,
             icon: qrCode,
           }).then(() => clear());
 

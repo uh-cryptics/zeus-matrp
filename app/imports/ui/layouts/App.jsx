@@ -16,6 +16,7 @@ import ManageDatabase from '../pages/ManageDatabase';
 import { ROLE } from '../../api/role/Role';
 import ListHistory from '../pages/ListHistory';
 import ManageUsers from '../pages/ManageUsers';
+import DispenseQR from '../components/DispenseQR';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -29,6 +30,7 @@ class App extends React.Component {
             <Route path="/signin" component={Signin}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/signout" component={Signout}/>
+            <ProtectedRoute path="/dispenseqr/:_id" component={DispenseQR}/>
             <ProtectedRoute path="/list" component={ListInventory}/>
             {/* <ProtectedRoute path="/add" component={AddStuff}/>
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/> */}
