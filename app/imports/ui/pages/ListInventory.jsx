@@ -13,6 +13,8 @@ import { Medication } from '../../api/medication/MedicationCollection';
 import { Supply } from '../../api/supply/SupplyCollection';
 import AddSupply from '../components/AddSupply';
 import DispenseSupply from '../components/DispenseSupply';
+import { UserProfiles } from '../../api/user/UserProfileCollection';
+import { AdminProfiles } from '../../api/user/AdminProfileCollection';
 
 const ListInventory = ({ currentUser, ready, medications, supplies }) => {
   const [showTable, setShowTable] = useState('medications');
@@ -20,6 +22,7 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
   const [dispense, setDispense] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchFilter, setSearchFilter] = useState('');
+  const [userNames, setUserNames] = useState();
 
   const handleTable = (value) => {
     setShowTable(value);
@@ -109,7 +112,16 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
               }
             </Menu.Item>
             : ''}
-          <Menu.Item position='right' onClick={() => { setDispense(true); }}>
+          <Menu.Item position='right' onClick={() => {
+            if (currentUser) {
+              const names = AdminProfiles.findByEmail(Meteor.user().username);
+              setUserNames(names);
+            } else {
+              const names = UserProfiles.findByEmail(Meteor.user().username);
+              setUserNames(names);
+            }
+            setDispense(true);
+          }}>
             Dispense &nbsp;
             <Icon size='large' name='user md' />
           </Menu.Item>
@@ -127,9 +139,9 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
         </>
       }
       {(showTable === 'medications') ?
-        <DispenseMedication set={medications} open={dispense} setOpen={setDispense} />
+        <DispenseMedication set={medications} open={dispense} setOpen={setDispense} fullName={userNames}/>
         :
-        <DispenseSupply set={supplies} open={dispense} setOpen={setDispense} />
+        <DispenseSupply set={supplies} open={dispense} setOpen={setDispense} fullName={userNames} />
       }
     </Container>
   ) :
@@ -152,8 +164,10 @@ export default withTracker(() => {
   // Get access to Stuff documents.
   const subscription = Medication.subscribeMedication();
   const subscription2 = Supply.subscribeSupply();
+  const subscription3 = UserProfiles.subscribe();
+  const subscription4 = AdminProfiles.subscribe();
   // Determine if the subscription is ready
-  const ready = subscription.ready() && subscription2.ready();
+  const ready = subscription.ready() && subscription2.ready() && subscription3.ready() && subscription4.ready();
   // Get the Medication and Supply documents and sort them by name.
   const medications = Medication.find({}, { sort: { name: 1 } }).fetch();
   const supplies = Supply.find({}, { sort: { name: 1 } }).fetch();
