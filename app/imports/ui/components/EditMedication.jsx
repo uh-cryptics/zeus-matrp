@@ -1,31 +1,38 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Header, Icon, Input, Loader, Message, Modal, Select } from 'semantic-ui-react';
-import { Medication, types } from '../../api/medication/MedicationCollection';
-import { updateMethod } from '../../api/base/BaseCollection.methods';
+import { Button, Form, Header, Icon, Input, Message, Modal } from 'semantic-ui-react';
 import swal from 'sweetalert';
 import moment from 'moment';
 import _ from 'lodash';
+import { filterOutUndefined, sortList } from '../utilities/ListFunctions';
+import { updateMethod } from '../../api/base/BaseCollection.methods';
+import { Medication, types } from '../../api/medication/MedicationCollection';
 
-const EditMedication = ({ item, open, setOpen }) => {
+const EditMedication = ({ item, open, setOpen, medications }) => {
 
   if (open) {
+    const uniqueLocations = _.uniq(medications.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
+    const uniqueUnits = filterOutUndefined(_.uniq(medications.map(med => med.unit)).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit })));
+
     const [name, setName] = useState(item.name);
     const [type, setType] = useState(item.type);
     const [expDate, setExpDate] = useState(moment(item.expiration).format('YYYY-MM-DD'));
     const [location, setLocation] = useState(item.location);
+    const [units, setUnits] = useState(sortList(uniqueUnits, (t) => t.text.toLowerCase()));
+    const [locations, setLocations] = useState(sortList(uniqueLocations, (t) => t.text.toLowerCase()));
     const [quantity, setQuantity] = useState(item.quantity);
+    const [unit, setUnit] = useState(item.unit);
+    const [note, setNote] = useState(item.note);
     const [error, setError] = useState({ has: false, message: '' });
     const uniqueMedType = types.map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
-    const uniqueLocations = _.uniq(Medication.find().map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
 
     const submit = () => {
-      console.log(name && type && expDate && location && _.isNumber(quantity) && (type.length > 0));
-      if (name && type && expDate && location && _.isNumber(quantity) && (type.length > 0)) {
-        const updateData = { id: item._id, name, type, expiration: moment(expDate).format('MM/DD/YYYY'), location, quantity };
-        updateMethod.callPromise({ collectionName: Medication.getCollectionName(), updateData })
+      if (name && type && expDate && location && quantity && (type.length > 0) && note) {
+        const updateData = { id: item._id, name, type, expiration: moment(expDate).format('MM/DD/YYYY'), location, quantity: _.toNumber(quantity), unit, note };
+        const collectionName = Medication.getCollectionName();
+        updateMethod.callPromise({ collectionName, updateData })
           .catch(error => swal('Error', error.message, 'error'))
-          .then(() => swal('Success', 'Item updated successfully', 'success').then(() => clear()));
+          .then(() => swal({ title: 'Success', text: 'Item updated successfully', icon: 'success', timer: 1500 }).then(() => clear()));
       } else {
         setError({ has: true, message: 'Please input all required fields' });
       }
@@ -37,6 +44,7 @@ const EditMedication = ({ item, open, setOpen }) => {
       setExpDate('');
       setLocation('');
       setQuantity('');
+      setNote('');
       setOpen(false, reason);
     };
 
@@ -91,7 +99,9 @@ const EditMedication = ({ item, open, setOpen }) => {
                 search
                 selection
                 label='Location'
-                options={uniqueLocations}
+                allowAdditions
+                onAddItem={(e, { value }) => setLocations(sortList(locations.concat([{ key: `loc${locations.length}`, text: value, value: value }]), (t) => t.text.toLowerCase()))}
+                options={locations}
                 value={location}
                 onChange={(e, data) => setLocation(data.value)}
               />
@@ -101,15 +111,28 @@ const EditMedication = ({ item, open, setOpen }) => {
             <Form.Group widths="equal">
               <Form.Field required>
                 <label>Supply</label>
-                <Input type="number" placeholder={item.quantity} onChange={(e) => setQuantity(parseInt(e.target.value), 10)} value={quantity}/>
+                <Input type="number" placeholder={item.quantity} min="0" onChange={(e) => setQuantity(e.target.value)} value={quantity}/>
               </Form.Field>
+              <Form.Dropdown
+                name='unit'
+                placeholder='Select Unit'
+                search
+                selection
+                allowAdditions
+                label='Unit'
+                options={units}
+                value={unit}
+                onAddItem={(e, { value }) => setUnits(sortList(units.concat([{ key: `unit${units.length}`, text: value, value: value }]), (t) => t.text.toLowerCase()))}
+                onChange={(e, data) => setUnit(data.value)}
+              />
             </Form.Group>
+            <Form.TextArea name='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
           </Form.Field>
           <Message error header='Error' content={error.message}/>
         </Form>
       </Modal.Content>
       <Modal.Actions>
-        <Button color='red' onClick={() => clear('cancel')}>
+        <Button color='black' onClick={() => clear('cancel')}>
           <Icon name='cancel'/> Cancel
         </Button>
         <Button color='blue' onClick={() => submit()}>
@@ -117,15 +140,16 @@ const EditMedication = ({ item, open, setOpen }) => {
         </Button>
       </Modal.Actions>
     </Modal>;
-  } else {
-    return <></>
   }
+  return <></>;
+
 };
 
 EditMedication.propTypes = {
   open: PropTypes.bool,
   setOpen: PropTypes.func,
   item: PropTypes.object,
+  medications: PropTypes.array,
 };
 
 export default EditMedication;

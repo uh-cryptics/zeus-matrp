@@ -2,7 +2,10 @@
   "defaultAccounts": [
     { "email": "admin@foo.com", "password": "changeme", "role": "ADMIN", "firstName": "Admin", "lastName": "MATRP"
     },
-    { "email": "john@foo.com", "password": "changeme", "role": "USER" , "firstName": "John", "lastName": "Doe" }
+    { "email": "john@foo.com", "password": "changeme", "role": "USER" , "firstName": "John", "lastName": "Doe" },
+    { "email": "bob@foo.com", "password": "changeme", "role": "PROVIDER", "firstName": "Bob", "lastName": "Norman",
+      "uhNumber": "12345678"
+    }
   ],
 
   "public": {

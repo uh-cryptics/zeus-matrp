@@ -22,9 +22,14 @@ const NavBar = ({ currentUser }) => {
       ) : ''}
       {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
         [// [<Menu.Item id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>,
+          <Menu.Item id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} activeClassName="active" exact to="/patient-history" key='patient-history'>List History</Menu.Item>]
+      ) : ''}
+      {Roles.userIsInRole(Meteor.userId(), [ROLE.ADMIN]) ? (
+        [// [<Menu.Item id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>,
           <Dropdown id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN} item text="Manage" key="manage-dropdown">
             <Dropdown.Menu>
               <Dropdown.Item id={COMPONENT_IDS.NAVBAR_MANAGE_DROPDOWN_DATABASE} key="manage-database" as={NavLink} exact to="/manage-database" content="Database" />
+              <Dropdown.Item key="manage-users" as={NavLink} exact to="/manage-users" content="Users" />
             </Dropdown.Menu>
           </Dropdown>]
       ) : ''}

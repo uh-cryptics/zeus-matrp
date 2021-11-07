@@ -1,26 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Table, Segment } from 'semantic-ui-react';
+import _ from 'lodash';
 import InventoryInformation from './InventoryInformation';
 import EditMedication from './EditMedication';
 import EditSupply from './EditSupply';
 import DeleteMedication from './DeleteMedication';
 import DeleteSupply from './DeleteSupply';
 
-const InventoryTable = ({ inventory, table, setting }) => {
+const InventoryTable = ({ inventory, table, setting, filter }) => {
   const [itemInfo, setItemInfo] = useState(null);
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState(false);
   const [deleting, setDelete] = useState(false);
-  // const [setting, setSearchTerm] = useState('');
-
-  // const searchTable = () => (
-  //   <Menu.Item>
-  //     <Input className='icon' icon='search' placeholder='Search...' onChange={(e) => {
-  //       setSearchTerm(setting);
-  //     }}/>
-  //   </Menu.Item>
-  // );
 
   const setOpenCallBack = (value, reason) => {
     if (!value && reason === 'edit') {
@@ -34,26 +26,32 @@ const InventoryTable = ({ inventory, table, setting }) => {
   };
 
   const openInventoryInfo = (item) => {
-    setItemInfo(item);
+    if (item) {
+      setItemInfo(item);
+    }
     setOpenCallBack(true, 'open');
   };
 
   const setEditCallback = (value, reason) => {
     if (reason === 'cancel') {
-      openInventoryInfo(itemInfo);
+      openInventoryInfo();
     }
     setEdit(value);
   };
 
   const setDeleteCallback = (value, reason) => {
     if (reason === 'cancel') {
-      openInventoryInfo(itemInfo);
+      openInventoryInfo();
     }
     setDelete(value);
   };
 
   const tableHeader = () => {
-    const headers = Object.keys(inventory[0]).filter((header) => (!(/(_id|type|obtained)/).test(header) ? header : null));
+    const headers = Object.keys(inventory[0]).filter((header) => (!(/(_id|type|obtained|note)/).test(header) ? header : null));
+    if (headers[headers.length - 1] !== 'unit') {
+      headers.push('unit');
+    }
+
     const tableHeaders = headers.map((header, i) => {
       const key = `h${i}`;
       const newHeader = header.toUpperCase();
@@ -64,21 +62,68 @@ const InventoryTable = ({ inventory, table, setting }) => {
   };
 
   const tableData = () => {
-    const headers = Object.keys(inventory[0]).filter(header => (!(/(_id|type|obtained)/).test(header) ? header : null));
+    const headers = Object.keys(inventory[0]).filter(header => (!(/(_id|type|obtained|note)/).test(header) ? header : null));
     const listedItems = inventory.filter((value => {
-      if (setting === '') {
-        return value;
-      } if (value.name.toLowerCase().includes(setting.toLowerCase()) ||
+      if (setting === '' && filter === 'Low') {
+        return value.quantity < 11;
+      }
+      if (filter === 'Low') {
+        if (value.name.toLowerCase().includes(setting.toLowerCase())) {
+          return value.name && value.quantity < 11;
+        }
+      }
+      if (filter === '' || filter === 'All') {
+        // Goes through each value's set of lot numbers and checks if it includes what is typed. It returns an array of boolean values
+        // and looks for a true if one of the lots per item matches. If so, it should appear.
+        const lotsPerItem = _.find(value.lot.map((item) => {
+          if (item.toLowerCase().includes(setting.toLowerCase())) { return true; } return false;
+        }), function (e) { return e === true; });
+
+        if (
+          value.name.toLowerCase().includes(setting.toLowerCase()) ||
+          value.quantity.toString().includes(setting) ||
           value.location.toLowerCase().includes(setting.toLowerCase()) ||
-          value.lot.toLowerCase().includes(setting.toLowerCase())) {
-        return value;
+          lotsPerItem
+        ) {
+          return value;
+        }
+      }
+      if (filter === 'Name') {
+        if (value.name.toLowerCase().includes(setting.toLowerCase())) {
+          return value;
+        }
+      }
+      if (filter === 'Location') {
+        if (value.location.toLowerCase().includes(setting.toLowerCase())) {
+          return value;
+        }
+      }
+      if (filter === 'Quantity') {
+        if (value.quantity.toString().includes(setting)) {
+          return value;
+        }
+      }
+      if (filter === 'Lot') {
+        let result;
+        // Maps through each item's lot number and checking if it matches the user's search
+        if (value.lot.map((item) => {
+          if (item.toLowerCase().includes(setting.toLowerCase())) {
+            result = value;
+            return value;
+          }
+          return null;
+        }) !== null) return result;
       }
     })).map((row, i) => {
       const rows = { ...row };
       delete rows._id;
       delete rows.type;
       delete rows.obtained;
+      delete rows.note;
       delete rows.reserve;
+      if (rows.unit === undefined) {
+        rows.unit = 'N/A';
+      }
       const columns = (Object.values(rows)).map((col, j) => {
         const key = `${i}_${j}`;
         let column = col;
@@ -92,8 +137,10 @@ const InventoryTable = ({ inventory, table, setting }) => {
 
         return <Table.Cell key={key} data-label={headers[j]}>{column.toString()}</Table.Cell>;
       });
+      // eslint-disable-next-line no-nested-ternary
+      const notify = row.quantity < 5 ? 'error' : row.quantity < 11 ? 'warning' : '';
       return (
-        <Table.Row key={i} onClick={() => openInventoryInfo(row)} style={{ cursor: 'pointer' }}>
+        <Table.Row key={i} onClick={() => openInventoryInfo(row)} style={{ cursor: 'pointer' }} warning={notify === 'warning'} error={notify === 'error'}>
           {columns}
         </Table.Row>
       );
@@ -105,9 +152,9 @@ const InventoryTable = ({ inventory, table, setting }) => {
     <div>
       <InventoryInformation table={table} item={itemInfo} open={open} setOpen={setOpenCallBack} />
       {(table === 'medications') ?
-        <EditMedication item={itemInfo} open={edit} setOpen={setEditCallback} />
+        <EditMedication item={itemInfo} open={edit} setOpen={setEditCallback} medications={inventory} />
         :
-        <EditSupply item={itemInfo} open={edit} setOpen={setEditCallback} />
+        <EditSupply item={itemInfo} open={edit} setOpen={setEditCallback} supplies={inventory} />
       }
       {(table === 'medications') ?
         <DeleteMedication item={itemInfo} open={deleting} setOpen={setDeleteCallback} />
@@ -134,6 +181,7 @@ InventoryTable.propTypes = {
   inventory: PropTypes.array.isRequired,
   table: PropTypes.string.isRequired,
   setting: PropTypes.string.isRequired,
+  filter: PropTypes.string.isRequired,
 };
 
 export default InventoryTable;

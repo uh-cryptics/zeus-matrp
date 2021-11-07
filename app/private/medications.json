@@ -6,8 +6,9 @@
     ],
     "expiration": "10/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "8BAC36F4",
     "quantity": 119,
+    "unit": "L",
     "location": "Case 2"
   },
   {
@@ -17,8 +18,9 @@
     ],
     "expiration": "3/17",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "780A6E17",
     "quantity": 119,
+    "unit": "L",
     "location": "Case 2"
   },
   {
@@ -28,8 +30,9 @@
     ],
     "expiration": "03/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "21550455",
     "quantity": 119,
+    "unit": "mL",
     "location": "Case 2"
   },
   {
@@ -39,8 +42,9 @@
     ],
     "expiration": "8/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "0F36BEB1",
     "quantity": 2,
+    "unit": "mL",
     "location": "Case 2"
   },
   {
@@ -50,8 +54,9 @@
     ],
     "expiration": "5/17",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "2F639B19",
     "quantity": 2,
+    "unit": "mg",
     "location": "Case 2"
   },
   {
@@ -61,8 +66,9 @@
     ],
     "expiration": "8/30/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "624C1B3D",
     "quantity": 2,
+    "unit": "mL",
     "location": "Case 2"
   },
   {
@@ -72,8 +78,9 @@
     ],
     "expiration": "09/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "BEEF9404",
     "quantity": 1.5,
+    "unit": "mg",
     "location": "Case 2"
   },
   {
@@ -83,8 +90,9 @@
     ],
     "expiration": "12/1/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "209B86DD",
     "quantity": 1.5,
+    "unit": "mg",
     "location": "Case 2"
   },
   {
@@ -94,8 +102,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "2184DE64",
     "quantity": 415,
+    "unit": "mg",
     "location": "Case 2"
   },
   {
@@ -105,8 +114,9 @@
     ],
     "expiration": "10/15/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "C8EEEAE2",
     "quantity": 0,
+    "unit": "g",
     "location": "Case 2"
   },
   {
@@ -116,8 +126,9 @@
     ],
     "expiration": "8/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "863C9B23",
     "quantity": 2,
+    "unit": "g",
     "location": "Case 1 "
   },
   {
@@ -127,8 +138,9 @@
     ],
     "expiration": "12/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "3EA44DFB",
     "quantity": 36,
+    "unit": "mg",
     "location": "Case 2"
   },
   {
@@ -138,8 +150,9 @@
     ],
     "expiration": "04/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "22C208EF",
     "quantity": 343,
+    "unit": "mg",
     "location": "Case 2"
   },
   {
@@ -149,8 +162,9 @@
     ],
     "expiration": "07/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "C65416C0",
     "quantity": 100,
+    "unit": "mg",
     "location": "Case 2"
   },
   {
@@ -160,8 +174,9 @@
     ],
     "expiration": "05/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "2E1DF36E",
     "quantity": 100,
+    "unit": "mg",
     "location": "Case 2"
   },
   {
@@ -171,8 +186,9 @@
     ],
     "expiration": "10/15/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "B393F0C6",
     "quantity": 90,
+    "unit": "mg",
     "location": "Case 2"
   },
   {
@@ -182,8 +198,9 @@
     ],
     "expiration": "07/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "A7BFC2B7",
     "quantity": 1,
+    "unit": "g",
     "location": "Case 1"
   },
   {
@@ -193,8 +210,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "C3931B84",
     "quantity": 1,
+    "unit": "L",
     "location": "Refrigerator Closet"
   },
   {
@@ -204,8 +222,9 @@
     ],
     "expiration": "10/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "9CF79A3F",
     "quantity": 2,
+    "unit": "L",
     "location": "Case 1"
   },
   {
@@ -215,8 +234,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "67F0FFC6",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 2"
   },
   {
@@ -226,8 +246,9 @@
     ],
     "expiration": "12/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "D2F0A73E",
     "quantity": 2,
+    "unit": "mg",
     "location": "Case 2"
   },
   {
@@ -237,8 +258,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "8AB0806E",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 2"
   },
   {
@@ -248,8 +270,9 @@
     ],
     "expiration": "03/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "359DE694",
     "quantity": 1,
+    "unit": "g",
     "location": "Case 2"
   },
   {
@@ -259,8 +282,9 @@
     ],
     "expiration": "12/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "ADCD8946",
     "quantity": 4,
+    "unit": "mg",
     "location": "Case 2"
   },
   {
@@ -270,8 +294,9 @@
     ],
     "expiration": "04/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "A2F5C15E",
     "quantity": 150,
+    "unit": "mg",
     "location": "Case 6"
   },
   {
@@ -281,8 +306,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "C728482D",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 3"
   },
   {
@@ -292,8 +318,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "D802DC81",
     "quantity": 1,
+    "unit": "L",
     "location": "Case 3"
   },
   {
@@ -303,8 +330,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "F5631028",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 6"
   },
   {
@@ -314,8 +342,9 @@
     ],
     "expiration": "09/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "036FCD1D",
     "quantity": 2,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -325,8 +354,9 @@
     ],
     "expiration": "05/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "695A2017",
     "quantity": 60,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -336,8 +366,9 @@
     ],
     "expiration": "04/18/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "CA39A7E0",
     "quantity": 30,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -347,8 +378,9 @@
     ],
     "expiration": "05/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "429ED699",
     "quantity": 1,
+    "unit": "L",
     "location": "Case 4"
   },
   {
@@ -358,8 +390,9 @@
     ],
     "expiration": "10/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "B053B28F",
     "quantity": 100,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -369,8 +402,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "B8580FBD",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -380,8 +414,9 @@
     ],
     "expiration": "09/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "A10886D9",
     "quantity": 300,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -391,8 +426,9 @@
     ],
     "expiration": "05/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "8CB7325F",
     "quantity": 50,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -402,8 +438,9 @@
     ],
     "expiration": "03/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "E56739DF",
     "quantity": 80,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -413,8 +450,9 @@
     ],
     "expiration": "6/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "DD310F59",
     "quantity": 112,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -424,8 +462,9 @@
     ],
     "expiration": "05/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "E3288C40",
     "quantity": 100,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -435,8 +474,9 @@
     ],
     "expiration": "07/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "B5C93ADD",
     "quantity": 50,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -446,8 +486,9 @@
     ],
     "expiration": "04/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "971F87A2",
     "quantity": 60,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -457,8 +498,9 @@
     ],
     "expiration": "01/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "9478CEB0",
     "quantity": 1,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -468,8 +510,9 @@
     ],
     "expiration": "10/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "E2370C1C",
     "quantity": 1,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -479,8 +522,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "3A459C46",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -490,8 +534,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "FCF2117C",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -501,8 +546,9 @@
     ],
     "expiration": "1/1/17",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "1CACF4C6",
     "quantity": 1,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -512,8 +558,9 @@
     ],
     "expiration": "01/18/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "63F01CC3",
     "quantity": 1,
+    "unit": "g",
     "location": "Case 4"
   },
   {
@@ -523,8 +570,9 @@
     ],
     "expiration": "10/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "CC059688",
     "quantity": 1,
+    "unit": "mL",
     "location": "Bottom Drawer"
   },
   {
@@ -534,8 +582,9 @@
     ],
     "expiration": "10/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "D4C3B63C",
     "quantity": 2,
+    "unit": "mg",
     "location": "Bottom Drawer"
   },
   {
@@ -545,8 +594,9 @@
     ],
     "expiration": "02/18/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "DE8E3C48",
     "quantity": 1,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -556,8 +606,9 @@
     ],
     "expiration": "04/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "31A49A3D",
     "quantity": 1,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -567,8 +618,9 @@
     ],
     "expiration": "1/31/19",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "4647890D",
     "quantity": 30,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -578,8 +630,9 @@
     ],
     "expiration": "8/20/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "8E86E1BA",
     "quantity": 29,
+    "unit": "L",
     "location": "Case 4"
   },
   {
@@ -589,8 +642,9 @@
     ],
     "expiration": "3/1/17",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "A02375C5",
     "quantity": 70,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -600,8 +654,9 @@
     ],
     "expiration": "04/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "8B0A6482",
     "quantity": 500,
+    "unit": "mg",
     "location": "Case 4"
   },
   {
@@ -611,8 +666,9 @@
     ],
     "expiration": "4/30/18",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "381995FC",
     "quantity": 32,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -622,8 +678,9 @@
     ],
     "expiration": "4/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "E8CC139E",
     "quantity": 103,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -633,8 +690,9 @@
     ],
     "expiration": "8/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "6ACBBFE7",
     "quantity": 84,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -644,8 +702,9 @@
     ],
     "expiration": "6/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "B95BC26E",
     "quantity": 219,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -655,8 +714,9 @@
     ],
     "expiration": "4/1/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "7C1A2AD7",
     "quantity": 86,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -666,8 +726,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "2ADE94C6",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -677,8 +738,9 @@
     ],
     "expiration": "4/30/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "73EFC379",
     "quantity": 119,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -688,8 +750,9 @@
     ],
     "expiration": "04/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "D619B267",
     "quantity": 100,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -699,8 +762,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "CF8C4D0D",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -710,8 +774,9 @@
     ],
     "expiration": "02/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "22710BCC",
     "quantity": 90,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -721,8 +786,9 @@
     ],
     "expiration": "04/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "6D11FAD8",
     "quantity": 100,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -732,8 +798,9 @@
     ],
     "expiration": "4/30/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "2BC022D2",
     "quantity": 115,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -743,8 +810,9 @@
     ],
     "expiration": "8/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "9233D2B2",
     "quantity": 251,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -754,8 +822,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "5B858859",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -765,8 +834,9 @@
     ],
     "expiration": "7/1/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "BB85180E",
     "quantity": 100,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -776,8 +846,9 @@
     ],
     "expiration": "8/1/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "4A8DDC92",
     "quantity": 40,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -787,8 +858,9 @@
     ],
     "expiration": "4/1/2017",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "FA303E01",
     "quantity": 71,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -798,8 +870,9 @@
     ],
     "expiration": "7/1/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "C59F7E6A",
     "quantity": 67,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -809,8 +882,9 @@
     ],
     "expiration": "7/1/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "0DEF6B78",
     "quantity": 70,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -820,8 +894,9 @@
     ],
     "expiration": "09/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "D1231DD4",
     "quantity": 100,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -831,8 +906,9 @@
     ],
     "expiration": "11/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "466FE387",
     "quantity": 1,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -842,8 +918,9 @@
     ],
     "expiration": "04/18/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "EA38BB7C",
     "quantity": 1,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -853,8 +930,9 @@
     ],
     "expiration": "09/18/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "4A2A36F9",
     "quantity": 1,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -864,8 +942,9 @@
     ],
     "expiration": "06/18/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "43001A40",
     "quantity": 100,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -875,8 +954,9 @@
     ],
     "expiration": "12/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "DF6397C7",
     "quantity": 100,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -886,8 +966,9 @@
     ],
     "expiration": "09/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "82A9ED24",
     "quantity": 30,
+    "unit": "L",
     "location": "Freezer"
   },
   {
@@ -897,8 +978,9 @@
     ],
     "expiration": "01/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "3BD98D1E",
     "quantity": 1,
+    "unit": "g",
     "location": "Freezer"
   },
   {
@@ -908,8 +990,9 @@
     ],
     "expiration": "10/17",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "DBAD790B",
     "quantity": 2,
+    "unit": "mL",
     "location": "Freezer"
   },
   {
@@ -919,8 +1002,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "A4810233",
     "quantity": 0,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -930,8 +1014,9 @@
     ],
     "expiration": "03/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "79F3FDF6",
     "quantity": 1,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -941,8 +1026,9 @@
     ],
     "expiration": "05/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "E5883E80",
     "quantity": 10,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -952,8 +1038,9 @@
     ],
     "expiration": "7/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "8F008C3D",
     "quantity": 128,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -963,8 +1050,9 @@
     ],
     "expiration": "02/19/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "3C7D7B07",
     "quantity": 60,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -974,8 +1062,9 @@
     ],
     "expiration": "5/17",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "F7DA83A0",
     "quantity": 102,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -985,8 +1074,9 @@
     ],
     "expiration": "02/19/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "060A8B98",
     "quantity": 3,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -996,8 +1086,9 @@
     ],
     "expiration": "10/18/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "557154E7",
     "quantity": 100,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -1007,8 +1098,9 @@
     ],
     "expiration": "03/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "E69CE700",
     "quantity": 60,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -1018,8 +1110,9 @@
     ],
     "expiration": "03/18/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "0A1BAFF9",
     "quantity": 100,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -1029,8 +1122,9 @@
     ],
     "expiration": "12/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "A878ED8F",
     "quantity": 100,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -1040,8 +1134,9 @@
     ],
     "expiration": "08/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "341CF585",
     "quantity": 1,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -1051,8 +1146,9 @@
     ],
     "expiration": "02/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "2982E4C0",
     "quantity": 70,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -1062,8 +1158,9 @@
     ],
     "expiration": "02/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "31536F99",
     "quantity": 30,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -1073,8 +1170,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "EC776454",
     "quantity": 0,
+    "unit": "L",
     "location": "Freezer"
   },
   {
@@ -1084,8 +1182,9 @@
     ],
     "expiration": "09/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "9A7A8EAA",
     "quantity": 480,
+    "unit": "g",
     "location": "Freezer"
   },
   {
@@ -1095,8 +1194,9 @@
     ],
     "expiration": "04/20/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "F1B8A1B9",
     "quantity": 10,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -1106,8 +1206,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "CDD1E301",
     "quantity": 0,
+    "unit": "mg",
     "location": "Freezer"
   },
   {
@@ -1117,8 +1218,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "321939E5",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -1128,8 +1230,9 @@
     ],
     "expiration": "9/30/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "69BA5767",
     "quantity": 90,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -1139,8 +1242,9 @@
     ],
     "expiration": "9/30/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "0513FAA5",
     "quantity": 90,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -1150,8 +1254,9 @@
     ],
     "expiration": "9/30/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "D99A3042",
     "quantity": 90,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -1161,8 +1266,9 @@
     ],
     "expiration": "5/31/17",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "EE4C7518",
     "quantity": 100,
+    "unit": "mg",
     "location": "Case 7"
   },
   {
@@ -1172,8 +1278,9 @@
     ],
     "expiration": "09/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "FD005846",
     "quantity": 2,
+    "unit": "mg",
     "location": "Freezer-Derm"
   },
   {
@@ -1183,8 +1290,9 @@
     ],
     "expiration": "07/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "CC78F6C7",
     "quantity": 67,
+    "unit": "mg",
     "location": "Freezer-Derm"
   },
   {
@@ -1194,8 +1302,9 @@
     ],
     "expiration": "09/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "FB6A4CCC",
     "quantity": 2,
+    "unit": "g",
     "location": "Freezer-Derm"
   },
   {
@@ -1205,8 +1314,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "FDE03282",
     "quantity": 0,
+    "unit": "g",
     "location": "Freezer-Derm"
   },
   {
@@ -1216,8 +1326,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "5785E041",
     "quantity": 2,
+    "unit": "mL",
     "location": "Freezer-Derm"
   },
   {
@@ -1227,8 +1338,9 @@
     ],
     "expiration": "08/18/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "E461131A",
     "quantity": 2,
+    "unit": "g",
     "location": "Freezer-Derm"
   },
   {
@@ -1238,8 +1350,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "2A3A921F",
     "quantity": 0,
+    "unit": "L",
     "location": "Freezer-Derm"
   },
   {
@@ -1249,8 +1362,9 @@
     ],
     "expiration": "11/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "677BCF4E",
     "quantity": 3,
+    "unit": "mg",
     "location": "Freezer-Derm"
   },
   {
@@ -1260,8 +1374,9 @@
     ],
     "expiration": "11/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "DA1EA007",
     "quantity": 3,
+    "unit": "mg",
     "location": "Freezer-Derm"
   },
   {
@@ -1271,8 +1386,9 @@
     ],
     "expiration": "7/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "03A89A86",
     "quantity": 0,
+    "unit": "mg",
     "location": "Freezer-Derm"
   },
   {
@@ -1282,8 +1398,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "865E80F2",
     "quantity": 2,
+    "unit": "mg",
     "location": "Freezer-Derm"
   },
   {
@@ -1293,8 +1410,9 @@
     ],
     "expiration": "03/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "0C103ECD",
     "quantity": 0,
+    "unit": "g",
     "location": "Freezer-Derm"
   },
   {
@@ -1304,8 +1422,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "7BD7FB82",
     "quantity": 0,
+    "unit": "mL",
     "location": "Freezer-Derm"
   },
   {
@@ -1315,8 +1434,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "E6E73A58",
     "quantity": 0,
+    "unit": "L",
     "location": "Freezer-Derm"
   },
   {
@@ -1326,8 +1446,9 @@
     ],
     "expiration": "10/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "14E02040",
     "quantity": 0,
+    "unit": "mg",
     "location": "Freezer-Derm"
   },
   {
@@ -1337,8 +1458,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "72271D36",
     "quantity": 0,
+    "unit": "mg",
     "location": "Drawer 2-2"
   },
   {
@@ -1348,8 +1470,9 @@
     ],
     "expiration": "08/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "2CF8C50E",
     "quantity": 0,
+    "unit": "L",
     "location": "Freezer-Derm"
   },
   {
@@ -1359,8 +1482,9 @@
     ],
     "expiration": "05/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "8BFB0A67",
     "quantity": 1,
+    "unit": "mL",
     "location": "Freezer-Derm"
   },
   {
@@ -1370,8 +1494,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "3EFFC0BF",
     "quantity": 2,
+    "unit": "g",
     "location": "Freezer-Derm"
   },
   {
@@ -1381,8 +1506,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "5BB76CD6",
     "quantity": 1,
+    "unit": "g",
     "location": "Freezer-Derm"
   },
   {
@@ -1392,8 +1518,9 @@
     ],
     "expiration": "5/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "278B2291",
     "quantity": 2,
+    "unit": "mg",
     "location": "Freezer-Derm"
   },
   {
@@ -1403,8 +1530,9 @@
     ],
     "expiration": "2/17",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "A54DE1EF",
     "quantity": 4,
+    "unit": "mg",
     "location": "Freezer-Derm"
   },
   {
@@ -1414,8 +1542,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "83F1F647",
     "quantity": 6,
+    "unit": "mg",
     "location": "Freezer-Derm"
   },
   {
@@ -1425,8 +1554,9 @@
     ],
     "expiration": "04/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "0CCD3298",
     "quantity": 2,
+    "unit": "mg",
     "location": "Freezer-Derm"
   },
   {
@@ -1436,8 +1566,9 @@
     ],
     "expiration": "04/18/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "07FFD9E0",
     "quantity": 2,
+    "unit": "mL",
     "location": "Freezer-Derm"
   },
   {
@@ -1447,8 +1578,9 @@
     ],
     "expiration": "8/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "C51752EE",
     "quantity": 3,
+    "unit": "mL",
     "location": "Freezer-Derm"
   },
   {
@@ -1458,8 +1590,9 @@
     ],
     "expiration": "2/18",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "360A697F",
     "quantity": 4,
+    "unit": "g",
     "location": "Freezer-Derm"
   },
   {
@@ -1469,8 +1602,9 @@
     ],
     "expiration": "10/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "C2DFB285",
     "quantity": 3,
+    "unit": "mg",
     "location": "Freezer-Derm"
   },
   {
@@ -1480,8 +1614,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "8EFFD9FD",
     "quantity": 0,
+    "unit": "g",
     "location": "Freezer-Derm"
   },
   {
@@ -1491,8 +1626,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "570BAC8A",
     "quantity": 0,
+    "unit": "L",
     "location": "Freezer-Derm"
   },
   {
@@ -1502,8 +1638,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "AB331C3F",
     "quantity": 0,
+    "unit": "L",
     "location": "Freezer-Derm"
   },
   {
@@ -1513,8 +1650,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "E9F11BCC",
     "quantity": 0,
+    "unit": "mL",
     "location": "Drawer 2-3"
   },
   {
@@ -1524,8 +1662,9 @@
     ],
     "expiration": "5/18/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "9E171B8A",
     "quantity": 2,
+    "unit": "mL",
     "location": "Freezer-Derm"
   },
   {
@@ -1535,8 +1674,9 @@
     ],
     "expiration": "4/30/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "583228F9",
     "quantity": 50,
+    "unit": "mg",
     "location": "Case 8"
   },
   {
@@ -1546,8 +1686,9 @@
     ],
     "expiration": "6/30/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "D342F334",
     "quantity": 100,
+    "unit": "mg",
     "location": "Case 8"
   },
   {
@@ -1557,8 +1698,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "57B92F24",
     "quantity": 100,
+    "unit": "g",
     "location": "Case 8"
   },
   {
@@ -1568,8 +1710,9 @@
     ],
     "expiration": "4/30/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "A4AC1761",
     "quantity": 60,
+    "unit": "mg",
     "location": "Case 8"
   },
   {
@@ -1579,8 +1722,9 @@
     ],
     "expiration": "03/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "D928EB21",
     "quantity": 42,
+    "unit": "mg",
     "location": "Case 8"
   },
   {
@@ -1590,8 +1734,9 @@
     ],
     "expiration": "04/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "5A24C100",
     "quantity": 42,
+    "unit": "mg",
     "location": "Case 8"
   },
   {
@@ -1601,8 +1746,9 @@
     ],
     "expiration": "06/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "8D485618",
     "quantity": 70,
+    "unit": "mg",
     "location": "Case 8"
   },
   {
@@ -1612,8 +1758,9 @@
     ],
     "expiration": "01/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "1BFC2F9C",
     "quantity": 143,
+    "unit": "mg",
     "location": "Case 8"
   },
   {
@@ -1623,8 +1770,9 @@
     ],
     "expiration": "2/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "DCD9DF80",
     "quantity": 40,
+    "unit": "mg",
     "location": "Case 8"
   },
   {
@@ -1634,8 +1782,9 @@
     ],
     "expiration": "09/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "3354C6CD",
     "quantity": 28,
+    "unit": "mg",
     "location": "Case 8"
   },
   {
@@ -1645,8 +1794,9 @@
     ],
     "expiration": "09/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "3FDD2EA3",
     "quantity": 28,
+    "unit": "mg",
     "location": "Case 8"
   },
   {
@@ -1656,8 +1806,9 @@
     ],
     "expiration": "01/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "90FCB9CE",
     "quantity": 56,
+    "unit": "mg",
     "location": "Case 8"
   },
   {
@@ -1667,8 +1818,9 @@
     ],
     "expiration": "09/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "7AAA905C",
     "quantity": 1,
+    "unit": "mg",
     "location": "Case 1"
   },
   {
@@ -1678,8 +1830,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "4C3AC954",
     "quantity": 0,
+    "unit": "mL",
     "location": "Case 1"
   },
   {
@@ -1689,8 +1842,9 @@
     ],
     "expiration": "7/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "7415E84D",
     "quantity": 2,
+    "unit": "g",
     "location": "Case 1"
   },
   {
@@ -1700,8 +1854,9 @@
     ],
     "expiration": "11/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "A7531C53",
     "quantity": 2,
+    "unit": "g",
     "location": "Case 1"
   },
   {
@@ -1711,8 +1866,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "C2C23B4F",
     "quantity": 0,
+    "unit": "mL",
     "location": "Case 1"
   },
   {
@@ -1722,8 +1878,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "80BB559D",
     "quantity": 35,
+    "unit": "mg",
     "location": "Case 1"
   },
   {
@@ -1733,8 +1890,9 @@
     ],
     "expiration": "02/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "4AFA1FFF",
     "quantity": 1,
+    "unit": "mL",
     "location": "Case 1"
   },
   {
@@ -1744,8 +1902,9 @@
     ],
     "expiration": "08/18/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "2F4F0B9A",
     "quantity": 2,
+    "unit": "mg",
     "location": "Case 1"
   },
   {
@@ -1755,8 +1914,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "D92C8DB2",
     "quantity": 2,
+    "unit": "g",
     "location": "Emergency Kit"
   },
   {
@@ -1766,8 +1926,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "09976F73",
     "quantity": 10,
+    "unit": "mg",
     "location": "Emergency Kit"
   },
   {
@@ -1777,8 +1938,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "FC71E1B4",
     "quantity": 0,
+    "unit": "g",
     "location": "Emergency Kit"
   },
   {
@@ -1788,8 +1950,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "6F4B8C8A",
     "quantity": 0,
+    "unit": "L",
     "location": "Emergency Kit"
   },
   {
@@ -1799,8 +1962,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "756BA54D",
     "quantity": 1,
+    "unit": "mg",
     "location": "Emergency Kit"
   },
   {
@@ -1810,8 +1974,9 @@
     ],
     "expiration": "11/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "C4A75BEB",
     "quantity": 75,
+    "unit": "g",
     "location": "Case 3"
   },
   {
@@ -1821,8 +1986,9 @@
     ],
     "expiration": "10/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "5AF31DA2",
     "quantity": 10,
+    "unit": "mL",
     "location": "Case 3"
   },
   {
@@ -1832,8 +1998,9 @@
     ],
     "expiration": "4/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "A94273C9",
     "quantity": 112,
+    "unit": "g",
     "location": "Case 3"
   },
   {
@@ -1843,8 +2010,9 @@
     ],
     "expiration": "03/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "FAAD3355",
     "quantity": 1,
+    "unit": "mg",
     "location": "Case 3"
   },
   {
@@ -1854,8 +2022,9 @@
     ],
     "expiration": "08/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "1BCF5A6C",
     "quantity": 0.33,
+    "unit": "mL",
     "location": "Case 3"
   },
   {
@@ -1865,8 +2034,9 @@
     ],
     "expiration": "9/17",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "CE0E4C23",
     "quantity": 200,
+    "unit": "mg",
     "location": "Case 3"
   },
   {
@@ -1876,8 +2046,9 @@
     ],
     "expiration": "12/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "D4FCD44D",
     "quantity": 100,
+    "unit": "mg",
     "location": "Case 3"
   },
   {
@@ -1887,8 +2058,9 @@
     ],
     "expiration": "12/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "4577E8B0",
     "quantity": 12,
+    "unit": "mg",
     "location": "Case 3"
   },
   {
@@ -1898,8 +2070,9 @@
     ],
     "expiration": "05/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "6DD9DB40",
     "quantity": 100,
+    "unit": "g",
     "location": "Case 3"
   },
   {
@@ -1909,8 +2082,9 @@
     ],
     "expiration": "06/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "B302A0EB",
     "quantity": 2,
+    "unit": "mg",
     "location": "Case 3"
   },
   {
@@ -1920,8 +2094,9 @@
     ],
     "expiration": "03/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "F5BFD377",
     "quantity": 6,
+    "unit": "L",
     "location": "Case 3"
   },
   {
@@ -1931,8 +2106,9 @@
     ],
     "expiration": "10/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "C1710AAB",
     "quantity": 6,
+    "unit": "mL",
     "location": "Case 3"
   },
   {
@@ -1942,8 +2118,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "412405FF",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 3"
   },
   {
@@ -1953,8 +2130,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "E3E40325",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 3"
   },
   {
@@ -1964,8 +2142,9 @@
     ],
     "expiration": "02/18/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "A1600E96",
     "quantity": 100,
+    "unit": "mg",
     "location": "Case 3"
   },
   {
@@ -1975,8 +2154,9 @@
     ],
     "expiration": "11/17/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "1F53F928",
     "quantity": 1,
+    "unit": "g",
     "location": "Case 3"
   },
   {
@@ -1986,8 +2166,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "6B1EC2E9",
     "quantity": 0,
+    "unit": "L",
     "location": "Refrigerator Closet"
   },
   {
@@ -1997,8 +2178,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "26B62B53",
     "quantity": 0,
+    "unit": "mL",
     "location": "Refrigerator Closet"
   },
   {
@@ -2008,8 +2190,9 @@
     ],
     "expiration": "1/17",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "837AE744",
     "quantity": 3,
+    "unit": "g",
     "location": "Case 1"
   },
   {
@@ -2019,8 +2202,9 @@
     ],
     "expiration": "01/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "04678AE2",
     "quantity": 1,
+    "unit": "mL",
     "location": "Case 1"
   },
   {
@@ -2030,8 +2214,9 @@
     ],
     "expiration": "4/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "28EA0250",
     "quantity": 2,
+    "unit": "mg",
     "location": "Case 1"
   },
   {
@@ -2041,8 +2226,9 @@
     ],
     "expiration": "3/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "1F09D4A7",
     "quantity": 3,
+    "unit": "mg",
     "location": "Case 1"
   },
   {
@@ -2052,8 +2238,9 @@
     ],
     "expiration": "11/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "D485EEEA",
     "quantity": 1,
+    "unit": "g",
     "location": "Case 1"
   },
   {
@@ -2063,8 +2250,9 @@
     ],
     "expiration": "07/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "BABEB0CA",
     "quantity": 2,
+    "unit": "L",
     "location": "Case 1"
   },
   {
@@ -2074,8 +2262,9 @@
     ],
     "expiration": "10/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "BC944AFF",
     "quantity": 120,
+    "unit": "mg",
     "location": "Case 5"
   },
   {
@@ -2085,8 +2274,9 @@
     ],
     "expiration": "02/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "BCB01F8B",
     "quantity": 200,
+    "unit": "mg",
     "location": "Case 5"
   },
   {
@@ -2096,8 +2286,9 @@
     ],
     "expiration": "02/16/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "45699238",
     "quantity": 200,
+    "unit": "mg",
     "location": "Case 5"
   },
   {
@@ -2107,8 +2298,9 @@
     ],
     "expiration": "11/16",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "FEC5F24B",
     "quantity": 57,
+    "unit": "mg",
     "location": "Case 5"
   },
   {
@@ -2118,8 +2310,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "65815981",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 5"
   },
   {
@@ -2129,8 +2322,9 @@
     ],
     "expiration": "07/18/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "FEAB889C",
     "quantity": 42,
+    "unit": "mg",
     "location": "Case 5"
   },
   {
@@ -2140,8 +2334,9 @@
     ],
     "expiration": "5/18",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "DF60342E",
     "quantity": 210,
+    "unit": "g",
     "location": "Case 6"
   },
   {
@@ -2151,8 +2346,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "6579E11C",
     "quantity": 0,
+    "unit": "L",
     "location": "Refrigerator"
   },
   {
@@ -2162,8 +2358,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "0C90CFA7",
     "quantity": 0,
+    "unit": "g",
     "location": "Refrigerator"
   },
   {
@@ -2173,8 +2370,9 @@
     ],
     "expiration": "05/18/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "CCC2BA62",
     "quantity": 250,
+    "unit": "L",
     "location": "Case 6"
   },
   {
@@ -2184,8 +2382,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "2519A14B",
     "quantity": 0,
+    "unit": "mg",
     "location": "Refrigerator"
   },
   {
@@ -2195,8 +2394,9 @@
     ],
     "expiration": "11/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "D50625B8",
     "quantity": 100,
+    "unit": "mL",
     "location": "Case 6"
   },
   {
@@ -2206,8 +2406,9 @@
     ],
     "expiration": "12/16",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "D2B8CAE7",
     "quantity": 180,
+    "unit": "g",
     "location": "Case 6"
   },
   {
@@ -2217,8 +2418,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "384221EB",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 6"
   },
   {
@@ -2228,8 +2430,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "37E2DD31",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 6"
   },
   {
@@ -2239,8 +2442,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "4D71BC2E",
     "quantity": 0,
+    "unit": "mg",
     "location": "Case 6"
   },
   {
@@ -2250,8 +2454,9 @@
     ],
     "expiration": "07/16/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "E6C7D675",
     "quantity": 200,
+    "unit": "mg",
     "location": "Case 6"
   },
   {
@@ -2261,8 +2466,9 @@
     ],
     "expiration": "12/17/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "390BEB88",
     "quantity": 120,
+    "unit": "mg",
     "location": "Case 6"
   },
   {
@@ -2272,8 +2478,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "72494714",
     "quantity": 18,
+    "unit": "mg",
     "location": "Freezer-Derm"
   },
   {
@@ -2283,8 +2490,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Purchased",
-    "lot": "5678EFGH",
+    "lot": "795E1975",
     "quantity": 6,
+    "unit": "L",
     "location": "Freezer-Derm"
   },
   {
@@ -2294,8 +2502,9 @@
     ],
     "expiration": "9/30/2021",
     "obtained": "Donated",
-    "lot": "5678EFGH",
+    "lot": "2E9139D3",
     "quantity": 0,
+    "unit": "L",
     "location": "Cabinet"
   }
 ]

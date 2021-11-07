@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Header, Loader, Menu, Icon, Input } from 'semantic-ui-react';
+import { Container, Header, Loader, Menu, Icon, Input, Dropdown } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Roles } from 'meteor/alanning:roles';
@@ -19,10 +19,44 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
   const [open, setOpen] = useState(false);
   const [dispense, setDispense] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [searchFilter, setSearchFilter] = useState('');
 
   const handleTable = (value) => {
     setShowTable(value);
   };
+
+  const optionsArray = [
+    {
+      key: 'All',
+      text: 'All',
+      value: 'All',
+    },
+    {
+      key: 'Low',
+      text: 'Low Inventory',
+      value: 'Low',
+    },
+    {
+      key: 'Name',
+      text: 'Name',
+      value: 'Name',
+    },
+    {
+      key: 'Location',
+      text: 'Location',
+      value: 'Location',
+    },
+    {
+      key: 'Quantity',
+      text: 'Quantity',
+      value: 'Quantity',
+    },
+    {
+      key: 'Lot',
+      text: 'Lot',
+      value: 'Lot',
+    },
+  ];
 
   return ((ready) ? (
     <Container id={PAGE_IDS.LIST_STUFF}>
@@ -38,13 +72,25 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
         </Menu.Item>
       </Menu>
       <Menu attached='top' size='small' inverted>
-        {/* <Menu.Item>
-          <Input className='icon' icon='search' placeholder='Search...' />
-        </Menu.Item> Commenting out searchbar for now, will transfer functionality from InventoryTable */}
         <Menu.Item>
           <Input className='icon' icon='search' placeholder='Search...' onChange={(e) => {
             setSearchTerm(e.target.value);
           }}/>
+        </Menu.Item>
+        <Menu.Item>
+          <Dropdown
+            className='icon'
+            icon='filter'
+            floating
+            labeled
+            button
+            placeholder='Filter'
+            selection
+            options={optionsArray}
+            onChange={(e, data) => {
+              setSearchFilter(data.value);
+            }}
+          />
         </Menu.Item>
         <Menu.Menu position='right' style={{ cursor: 'pointer' }}>
           {currentUser ?
@@ -71,13 +117,13 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
       </Menu>
       {(showTable === 'medications') ?
         <>
-          <AddMedication set={medications} open={open} setOpen={setOpen} />
-          <InventoryTable inventory={medications} table={showTable} setting={searchTerm}/>
+          <AddMedication medications={medications} open={open} setOpen={setOpen} />
+          <InventoryTable inventory={medications} table={showTable} setting={searchTerm} filter={searchFilter}/>
         </>
         :
         <>
-          <AddSupply set={supplies} open={open} setOpen={setOpen} />
-          <InventoryTable inventory={supplies} table={showTable} setting={searchTerm}/>
+          <AddSupply supplies={supplies} open={open} setOpen={setOpen} />
+          <InventoryTable inventory={supplies} table={showTable} setting={searchTerm} filter={searchFilter}/>
         </>
       }
       {(showTable === 'medications') ?

@@ -33,7 +33,10 @@ class MedicationCollection extends BaseCollection {
       name: String,
       location: String,
       quantity: Number,
-      lot: String,
+      lot: Array,
+      'lot.$': {
+        type: String,
+      },
       obtained: {
         type: String,
         allowedValues: obtainTypes,
@@ -48,6 +51,14 @@ class MedicationCollection extends BaseCollection {
         type: String,
         allowedValues: types,
       },
+      unit: {
+        type: String,
+        optional: true,
+      },
+      note: {
+        type: String,
+        optional: true,
+      },
     }));
   }
 
@@ -60,9 +71,11 @@ class MedicationCollection extends BaseCollection {
    * @param expiration the date that the item expires if applicable
    * @param lot the lot number
    * @param type the type of medication
+   * @param unit the unit of the item.
+   * @param note the note of the item.
    * @return {String} the docID of the new document.
    */
-  define({ name, location, quantity, expiration, obtained, lot, type }) {
+  define({ name, location, quantity, expiration, obtained, lot, type, unit, note }) {
     const docID = this._collection.insert({
       name,
       location,
@@ -71,6 +84,8 @@ class MedicationCollection extends BaseCollection {
       obtained,
       lot,
       type,
+      unit,
+      note,
     });
 
     return docID;
@@ -81,10 +96,15 @@ class MedicationCollection extends BaseCollection {
    * @param docID the id of the document to update.
    * @param name the new name (optional).
    * @param location the new location (optional).
-   * @param quantity the new type (optional).
+   * @param quantity the new quantity (optional).
+   * @param expiration the new expiration (optional).
+   * @param obtained the new obtained (optional).
+   * @param lot the new lot (optional).
    * @param type the new type (optional).
+   * @param unit the new unit (optional).
+   * @param note the new note (optional).
    */
-  update(docID, { name, quantity, location, expiration, obtained, lot, type }) {
+  update(docID, { name, quantity, location, expiration, obtained, lot, type, unit, note }) {
     const updateData = {};
     if (name) {
       updateData.name = name;
@@ -92,6 +112,10 @@ class MedicationCollection extends BaseCollection {
 
     if (location) {
       updateData.location = location;
+    }
+
+    if (unit) {
+      updateData.unit = unit;
     }
 
     // if (quantity) { NOTE: 0 is falsy so we need to check if the quantity is a number.
@@ -113,6 +137,10 @@ class MedicationCollection extends BaseCollection {
 
     if (lot) {
       updateData.lot = lot;
+    }
+
+    if (note) {
+      updateData.note = note;
     }
 
     this._collection.update(docID, { $set: updateData });
@@ -161,7 +189,7 @@ class MedicationCollection extends BaseCollection {
   /**
    * Returns an object representing the definition of docID in a format appropriate to the restoreOne or define function.
    * @param docID
-   * @return {{ name, location, quantity, expiration, obtained, lot, type }}
+   * @return {{ name, location, quantity, expiration, obtained, lot, type, unit, note }}
    */
   dumpOne(docID) {
     const doc = this.findDoc(docID);
@@ -172,11 +200,13 @@ class MedicationCollection extends BaseCollection {
     const obtained = doc.obtained;
     const lot = doc.lot;
     const type = doc.type;
-    return { name, location, quantity, expiration, obtained, lot, type };
+    const unit = doc.unit;
+    const note = doc.note;
+    return { name, location, quantity, expiration, obtained, lot, type, unit, note };
   }
 
   assertValidRoleForMethod(userId) {
-    this.assertRole(userId, [ROLE.ADMIN, ROLE.USER]);
+    this.assertRole(userId, [ROLE.ADMIN, ROLE.USER, ROLE.PROVIDER]);
   }
 }
 
