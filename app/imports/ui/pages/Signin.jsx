@@ -5,6 +5,8 @@ import { Meteor } from 'meteor/meteor';
 import { Container, Form, Grid, Header, Message, Segment } from 'semantic-ui-react';
 import { PAGE_IDS } from '../utilities/PageIDs';
 import { COMPONENT_IDS } from '../utilities/ComponentIDs';
+import { ROLE } from '../../api/role/Role';
+import { Roles } from 'meteor/alanning:roles';
 
 /**
  * Signin page overrides the form’s submit event and call Meteor’s loginWithPassword().
@@ -42,6 +44,12 @@ const Signin = ({ location }) => {
       }
     });
   };
+
+  const { provider } = location.state || { provider: { pathname: '/providers' } };
+
+  if (redirectToReferer && Roles.userIsInRole(Meteor.userId(), [ROLE.PROVIDER])) {
+    return <Redirect to={provider} />;
+  }
 
   // Render the signin form.
   const { from } = location.state || { from: { pathname: '/list' } };

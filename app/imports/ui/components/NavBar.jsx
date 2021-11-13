@@ -33,6 +33,10 @@ const NavBar = ({ currentUser }) => {
             </Dropdown.Menu>
           </Dropdown>]
       ) : ''}
+      {Roles.userIsInRole(Meteor.userId(), [ROLE.PROVIDER]) ? (
+        [// [<Menu.Item id={COMPONENT_IDS.NAVBAR_LIST_STUFF_ADMIN} as={NavLink} activeClassName="active" exact to="/admin" key='admin'>Admin</Menu.Item>,
+          <Menu.Item id={COMPONENT_IDS.NAVBAR_LANDING_PAGE} as={NavLink} activeClassName="active" exact to="/providers" key='providers'>List Providers</Menu.Item>]
+      ) : ''}
       <Menu.Item position="right">
         {currentUser === '' ? (
           <Dropdown id={COMPONENT_IDS.NAVBAR_LOGIN_DROPDOWN} text="Login" pointing="top right" icon={'user'}>

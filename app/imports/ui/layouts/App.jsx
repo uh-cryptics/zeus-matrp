@@ -16,6 +16,7 @@ import ManageDatabase from '../pages/ManageDatabase';
 import { ROLE } from '../../api/role/Role';
 import ListHistory from '../pages/ListHistory';
 import ManageUsers from '../pages/ManageUsers';
+import ListProviders from '../pages/ListProviders';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -35,6 +36,7 @@ class App extends React.Component {
             <AdminProtectedRoute path="/manage-database" component={ManageDatabase}/>
             <AdminProtectedRoute path="/manage-users" component={ManageUsers}/>
             <AdminProtectedRoute path="/patient-history" component={ListHistory}/>
+            <ProviderProtectedRoute path="/providers" component={ListProviders}/>
             <Route component={NotFound}/>
           </Switch>
           <Footer/>
@@ -81,6 +83,20 @@ const AdminProtectedRoute = ({ component: Component, ...rest }) => (
   />
 );
 
+const ProviderProtectedRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) => {
+      const isLogged = Meteor.userId() !== null;
+      const isProvider = Roles.userIsInRole(Meteor.userId(), ROLE.PROVIDER);
+      return (isLogged && isProvider) ?
+        (<Component {...props} />) :
+        (<Redirect to={{ pathname: '/signin', state: { from: props.location } }}/>
+        );
+    }}
+  />
+);
+
 // Require a component and location to be passed to each ProtectedRoute.
 ProtectedRoute.propTypes = {
   component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
@@ -89,6 +105,11 @@ ProtectedRoute.propTypes = {
 
 // Require a component and location to be passed to each AdminProtectedRoute.
 AdminProtectedRoute.propTypes = {
+  component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  location: PropTypes.object,
+};
+
+ProviderProtectedRoute.propTypes = {
   component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   location: PropTypes.object,
 };
