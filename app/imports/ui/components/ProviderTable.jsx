@@ -7,7 +7,7 @@ import EditSupply from './EditSupply';
 import DeleteMedication from './DeleteMedication';
 import DeleteSupply from './DeleteSupply';
 
-const ProviderTable = ({ inventory, table, setting }) => {
+const ProviderTable = ({ inventory, table, adminUsers, basicUsers }) => {
   const [itemInfo, setItemInfo] = useState(null);
   const [open, setOpen] = useState(false);
   const [edit, setEdit] = useState(false);
@@ -63,12 +63,6 @@ const ProviderTable = ({ inventory, table, setting }) => {
   const tableData = () => {
     const headers = Object.keys(inventory[0]).filter(header => (!(/(_id|type|obtained|note)/).test(header) ? header : null));
     const listedItems = inventory.filter((value => {
-      if (value.name.toLowerCase().includes(setting.toLowerCase()) ||
-            value.quantity.toString().includes(setting) ||
-            value.location.toLowerCase().includes(setting.toLowerCase()) ||
-            value.lot.toLowerCase().includes(setting.toLowerCase())) {
-        return value;
-      }
     })).map((row, i) => {
       const rows = { ...row };
       delete rows._id;
@@ -108,7 +102,7 @@ const ProviderTable = ({ inventory, table, setting }) => {
       {(table === 'medications') ?
         <EditMedication item={itemInfo} open={edit} setOpen={setEditCallback} medications={inventory} />
         :
-        <EditSupply item={itemInfo} open={edit} setOpen={setEditCallback} supplies={inventory}/>
+        <EditSupply item={itemInfo} open={edit} setOpen={setEditCallback} supplies={inventory} />
       }
       {(table === 'medications') ?
         <DeleteMedication item={itemInfo} open={deleting} setOpen={setDeleteCallback} />
@@ -135,6 +129,8 @@ ProviderTable.propTypes = {
   inventory: PropTypes.array.isRequired,
   table: PropTypes.string.isRequired,
   setting: PropTypes.string.isRequired,
+  basicUsers: PropTypes.array.isRequired,
+  adminUsers: PropTypes.array.isRequired,
 };
 
 export default ProviderTable;
