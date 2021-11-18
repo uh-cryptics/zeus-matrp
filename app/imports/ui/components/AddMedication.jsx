@@ -6,13 +6,9 @@ import QRCode from 'qrcode';
 import { defineMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
 import { filterOutUndefined, sortList } from '../utilities/ListFunctions';
-import { Medication, types } from '../../api/medication/MedicationCollection';
+import { Medication, medicationPublications, types } from '../../api/medication/MedicationCollection';
 
 let qrCode;
-    QRCode.toDataURL(`http://localhost:3000/`)
-      .then(url => {
-        qrCode = url;
-      });
 
 
 const AddMedication = ({ medications, open, setOpen }) => {
@@ -48,13 +44,30 @@ const AddMedication = ({ medications, open, setOpen }) => {
           // replace lines 13 - 15 here
           // make the qr url to end with id
 
-          swal({
-            title: 'Success',
-            text: `Added ${name}`,
-            icon: qrCode,
-          }).then(() => clear());
 
-        });
+          
+          const newlyAdded = Medication.findOne({name: name })._id;
+          console.log(`http://localhost:3000/#/dispenseqr/${newlyAdded}`);
+
+          
+          QRCode.toDataURL(`http://localhost:3000/#/dispenseqr/${newlyAdded}`)
+            .then(url => {
+              qrCode = url;
+            });
+
+          })
+          .then(() => {
+            swal({
+              title: 'Success',
+              text: `Added ${name}`,
+              icon: qrCode,
+            }).then(() => clear());
+
+          })
+
+          
+
+        
     } else {
       setError({ has: true, message: 'Please input all required fields' });
     }
@@ -74,7 +87,10 @@ const AddMedication = ({ medications, open, setOpen }) => {
     setOpen(false);
   };
 
+console.log(medications.length);
+
   return (
+
     <div>
       <Modal
         closeIcon
