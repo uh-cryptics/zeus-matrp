@@ -24,7 +24,7 @@ const AddSupply = ({ supplies, open, setOpen }) => {
 
   const submit = () => {
 
-    if (name && location && quantity && obtained && lot && note) {
+    if (name && location && quantity && obtained && lot) {
       console.log(unit);
       const definitionData = { name, location, quantity: _.toNumber(quantity), obtained, lot, unit: unit, note };
 

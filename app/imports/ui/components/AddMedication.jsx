@@ -3,20 +3,18 @@ import PropTypes from 'prop-types';
 import { Button, Form, Icon, Message, Modal } from 'semantic-ui-react';
 import _ from 'lodash';
 import QRCode from 'qrcode';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
+import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { filterOutUndefined, sortList } from '../utilities/ListFunctions';
-import { Medication, medicationPublications, types } from '../../api/medication/MedicationCollection';
+import { Medication, types } from '../../api/medication/MedicationCollection';
 import { SITE_URL } from '../utilities/PageIDs';
 
 let qrCode;
-
 
 const AddMedication = ({ medications, open, setOpen }) => {
   const uniqueMedType = sortList(types.map((type, index) => ({ key: `medType${index}`, text: type, value: type })), (t) => t.text.toLowerCase());
   const uniqueLocations = _.uniq(medications.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
   const uniqueUnits = filterOutUndefined(_.uniq(medications.map(item => item.unit)).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit })));
-
 
   const [locations, setLocations] = useState(sortList(uniqueLocations, (t) => t.text.toLowerCase()));
   const [units, setUnits] = useState(sortList(uniqueUnits, (t) => t.text.toLowerCase()));
@@ -33,38 +31,32 @@ const AddMedication = ({ medications, open, setOpen }) => {
   const [error, setError] = useState({ has: false, message: '' });
 
   const submit = () => {
-    if (name && (type.length > 0) && location && quantity && expiration && obtained && lot && note) {
+    if (name && (type.length > 0) && location && quantity && expiration && obtained && lot) {
       const definitionData = { name, type, location, quantity: _.toNumber(quantity), expiration, obtained, lot, unit, note };
       const collectionName = Medication.getCollectionName();
       defineMethod.callPromise({ collectionName, definitionData })
-        .catch(e =>('Error', e.message, 'error'))
+        .catch(e => ('Error', e.message, 'error'))
         .then(() => {
           // TODO: if anything, change the url to website name instead of localhost
 
-
-          
-          const newlyAdded = Medication.findOne({name: name })._id;
+          const newlyAdded = Medication.findOne({ name: name })._id;
           console.log(`${SITE_URL}/dispenseqr/${newlyAdded}`);
 
-          
           QRCode.toDataURL(`${SITE_URL}/dispenseqr/${newlyAdded}`)
             .then(url => {
               qrCode = url;
             });
 
-          })
-          .then(() => {
-            swal({
-              title: 'Success',
-              text: `Added ${name}`,
-              icon: qrCode,
-            }).then(() => clear());
+        })
+        .then(() => {
+          swal({
+            title: 'Success',
+            text: `Added ${name}`,
+            icon: qrCode,
+          }).then(() => clear());
 
-          })
+        });
 
-          
-
-        
     } else {
       setError({ has: true, message: 'Please input all required fields' });
     }
