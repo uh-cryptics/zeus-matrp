@@ -8,8 +8,10 @@
     }
   ],
 
+
   "public": {
-    "development": true
+    "development": true,
+    "siteUrl": "http://localhost:3000/#"
   },
 
   "defaultData": []

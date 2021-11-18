@@ -11,3 +11,5 @@ export const PAGE_IDS = {
   SIGN_OUT: 'sign-out',
   SIGN_UP: 'sign-up',
 };
+
+export const SITE_URL = Meteor.settings.public.siteUrl;

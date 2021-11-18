@@ -7,6 +7,7 @@ import { defineMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
 import { filterOutUndefined, sortList } from '../utilities/ListFunctions';
 import { Medication, medicationPublications, types } from '../../api/medication/MedicationCollection';
+import { SITE_URL } from '../utilities/PageIDs';
 
 let qrCode;
 
@@ -43,10 +44,10 @@ const AddMedication = ({ medications, open, setOpen }) => {
 
           
           const newlyAdded = Medication.findOne({name: name })._id;
-          console.log(`http://localhost:3000/#/dispenseqr/${newlyAdded}`);
+          console.log(`${SITE_URL}/dispenseqr/${newlyAdded}`);
 
           
-          QRCode.toDataURL(`http://localhost:3000/#/dispenseqr/${newlyAdded}`)
+          QRCode.toDataURL(`${SITE_URL}/dispenseqr/${newlyAdded}`)
             .then(url => {
               qrCode = url;
             });
@@ -82,8 +83,6 @@ const AddMedication = ({ medications, open, setOpen }) => {
     setError({ has: false, message: '' });
     setOpen(false);
   };
-
-console.log(medications.length);
 
   return (
 

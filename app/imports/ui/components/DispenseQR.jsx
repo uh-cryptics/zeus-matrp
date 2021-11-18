@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Modal, Input, Message, Segment, Icon, Header, Content, Loader } from 'semantic-ui-react';
+import { Button, Form, Modal, Input, Message, Segment, Icon, Header, Content, Loader, Container } from 'semantic-ui-react';
 import _ from 'lodash';
 import swal from 'sweetalert';
 import { History } from '../../api/history/HistoryCollection';
@@ -52,15 +52,10 @@ const DispenseQR = ({ doc, ready }) => {
     }
   };
 
-
-  console.log(doc);  // todo: check if this displays teh medication
-  //console.log(fullName);
-
   return (
     (ready ? 
       
-    <div>
-       
+    <Container>
           <Form error={error.has}>
             <Segment>
               <Form.Group widths="equal">
@@ -87,19 +82,15 @@ const DispenseQR = ({ doc, ready }) => {
                   <Form.Field required width="5">
                     <label>LOT</label>
                     <Input
-                     
                       value={doc.lot}
                       disabled
-                     
                     />
                   </Form.Field>
                   <Form.Field required>
                     <label>Item</label>
                     <Input
-                    
                       value={doc.name}
                       disabled
-                
                     />
                   </Form.Field>
                   <Form.Field required width="5">
@@ -121,8 +112,7 @@ const DispenseQR = ({ doc, ready }) => {
             primary
             onClick={() => submit()}
           />
-
-    </div>
+    </Container>
     :
     <Loader active>Getting data</Loader>
     )
@@ -141,8 +131,7 @@ export default withTracker(({ match }) => {
     // Get access to med documents.
     const subscription = Medication.subscribeMedication();
     const ready = (docu !== null) && subscription.ready();
-    console.log(`ready: ${ready}`);
-
+    
     return {
       doc: docu,
       ready
