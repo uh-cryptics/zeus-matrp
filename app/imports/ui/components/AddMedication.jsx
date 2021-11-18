@@ -38,11 +38,7 @@ const AddMedication = ({ medications, open, setOpen }) => {
       defineMethod.callPromise({ collectionName, definitionData })
         .catch(e =>('Error', e.message, 'error'))
         .then(() => {
-          // if this doesnt work then its fucked
-          // [] todo: search medication collection for item that matches definitionData
-          //          get the id of the item found
-          // replace lines 13 - 15 here
-          // make the qr url to end with id
+          // TODO: if anything, change the url to website name instead of localhost
 
 
           
