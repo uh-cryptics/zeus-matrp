@@ -1,28 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Roles } from 'meteor/alanning:roles';
-import { Button, Grid, Header, Icon, List, Modal } from 'semantic-ui-react';
-import { ROLE } from '../../api/role/Role';
+import { Button, Dropdown, Grid, Header, Icon, Label, List, Modal } from 'semantic-ui-react';
 import moment from 'moment';
+import { ROLE } from '../../api/role/Role';
 
-const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (item ?
+const InventoryInformation = ({ table, list, currentUser, item, open, setOpen }) => {
+  const [defaultLot, setDefaultLot] = useState(0);
+
+  return (item ?
     <Modal
       closeIcon
       open={open}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
       size='small'>
-      <Header icon={table === 'medications' ? 'pills' : 'first aid'} content={item.name} />
+      <Modal.Header>
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={8}>
+              <Header icon={table === 'medications' ? 'pills' : 'first aid'} content={item.name} />
+            </Grid.Column>
+            <Grid.Column>
+              <Label>LOT</Label>
+              <Dropdown
+                selection
+                value={defaultLot}
+                options={
+                  list.filter((pro) => pro.name === item.name)
+                    .map((prop, i) => ({ key: `item${i}`, value: i, text: prop.lot }))
+                }
+                onChange={(e, { value }) => setDefaultLot(value)}
+                style={{ maxWidth: 'fit-content' }}
+              >
+              </Dropdown>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Modal.Header>
       <Modal.Content>
-
-        { table === 'medications' ?
+        {table === 'medications' ?
           <Grid columns={3} divided>
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Name
+                Name
                   <Header.Subheader>
                     {item.name}
                   </Header.Subheader>
@@ -30,10 +54,10 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
               </Grid.Column>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Type
+                Type
                   <Header.Subheader>
                     <List>
-                      { item.type?.map((t, index) => <List.Item key={index}>{t}</List.Item>) }
+                      {item.type?.map((t, index) => <List.Item key={index}>{t}</List.Item>)}
                     </List>
                   </Header.Subheader>
                 </Header>
@@ -42,7 +66,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Quantity
+                Quantity
                   <Header.Subheader>
                     {item.quantity}&nbsp;{item.unit}
                   </Header.Subheader>
@@ -50,7 +74,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
               </Grid.Column>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Location
+                Location
                   <Header.Subheader>
                     {item.location}
                   </Header.Subheader>
@@ -60,7 +84,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Lot
+                Lot
                   <Header.Subheader>
                     {item.lot}
                   </Header.Subheader>
@@ -68,7 +92,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
               </Grid.Column>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Expiration
+                Expiration
                   <Header.Subheader>
                     {moment(item.expiration).format('LL')}
                   </Header.Subheader>
@@ -78,7 +102,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Obtained
+                Obtained
                   <Header.Subheader>
                     {item.obtained}
                   </Header.Subheader>
@@ -88,7 +112,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Notes
+                Notes
                   <Header.Subheader>
                     {item.note}
                   </Header.Subheader>
@@ -101,7 +125,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Name
+                Name
                   <Header.Subheader>
                     {item.name}
                   </Header.Subheader>
@@ -109,7 +133,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
               </Grid.Column>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Quantity
+                Quantity
                   <Header.Subheader>
                     {item.quantity}&nbsp;{item.unit}
                   </Header.Subheader>
@@ -119,7 +143,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Location
+                Location
                   <Header.Subheader>
                     {item.location}
                   </Header.Subheader>
@@ -127,7 +151,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
               </Grid.Column>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Lot
+                Lot
                   <Header.Subheader>
                     {item.lot}
                   </Header.Subheader>
@@ -137,7 +161,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Expiration
+                Expiration
                   <Header.Subheader>
                     {item.expiration ? moment(item.expiration).format('LL') : 'N/A'}
                   </Header.Subheader>
@@ -145,7 +169,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
               </Grid.Column>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Obtained
+                Obtained
                   <Header.Subheader>
                     {item.obtained}
                   </Header.Subheader>
@@ -155,7 +179,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                  Notes
+                Notes
                   <Header.Subheader>
                     {item.note}
                   </Header.Subheader>
@@ -165,7 +189,7 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
           </Grid>
         }
       </Modal.Content>
-      { currentUser ?
+      {currentUser ?
         <Modal.Actions>
           <Button color='red' onClick={() => setOpen(false, 'delete')}>
             <Icon name='trash' /> Delete
@@ -183,11 +207,12 @@ const InventoryInformation = ({ table, currentUser, item, open, setOpen }) => (i
       }
     </Modal>
     : <></>
-);
-
+  );
+};
 
 InventoryInformation.propTypes = {
   table: PropTypes.string,
+  list: PropTypes.array.isRequired,
   item: PropTypes.object,
   open: PropTypes.bool,
   setOpen: PropTypes.func,

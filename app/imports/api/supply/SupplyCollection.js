@@ -15,8 +15,7 @@ class SupplyCollection extends BaseCollection {
       name: String,
       location: String,
       quantity: Number,
-      lot: Array,
-      'lot.$': {
+      lot: {
         type: String,
         optional: true,
       },

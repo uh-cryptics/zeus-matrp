@@ -3,72 +3,34 @@ import PropTypes from 'prop-types';
 import { Button, Form, Icon, Message, Modal } from 'semantic-ui-react';
 import _ from 'lodash';
 import QRCode from 'qrcode';
-import { defineMethod } from '../../api/base/BaseCollection.methods';
 import swal from 'sweetalert';
+import moment from 'moment';
+import { defineMethod } from '../../api/base/BaseCollection.methods';
 import { filterOutUndefined, sortList } from '../utilities/ListFunctions';
 import { Medication, medicationPublications, types } from '../../api/medication/MedicationCollection';
 import { SITE_URL } from '../utilities/PageIDs';
 
 let qrCode;
 
-
 const AddMedication = ({ medications, open, setOpen }) => {
   const uniqueMedType = sortList(types.map((type, index) => ({ key: `medType${index}`, text: type, value: type })), (t) => t.text.toLowerCase());
   const uniqueLocations = _.uniq(medications.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
   const uniqueUnits = filterOutUndefined(_.uniq(medications.map(item => item.unit)).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit })));
-
+  const nameList = medications.map((item, index) => ({ key: `name${index}`, text: item.name, value: item.name }));
 
   const [locations, setLocations] = useState(sortList(uniqueLocations, (t) => t.text.toLowerCase()));
   const [units, setUnits] = useState(sortList(uniqueUnits, (t) => t.text.toLowerCase()));
   const [name, setName] = useState('');
+  const [medNames, setMedNames] = useState(sortList(nameList, (t) => t.text.toLowerCase()));
   const [type, setType] = useState([]);
   const [location, setLocation] = useState('');
   const [quantity, setQuantity] = useState('');
   const [expiration, setExpiration] = useState('');
   const [obtained, setObtained] = useState('Donated');
-  const [lot, setLot] = useState([]);
-  const [lots, setLots] = useState([]);
+  const [lot, setLot] = useState('');
   const [unit, setUnit] = useState('');
   const [note, setNote] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
-
-  const submit = () => {
-    if (name && (type.length > 0) && location && quantity && expiration && obtained && lot && note) {
-      const definitionData = { name, type, location, quantity: _.toNumber(quantity), expiration, obtained, lot, unit, note };
-      const collectionName = Medication.getCollectionName();
-      defineMethod.callPromise({ collectionName, definitionData })
-        .catch(e =>('Error', e.message, 'error'))
-        .then(() => {
-          // TODO: if anything, change the url to website name instead of localhost
-
-
-          
-          const newlyAdded = Medication.findOne({name: name })._id;
-          console.log(`${SITE_URL}/dispenseqr/${newlyAdded}`);
-
-          
-          QRCode.toDataURL(`${SITE_URL}/dispenseqr/${newlyAdded}`)
-            .then(url => {
-              qrCode = url;
-            });
-
-          })
-          .then(() => {
-            swal({
-              title: 'Success',
-              text: `Added ${name}`,
-              icon: qrCode,
-            }).then(() => clear());
-
-          })
-
-          
-
-        
-    } else {
-      setError({ has: true, message: 'Please input all required fields' });
-    }
-  };
 
   const clear = () => {
     setName('');
@@ -77,11 +39,42 @@ const AddMedication = ({ medications, open, setOpen }) => {
     setQuantity('');
     setExpiration('');
     setObtained('Donated');
-    setLot([]);
+    setLot('');
     setUnit('');
     setNote('');
     setError({ has: false, message: '' });
     setOpen(false);
+  };
+
+  const submit = () => {
+    if (name && (type.length > 0) && location && quantity && expiration && obtained && lot && note) {
+      const definitionData = { name, type, location, quantity: _.toNumber(quantity), expiration, obtained, lot, unit, note };
+      const collectionName = Medication.getCollectionName();
+      defineMethod.callPromise({ collectionName, definitionData })
+        .catch(e => ('Error', e.message, 'error'))
+        .then(() => {
+          // TODO: if anything, change the url to website name instead of localhost
+
+          const newlyAdded = Medication.findOne({ name: name })._id;
+          console.log(`${SITE_URL}/dispenseqr/${newlyAdded}`);
+
+          QRCode.toDataURL(`${SITE_URL}/dispenseqr/${newlyAdded}`)
+            .then(url => {
+              qrCode = url;
+            });
+
+        })
+        .then(() => {
+          swal({
+            title: 'Success',
+            text: `Added ${name}`,
+            icon: qrCode,
+          }).then(() => clear());
+
+        });
+    } else {
+      setError({ has: true, message: 'Please input all required fields' });
+    }
   };
 
   return (
@@ -104,7 +97,37 @@ const AddMedication = ({ medications, open, setOpen }) => {
         </Modal.Header>
         <Modal.Content>
           <Form error={error.has}>
-            <Form.Input required name='name' label='Name' placeholder='Aspirin 100mg Tablets' value={name} onChange={(e) => setName(e.target.value)}/>
+            <Form.Dropdown
+              required
+              name='name'
+              label='Name'
+              placeholder='Aspirin 100mg Tablets'
+              value={name}
+              search
+              selection
+              allowAdditions
+              options={medNames}
+              onAddItem={(e, { value }) => {
+                setMedNames(sortList(medNames.concat([{ key: `name${medNames.length}`, text: value, value: value }]), (t) => t.text.toLowerCase()));
+                setName(value);
+              }}
+              onChange={(e, { value }) => {
+                setName(value);
+                const autoFillBasic = medications.filter((item) => item.name === value);
+                // Is there an entry? If so, autofill basic info
+                if (!_.isEmpty(autoFillBasic)) {
+                  setExpiration(moment(autoFillBasic[0].expiration).format('YYYY-MM-DD'));
+                  setObtained(autoFillBasic[0].obtained);
+                  setUnit(autoFillBasic[0].unit);
+                  setNote(autoFillBasic[0].note ? autoFillBasic[0].note : '');
+                } else {
+                  setExpiration('');
+                  setObtained('Donated');
+                  setUnit('');
+                  setNote('');
+                }
+              }}
+            />
             <Form.Dropdown
               required
               multiple
@@ -158,20 +181,7 @@ const AddMedication = ({ medications, open, setOpen }) => {
                 <option value='Donated'>Donated</option>
                 <option value='Purchased'>Purchased</option>
               </Form.Field>
-              <Form.Dropdown
-                required
-                name='lot'
-                label='LOT'
-                placeholder='1A2B3C4D'
-                multiple
-                search
-                selection
-                allowAdditions
-                options={lots}
-                value={lot}
-                onAddItem={(e, { value }) => setLots(lots.concat([{ key: `lot${lots.length}`, text: value, value: value }]))}
-                onChange={(e, data) => setLot(data.value)}
-              />
+              <Form.Input required name='lot' label='LOT' placeholder='1A2B3C4D' value={lot} onChange={(e) => setLot(e.target.value)} />
             </Form.Group>
             <Form.TextArea name='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
             <Message error header='Error' content={error.message}/>
