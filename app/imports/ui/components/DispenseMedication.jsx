@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef, useRef, useImperativeHandle } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Modal, Input, Message, Segment, Icon } from 'semantic-ui-react';
 import _ from 'lodash';
@@ -8,32 +8,23 @@ import { sortList } from '../utilities/ListFunctions';
 import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { Medication } from '../../api/medication/MedicationCollection';
 
-const DispenseMedication = ({ set, open, setOpen, fullName }) => {
+const DispenseMedicationItem = forwardRef(({ set, setOpen, patientNumber, clinicLocation, fullName, setError }, ref) => {
   const uniqueNames = sortList(_.uniq(set.map(item => ({ _id: item._id, name: item.name })))
     .map((type) => ({ key: type._id, text: type.name, value: type._id })), (t) => t.text.toLowerCase());
   const uniqueLot = _.uniq(_.flattenDeep(set.map(item => item.lot))).map((lot, i) => ({ key: `loc${i}`, text: lot, value: lot }));
-
-  const [patientNumber, setPatientNumber] = useState('');
-  const [clinicLocation, setClinicLocation] = useState('');
   const [lotList, setLotList] = useState(uniqueLot);
   const [lotNumber, setLotNumber] = useState('');
   const [item, setItem] = useState('');
   const [amount, setAmount] = useState('');
-  const [error, setError] = useState({ has: false, message: '' });
-  const space = ' ';
-
   const resetList = () => {
     setLotList(uniqueLot);
   };
 
   const clear = () => {
-    setPatientNumber('');
-    setClinicLocation('');
     resetList();
     setLotNumber('');
     setItem('');
     setAmount('');
-    setError({ has: false, message: '' });
     setOpen(false);
   };
 
@@ -53,9 +44,7 @@ const DispenseMedication = ({ set, open, setOpen, fullName }) => {
 
   const findItem = (lotNum) => {
     setLotNumber(lotNum);
-
     const collectionID = set.find((i) => i.lot.includes(lotNum))._id;
-
     setItem(collectionID);
   };
 
@@ -67,7 +56,7 @@ const DispenseMedication = ({ set, open, setOpen, fullName }) => {
       if (oldAmount < newAmount) {
         swal('Error', `There is not enough inventory to dispense ${newAmount} ${itemName}`, 'error');
       } else {
-        const definitionData = { patientNumber, clinicLocation, lotNumber, item: itemName, amount: newAmount, provider: fullName.firstName + space + fullName.lastName };
+        const definitionData = { patientNumber, clinicLocation, lotNumber, item: itemName, amount: newAmount, provider: `${fullName.firstName} ${fullName.lastName}` };
         let collectionName = History.getCollectionName();
         defineMethod.callPromise({ collectionName, definitionData })
           .catch(e => swal('Error', e.message, 'error'))
@@ -83,6 +72,74 @@ const DispenseMedication = ({ set, open, setOpen, fullName }) => {
     } else {
       setError({ has: true, message: 'Please input all required fields' });
     }
+  };
+
+  useImperativeHandle(ref, () => ({
+    submitItem: () => {
+      submit();
+    },
+  }));
+
+  return (
+    <Form.Group widths="equal">
+      <Form.Field required width="5">
+        <label>LOT</label>
+        <Form.Dropdown
+          search
+          selection
+          placeholder="Lot Number"
+          options={lotList}
+          value={lotNumber}
+          onChange={(e, data) => findItem(data.value)}
+        />
+      </Form.Field>
+      <Form.Field required>
+        <label>Item</label>
+        <Form.Dropdown
+          search
+          selection
+          placeholder="Select a medicine or supply to dispense..."
+          options={uniqueNames}
+          value={item}
+          onChange={(e, data) => findLOT(data.value)}
+        />
+      </Form.Field>
+      <Form.Field required width="5">
+        <label>Amount</label>
+        <Input type="number" name="amount" placeholder="1" value={amount} onChange={(e) => setAmount(e.target.value, 10)} />
+      </Form.Field>
+    </Form.Group>
+  );
+});
+
+DispenseMedicationItem.displayName = 'DispenseMedicationItem';
+
+DispenseMedicationItem.propTypes = {
+  set: PropTypes.array.isRequired,
+  setOpen: PropTypes.func,
+  setError: PropTypes.func,
+  patientNumber: PropTypes.String,
+  clinicLocation: PropTypes.String,
+  fullName: PropTypes.object,
+};
+
+const DispenseMedication = ({ set, open, setOpen, fullName }) => {
+  const [patientNumber, setPatientNumber] = useState('');
+  const [clinicLocation, setClinicLocation] = useState('');
+  const [error, setError] = useState({ has: false, message: '' });
+  const space = ' ';
+  const [items, setItems] = useState([DispenseMedicationItem]);
+  const itemRefs = useRef([]);
+  const clear = () => {
+    setItems([DispenseMedicationItem]);
+    setPatientNumber('');
+    setClinicLocation('');
+    setError({ has: false, message: '' });
+    setOpen(false);
+  };
+
+  const submit = () => {
+    itemRefs.current.map(item => item.submitItem());
   };
 
   return (
@@ -132,34 +189,8 @@ const DispenseMedication = ({ set, open, setOpen, fullName }) => {
                 </Form.Field>
               </Form.Group>
               <Form.Field>
-                <Form.Group widths="equal">
-                  <Form.Field required width="5">
-                    <label>LOT</label>
-                    <Form.Dropdown
-                      search
-                      selection
-                      placeholder="Lot Number"
-                      options={lotList}
-                      value={lotNumber}
-                      onChange={(e, data) => findItem(data.value)}
-                    />
-                  </Form.Field>
-                  <Form.Field required>
-                    <label>Item</label>
-                    <Form.Dropdown
-                      search
-                      selection
-                      placeholder="Select a medicine or supply to dispense..."
-                      options={uniqueNames}
-                      value={item}
-                      onChange={(e, data) => findLOT(data.value)}
-                    />
-                  </Form.Field>
-                  <Form.Field required width="5">
-                    <label>Amount</label>
-                    <Input type="number" name="amount" placeholder="1" value={amount} onChange={(e) => setAmount(e.target.value, 10)} />
-                  </Form.Field>
-                </Form.Group>
+                {items.map((Item, i) => <Item ref={(el) => { itemRefs.current[i] = el; }} key={i} set={set} setOpen={setOpen} patientNumber={patientNumber} clinicLocation={clinicLocation} fullName={fullName} setError={setError}/>)}
+                <Button icon="plus" onClick={() => setItems(prev => [...prev, DispenseMedicationItem])}/>
               </Form.Field>
               <Message error header='Error' content={error.message} />
             </Segment>
