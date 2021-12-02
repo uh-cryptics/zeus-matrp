@@ -27,7 +27,7 @@ const EditMedication = ({ item, open, setOpen, medications }) => {
     const uniqueMedType = types.map((type, index) => ({ key: `medType${index}`, text: type, value: type }));
 
     const submit = () => {
-      if (name && type && expDate && location && quantity && (type.length > 0) && note) {
+      if (name && type && expDate && location && quantity && (type.length > 0)) {
         const updateData = { id: item._id, name, type, expiration: moment(expDate).format('MM/DD/YYYY'), location, quantity: _.toNumber(quantity), unit, note };
         const collectionName = Medication.getCollectionName();
         updateMethod.callPromise({ collectionName, updateData })

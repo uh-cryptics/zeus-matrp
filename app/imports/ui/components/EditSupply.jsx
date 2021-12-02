@@ -23,7 +23,7 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
     const [error, setError] = useState({ has: false, message: '' });
 
     const submit = () => {
-      if (name && location && quantity && note) {
+      if (name && location && quantity) {
         const updateData = { id: item._id, name, location, quantity: _.toNumber(quantity), unit, note };
         const collectionName = Supply.getCollectionName();
         updateMethod.callPromise({ collectionName, updateData })
