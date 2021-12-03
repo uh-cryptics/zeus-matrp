@@ -3,39 +3,74 @@ import { Meteor } from 'meteor/meteor';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import { Roles } from 'meteor/alanning:roles';
-import { Button, Dropdown, Grid, Header, Icon, Label, List, Modal } from 'semantic-ui-react';
+import { Button, Dropdown, Grid, Header, Icon, List, Modal } from 'semantic-ui-react';
 import moment from 'moment';
 import { ROLE } from '../../api/role/Role';
 
 const InventoryInformation = ({ table, list, currentUser, item, open, setOpen }) => {
+  const [name, setName] = useState('');
+  const [type, setType] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const [location, setLocation] = useState('');
+  const [unit, setUnit] = useState('');
   const [defaultLot, setDefaultLot] = useState(0);
+  const [expiration, setExpiration] = useState('');
+  const [obtained, setObtained] = useState('');
+  const [note, setNote] = useState('');
+
+  const clearData = () => {
+    setName('');
+    setType('');
+    setQuantity('');
+    setUnit('');
+    setDefaultLot(0);
+    setLocation('');
+    setExpiration('');
+    setObtained('');
+    setNote('');
+  };
+
+  const setData = (object) => {
+    setName(object.name);
+    setType(object.type);
+    setQuantity(object.quantity);
+    setUnit(object.unit);
+    setLocation(object.location);
+    setExpiration(object.expiration);
+    setObtained(object.obtained);
+    setNote(object.note);
+  };
+
+  const findData = (lot) => {
+    setDefaultLot(lot);
+    const findLOT = list.filter((entry) => entry.lot === lot);
+    setData(findLOT[0]);
+  };
 
   return (item ?
     <Modal
       closeIcon
       open={open}
       onOpen={() => setOpen(true)}
-      onClose={() => setOpen(false)}
+      onClose={() => { setOpen(false); clearData(); }}
       size='small'>
       <Modal.Header>
         <Grid>
           <Grid.Row>
             <Grid.Column width={8}>
-              <Header icon={table === 'medications' ? 'pills' : 'first aid'} content={item.name} />
+              <Header icon={table === 'medications' ? 'pills' : 'first aid'} content={name || item.name} />
             </Grid.Column>
             <Grid.Column>
-              <Label>LOT</Label>
               <Dropdown
                 selection
-                value={defaultLot}
+                placeholder='Select LOT'
                 options={
                   list.filter((pro) => pro.name === item.name)
-                    .map((prop, i) => ({ key: `item${i}`, value: i, text: prop.lot }))
+                    .map((prop, i) => ({ key: `item${i}`, value: prop.lot, text: prop.lot }))
                 }
-                onChange={(e, { value }) => setDefaultLot(value)}
+                onChange={(e, { value }) => { findData(value); }}
                 style={{ maxWidth: 'fit-content' }}
-              >
-              </Dropdown>
+              />
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -46,18 +81,18 @@ const InventoryInformation = ({ table, list, currentUser, item, open, setOpen })
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Name
+                  Name
                   <Header.Subheader>
-                    {item.name}
+                    {name || item.name}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Type
+                  Type
                   <Header.Subheader>
                     <List>
-                      {item.type?.map((t, index) => <List.Item key={index}>{t}</List.Item>)}
+                      {type || item.type?.map((t, index) => <List.Item key={index}>{t}</List.Item>)}
                     </List>
                   </Header.Subheader>
                 </Header>
@@ -66,35 +101,17 @@ const InventoryInformation = ({ table, list, currentUser, item, open, setOpen })
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Quantity
+                  Quantity
                   <Header.Subheader>
-                    {item.quantity}&nbsp;{item.unit}
+                    {quantity || item.quantity}&nbsp;{unit || item.unit}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Location
+                  Location
                   <Header.Subheader>
-                    {item.location}
-                  </Header.Subheader>
-                </Header>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column>
-                <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Lot
-                  <Header.Subheader>
-                    {item.lot}
-                  </Header.Subheader>
-                </Header>
-              </Grid.Column>
-              <Grid.Column>
-                <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Expiration
-                  <Header.Subheader>
-                    {moment(item.expiration).format('LL')}
+                    {location || item.location}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
@@ -102,9 +119,17 @@ const InventoryInformation = ({ table, list, currentUser, item, open, setOpen })
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Obtained
+                  Lot
                   <Header.Subheader>
-                    {item.obtained}
+                    {defaultLot || item.lot}
+                  </Header.Subheader>
+                </Header>
+              </Grid.Column>
+              <Grid.Column>
+                <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
+                  Expiration
+                  <Header.Subheader>
+                    {moment(expiration || item.expiration).format('LL')}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
@@ -112,9 +137,19 @@ const InventoryInformation = ({ table, list, currentUser, item, open, setOpen })
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Notes
+                  Obtained
                   <Header.Subheader>
-                    {item.note}
+                    {obtained || item.obtained}
+                  </Header.Subheader>
+                </Header>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
+                  Notes
+                  <Header.Subheader>
+                    {note || item.note}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
@@ -125,35 +160,17 @@ const InventoryInformation = ({ table, list, currentUser, item, open, setOpen })
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Name
+                  Name
                   <Header.Subheader>
-                    {item.name}
+                    {name || item.name}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Quantity
+                  Quantity
                   <Header.Subheader>
-                    {item.quantity}&nbsp;{item.unit}
-                  </Header.Subheader>
-                </Header>
-              </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-              <Grid.Column>
-                <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Location
-                  <Header.Subheader>
-                    {item.location}
-                  </Header.Subheader>
-                </Header>
-              </Grid.Column>
-              <Grid.Column>
-                <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Lot
-                  <Header.Subheader>
-                    {item.lot}
+                    {quantity || item.quantity}&nbsp;{unit || item.unit}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
@@ -161,17 +178,17 @@ const InventoryInformation = ({ table, list, currentUser, item, open, setOpen })
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Expiration
+                  Location
                   <Header.Subheader>
-                    {item.expiration ? moment(item.expiration).format('LL') : 'N/A'}
+                    {location || item.location}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Obtained
+                  Lot
                   <Header.Subheader>
-                    {item.obtained}
+                    {defaultLot || item.lot}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
@@ -179,9 +196,27 @@ const InventoryInformation = ({ table, list, currentUser, item, open, setOpen })
             <Grid.Row>
               <Grid.Column>
                 <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
-                Notes
+                  Expiration
                   <Header.Subheader>
-                    {item.note}
+                    {expiration || item.expiration ? moment(expiration || item.expiration).format('LL') : 'N/A'}
+                  </Header.Subheader>
+                </Header>
+              </Grid.Column>
+              <Grid.Column>
+                <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
+                  Obtained
+                  <Header.Subheader>
+                    {obtained || item.obtained}
+                  </Header.Subheader>
+                </Header>
+              </Grid.Column>
+            </Grid.Row>
+            <Grid.Row>
+              <Grid.Column>
+                <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
+                  Notes
+                  <Header.Subheader>
+                    {note || item.note}
                   </Header.Subheader>
                 </Header>
               </Grid.Column>

@@ -136,7 +136,7 @@ const AddSupply = ({ supplies, open, setOpen }) => {
                 <option value='Donated'>Donated</option>
                 <option value='Purchased'>Purchased</option>
               </Form.Field>
-              <Form.Dropdown required name='lot' label='LOT' placeholder='1A2B3C4D' value={lot} onChange={(e) => setLot(e.target.value)} />
+              <Form.Input required name='lot' label='LOT' placeholder='1A2B3C4D' value={lot} onChange={(e) => setLot(e.target.value)} />
             </Form.Group>
             <Form.TextArea name='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
             <Message error header='Error' content={error.message}/>
