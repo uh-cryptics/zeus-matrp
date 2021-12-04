@@ -7,7 +7,7 @@ import { Button, Dropdown, Grid, Header, Icon, List, Modal } from 'semantic-ui-r
 import moment from 'moment';
 import { ROLE } from '../../api/role/Role';
 
-const InventoryInformation = ({ table, list, currentUser, item, open, setOpen }) => {
+const InventoryInformation = ({ table, list, currentUser, item, setItemInfo, open, setOpen }) => {
   const [name, setName] = useState('');
   const [type, setType] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -17,8 +17,10 @@ const InventoryInformation = ({ table, list, currentUser, item, open, setOpen })
   const [expiration, setExpiration] = useState('');
   const [obtained, setObtained] = useState('');
   const [note, setNote] = useState('');
+  const [med, setMed] = useState('');
 
   const clearData = () => {
+    setMed('');
     setName('');
     setType('');
     setQuantity('');
@@ -31,6 +33,7 @@ const InventoryInformation = ({ table, list, currentUser, item, open, setOpen })
   };
 
   const setData = (object) => {
+    setMed(object);
     setName(object.name);
     setType(object.type);
     setQuantity(object.quantity);
@@ -229,7 +232,7 @@ const InventoryInformation = ({ table, list, currentUser, item, open, setOpen })
           <Button color='red' onClick={() => setOpen(false, 'delete')}>
             <Icon name='trash' /> Delete
           </Button>
-          <Button color='blue' onClick={() => setOpen(false, 'edit')}>
+          <Button color='blue' onClick={() => { setOpen(false, 'edit'); setItemInfo(med); }}>
             <Icon name='edit' /> Edit
           </Button>
         </Modal.Actions>
@@ -251,6 +254,7 @@ InventoryInformation.propTypes = {
   item: PropTypes.object,
   open: PropTypes.bool,
   setOpen: PropTypes.func,
+  setItemInfo: PropTypes.func,
   currentUser: PropTypes.bool.isRequired,
 };
 

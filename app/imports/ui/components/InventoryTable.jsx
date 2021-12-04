@@ -1,6 +1,9 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Table, Segment } from 'semantic-ui-react';
+import _ from 'lodash';
 import InventoryInformation from './InventoryInformation';
 import EditMedication from './EditMedication';
 import EditSupply from './EditSupply';
@@ -99,7 +102,9 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
           return value;
         }
       }
-    })).map((row, i) => {
+    }));
+
+    const uniqListedItem = _.uniqBy(listedItems, 'name').map((row, i) => {
       const rows = { ...row };
       delete rows._id;
       delete rows.type;
@@ -130,12 +135,12 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
         </Table.Row>
       );
     });
-    return (listedItems);
+    return (uniqListedItem);
   };
 
   return (
     <div>
-      <InventoryInformation table={table} list={inventory} item={itemInfo} open={open} setOpen={setOpenCallBack} />
+      <InventoryInformation table={table} list={inventory} item={itemInfo} setItemInfo={openInventoryInfo} open={open} setOpen={setOpenCallBack} />
       {(table === 'medications') ?
         <EditMedication item={itemInfo} open={edit} setOpen={setEditCallback} medications={inventory} />
         :
