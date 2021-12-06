@@ -10,17 +10,31 @@ import { Supply } from '../../api/supply/SupplyCollection';
 const AddSupply = ({ supplies, open, setOpen }) => {
   const uniqueLocations = _.uniq(supplies.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
   const uniqueUnits = filterOutUndefined(_.uniq(supplies.filter(item => item.unit !== undefined).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit }))));
+  const nameList = supplies.map((item, index) => ({ key: `name${index}`, text: item.name, value: item.name }));
+
   const [locations, setLocations] = useState(sortList(uniqueLocations, (t) => t.text.toLowerCase()));
   const [units, setUnits] = useState(sortList(uniqueUnits), (t) => t.text.toLowerCase());
   const [name, setName] = useState('');
+  const [supNames, setSupNames] = useState(sortList(nameList, (t) => t.text.toLowerCase()));
   const [location, setLocation] = useState('');
   const [quantity, setQuantity] = useState('');
   const [obtained, setObtained] = useState('Donated');
-  const [lot, setLot] = useState([]);
-  const [lots, setLots] = useState([]);
+  const [lot, setLot] = useState('');
   const [unit, setUnit] = useState('');
   const [note, setNote] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
+
+  const clear = () => {
+    setName('');
+    setLocation('');
+    setQuantity('');
+    setObtained('Donated');
+    setLot('');
+    setUnit('');
+    setNote('');
+    setError({ has: false, message: '' });
+    setOpen(false);
+  };
 
   const submit = () => {
 
@@ -37,18 +51,6 @@ const AddSupply = ({ supplies, open, setOpen }) => {
     } else {
       setError({ has: true, message: 'Please input all required fields' });
     }
-  };
-
-  const clear = () => {
-    setName('');
-    setLocation('');
-    setQuantity('');
-    setObtained('Donated');
-    setLot([]);
-    setUnit('');
-    setNote('');
-    setError({ has: false, message: '' });
-    setOpen(false);
   };
 
   return (
@@ -70,7 +72,35 @@ const AddSupply = ({ supplies, open, setOpen }) => {
         </Modal.Header>
         <Modal.Content>
           <Form error={error.has}>
-            <Form.Input required name='name' label='Name' placeholder='Theraband - Green' value={name} onChange={(e) => setName(e.target.value)}/>
+            <Form.Dropdown
+              required
+              name='name'
+              label='Name'
+              placeholder='Theraband - Green'
+              value={name}
+              search
+              selection
+              allowAdditions
+              options={supNames}
+              onAddItem={(e, { value }) => {
+                setSupNames(sortList(supNames.concat([{ key: `name${supNames.length}`, text: value, value: value }]), (t) => t.text.toLowerCase()));
+                setName(value);
+              }}
+              onChange={(e, { value }) => {
+                setName(value);
+                const autoFillBasic = supplies.filter((item) => item.name === value);
+                // Is there an entry? If so, autofill basic info
+                if (!_.isEmpty(autoFillBasic)) {
+                  setObtained(autoFillBasic[0].obtained);
+                  setUnit(autoFillBasic[0].unit);
+                  setNote(autoFillBasic[0].note ? autoFillBasic[0].note : '');
+                } else {
+                  setObtained('Donated');
+                  setUnit('');
+                  setNote('');
+                }
+              }}
+            />
             <Form.Group widths='equal'>
               <Form.Dropdown
                 required
@@ -97,7 +127,6 @@ const AddSupply = ({ supplies, open, setOpen }) => {
                 label='Unit'
                 options={units}
                 value={unit}
-                // Something wack happens it one item
                 onAddItem={(e, { value }) => setUnits(sortList(units.concat([{ key: `unit${units.length}`, text: value, value: value }]), (t) => t.text.toLowerCase()))}
                 onChange={(e, data) => setUnit(data.value)}
               />
@@ -107,20 +136,7 @@ const AddSupply = ({ supplies, open, setOpen }) => {
                 <option value='Donated'>Donated</option>
                 <option value='Purchased'>Purchased</option>
               </Form.Field>
-              <Form.Dropdown
-                required
-                name='lot'
-                label='LOT'
-                placeholder='1A2B3C4D'
-                multiple
-                search
-                selection
-                allowAdditions
-                options={lots}
-                value={lot}
-                onAddItem={(e, { value }) => setLots(lots.concat([{ key: `lot${lot.length}`, text: value, value: value }]))}
-                onChange={(e, data) => setLot(data.value)}
-              />
+              <Form.Input required name='lot' label='LOT' placeholder='1A2B3C4D' value={lot} onChange={(e) => setLot(e.target.value)} />
             </Form.Group>
             <Form.TextArea name='note' label='Note' value={note} onChange={(e) => setNote(e.target.value)}/>
             <Message error header='Error' content={error.message}/>

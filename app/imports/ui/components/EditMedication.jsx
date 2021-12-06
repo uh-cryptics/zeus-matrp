@@ -52,7 +52,7 @@ const EditMedication = ({ item, open, setOpen, medications }) => {
       closeIcon
       open={open}
       onOpen={() => setOpen(true)}
-      onClose={() => clear()}
+      onClose={() => { setOpen(false, 'cancel'); clear(); }}
       size='small'>
       <Header>
         <Icon.Group size='large'>

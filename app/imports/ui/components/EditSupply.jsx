@@ -47,7 +47,7 @@ const EditSupply = ({ item, open, setOpen, supplies }) => {
       closeIcon
       open={open}
       onOpen={() => setOpen(true)}
-      onClose={() => clear()}
+      onClose={() => { setOpen(false, 'cancel'); clear(); }}
       size='small'>
       <Header>
         <Icon.Group size='large'>

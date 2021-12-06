@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable array-callback-return */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Table, Segment } from 'semantic-ui-react';
@@ -73,18 +75,10 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
         }
       }
       if (filter === '' || filter === 'All') {
-        // Goes through each value's set of lot numbers and checks if it includes what is typed. It returns an array of boolean values
-        // and looks for a true if one of the lots per item matches. If so, it should appear.
-        const lotsPerItem = _.find(value.lot.map((item) => {
-          if (item.toLowerCase().includes(setting.toLowerCase())) { return true; } return false;
-        }), function (e) { return e === true; });
-
-        if (
-          value.name.toLowerCase().includes(setting.toLowerCase()) ||
+        if (value.name.toLowerCase().includes(setting.toLowerCase()) ||
           value.quantity.toString().includes(setting) ||
           value.location.toLowerCase().includes(setting.toLowerCase()) ||
-          lotsPerItem
-        ) {
+          value.lot.toLowerCase().includes(setting.toLowerCase())) {
           return value;
         }
       }
@@ -104,17 +98,13 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
         }
       }
       if (filter === 'Lot') {
-        let result;
-        // Maps through each item's lot number and checking if it matches the user's search
-        if (value.lot.map((item) => {
-          if (item.toLowerCase().includes(setting.toLowerCase())) {
-            result = value;
-            return value;
-          }
-          return null;
-        }) !== null) return result;
+        if (value.lot.toLowerCase().includes(setting.toLowerCase())) {
+          return value;
+        }
       }
-    })).map((row, i) => {
+    }));
+
+    const uniqListedItem = _.uniqBy(listedItems, 'name').map((row, i) => {
       const rows = { ...row };
       delete rows._id;
       delete rows.type;
@@ -145,12 +135,12 @@ const InventoryTable = ({ inventory, table, setting, filter }) => {
         </Table.Row>
       );
     });
-    return (listedItems);
+    return (uniqListedItem);
   };
 
   return (
     <div>
-      <InventoryInformation table={table} item={itemInfo} open={open} setOpen={setOpenCallBack} />
+      <InventoryInformation table={table} list={inventory} item={itemInfo} setItemInfo={openInventoryInfo} open={open} setOpen={setOpenCallBack} />
       {(table === 'medications') ?
         <EditMedication item={itemInfo} open={edit} setOpen={setEditCallback} medications={inventory} />
         :
