@@ -32,8 +32,6 @@ class App extends React.Component {
             <Route path="/signout" component={Signout}/>
             <ProtectedRoute path="/dispenseqr/:_id" component={DispenseQR}/>
             <ProtectedRoute path="/list" component={ListInventory}/>
-            {/* <ProtectedRoute path="/add" component={AddStuff}/>
-            <ProtectedRoute path="/edit/:_id" component={EditStuff}/> */}
             <AdminProtectedRoute path="/manage-database" component={ManageDatabase}/>
             <AdminProtectedRoute path="/manage-users" component={ManageUsers}/>
             <AdminProtectedRoute path="/patient-history" component={ListHistory}/>
