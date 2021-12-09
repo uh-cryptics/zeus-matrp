@@ -6,6 +6,9 @@ import { Roles } from 'meteor/alanning:roles';
 import { Button, Dropdown, Grid, Header, Icon, List, Modal } from 'semantic-ui-react';
 import moment from 'moment';
 import { ROLE } from '../../api/role/Role';
+import QRCode from 'qrcode';
+import { SITE_URL } from '../utilities/PageIDs';
+import swal from 'sweetalert';
 
 const InventoryInformation = ({ table, list, currentUser, item, setItemInfo, open, setOpen }) => {
   const [name, setName] = useState('');
@@ -49,6 +52,19 @@ const InventoryInformation = ({ table, list, currentUser, item, setItemInfo, ope
     const findLOT = list.filter((entry) => entry.lot === lot);
     setData(findLOT[0]);
   };
+
+  let qrCode
+  
+  if (item !== null) {
+  QRCode.toDataURL(`${SITE_URL}/dispenseqr/${item._id}`)
+    .then(url => {
+      qrCode = url;
+    });
+  }
+
+  handleClick = () => {
+    swal({title: `Dispense QR for ${item.name}`, icon: qrCode});
+  }
 
   return (item ?
     <Modal
@@ -144,6 +160,13 @@ const InventoryInformation = ({ table, list, currentUser, item, setItemInfo, ope
                   Obtained
                   <Header.Subheader>
                     {obtained || item.obtained}
+                  </Header.Subheader>
+                </Header>
+              </Grid.Column>
+              <Grid.Column>
+                <Header as='h4' style={{ margin: '0 0 0.5rem 0' }}>
+                  <Header.Subheader>
+                    <Button content="Dispense QR code" onClick={this.handleClick}/>
                   </Header.Subheader>
                 </Header>
               </Grid.Column>
