@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Modal, Input, Message, Segment, Icon, Header, Content, Loader, Container } from 'semantic-ui-react';
+import { Button, Form, Input, Message, Segment, Loader, Container } from 'semantic-ui-react';
 import _ from 'lodash';
 import swal from 'sweetalert';
+import { withTracker } from 'meteor/react-meteor-data';
 import { History } from '../../api/history/HistoryCollection';
-import { sortList } from '../utilities/ListFunctions';
 import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { Medication } from '../../api/medication/MedicationCollection';
-
-import { withTracker } from 'meteor/react-meteor-data';
 
 const DispenseQR = ({ doc, ready }) => {
 
@@ -17,7 +15,6 @@ const DispenseQR = ({ doc, ready }) => {
   const [error, setError] = useState({ has: false, message: '' });
   const [location, setLocation] = useState('');
   const [nameF, setFName] = useState('');
-
 
   const clear = () => {
     setPatientNumber('');
@@ -53,68 +50,67 @@ const DispenseQR = ({ doc, ready }) => {
   };
 
   return (
-    (ready ? 
-      
-    <Container>
-          <Form error={error.has}>
-            <Segment>
-              <Form.Group widths="equal">
-                <Form.Field required>
-                  <label>Patient Medical Number</label>
-                  <Form.Field>
-                    <Input placeholder="Medical Number" name="medical-number" onChange={(e) => setPatientNumber(e.target.value)} value={patientNumber} />
-                  </Form.Field>
+    (ready ?
+
+      <Container>
+        <Form error={error.has}>
+          <Segment>
+            <Form.Group widths="equal">
+              <Form.Field required>
+                <label>Patient Medical Number</label>
+                <Form.Field>
+                  <Input placeholder="Medical Number" name="medical-number" onChange={(e) => setPatientNumber(e.target.value)} value={patientNumber} />
                 </Form.Field>
-              </Form.Group>
-              <Form.Group widths="equal">
-                <Form.Field required>
-                  <label>Provider</label>
-                    <Input placeholder="Your Name" name="provider" value={nameF} onChange={(e) => setFName(e.target.value)} />
-                    
-                </Form.Field>
-                <Form.Field required width='10'>
-                  <label>Clinic Location</label>
-                  <Input placeholder="Clinic Location" name="clinic-location" value={location} onChange={(e) => setLocation(e.target.value)}/>
-                </Form.Field>
-              </Form.Group>
-              <Form.Field>
-                <Form.Group widths="equal">
-                  <Form.Field required width="5">
-                    <label>LOT</label>
-                    <Input
-                      value={doc.lot}
-                      disabled
-                    />
-                  </Form.Field>
-                  <Form.Field required>
-                    <label>Item</label>
-                    <Input
-                      value={doc.name}
-                      disabled
-                    />
-                  </Form.Field>
-                  <Form.Field required width="5">
-                    <label>Amount</label>
-                    <Input type="number" name="amount" placeholder="1" value={amount} onChange={(e) => setAmount(e.target.value, 10)} />
-                  </Form.Field>
-                </Form.Group>
               </Form.Field>
-              <Message error header='Error' content={error.message} />
-            </Segment>
-          </Form>
+            </Form.Group>
+            <Form.Group widths="equal">
+              <Form.Field required>
+                <label>Provider</label>
+                <Input placeholder="Your Name" name="provider" value={nameF} onChange={(e) => setFName(e.target.value)} />
 
+              </Form.Field>
+              <Form.Field required width='10'>
+                <label>Clinic Location</label>
+                <Input placeholder="Clinic Location" name="clinic-location" value={location} onChange={(e) => setLocation(e.target.value)}/>
+              </Form.Field>
+            </Form.Group>
+            <Form.Field>
+              <Form.Group widths="equal">
+                <Form.Field required width="5">
+                  <label>LOT</label>
+                  <Input
+                    value={doc.lot}
+                    disabled
+                  />
+                </Form.Field>
+                <Form.Field required>
+                  <label>Item</label>
+                  <Input
+                    value={doc.name}
+                    disabled
+                  />
+                </Form.Field>
+                <Form.Field required width="5">
+                  <label>Amount</label>
+                  <Input type="number" name="amount" placeholder="1" value={amount} onChange={(e) => setAmount(e.target.value, 10)} />
+                </Form.Field>
+              </Form.Group>
+            </Form.Field>
+            <Message error header='Error' content={error.message} />
+          </Segment>
+        </Form>
 
-          <Button secondary onClick={() => clear()}>Cancel</Button>
-          <Button
-            content="Dispense"
-            labelPosition='right'
-            icon='checkmark'
-            primary
-            onClick={() => submit()}
-          />
-    </Container>
-    :
-    <Loader active>Getting data</Loader>
+        <Button secondary onClick={() => clear()}>Cancel</Button>
+        <Button
+          content="Dispense"
+          labelPosition='right'
+          icon='checkmark'
+          primary
+          onClick={() => submit()}
+        />
+      </Container>
+      :
+      <Loader active>Getting data</Loader>
     )
   );
 };
@@ -125,15 +121,15 @@ DispenseQR.propTypes = {
 };
 /** withTracker connects Meteor data to React components. https://guide.meteor.com/react.html#using-withTracker */
 export default withTracker(({ match }) => {
-    // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
-    const documentId = match.params._id;
-    const docu = Medication.findOne(documentId);
-    // Get access to med documents.
-    const subscription = Medication.subscribeMedication();
-    const ready = (docu !== null) && subscription.ready();
-    
-    return {
-      doc: docu,
-      ready
-    };
-  })(DispenseQR);
+  // Get the documentID from the URL field. See imports/ui/layouts/App.jsx for the route containing :_id.
+  const documentId = match.params._id;
+  const docu = Medication.findOne(documentId);
+  // Get access to med documents.
+  const subscription = Medication.subscribeMedication();
+  const ready = (docu !== null) && subscription.ready();
+
+  return {
+    doc: docu,
+    ready,
+  };
+})(DispenseQR);
