@@ -16,7 +16,7 @@ const AddMedication = ({ medications, open, setOpen }) => {
   const uniqueMedType = sortList(types.map((type, index) => ({ key: `medType${index}`, text: type, value: type })), (t) => t.text.toLowerCase());
   const uniqueLocations = _.uniq(medications.map(item => item.location)).map((location, i) => ({ key: `loc${i}`, text: location, value: location }));
   const uniqueUnits = filterOutUndefined(_.uniq(medications.map(item => item.unit)).map((unit, i) => ({ key: `unit${i}`, text: unit, value: unit })));
-  const nameList = medications.map((item, index) => ({ key: `name${index}`, text: item.name, value: item.name }));
+  const nameList = _.uniq(medications.map(name => name.name)).map((item, index) => ({ key: `name${index}`, text: item, value: item }));
 
   const [locations, setLocations] = useState(sortList(uniqueLocations, (t) => t.text.toLowerCase()));
   const [units, setUnits] = useState(sortList(uniqueUnits, (t) => t.text.toLowerCase()));
@@ -56,7 +56,7 @@ const AddMedication = ({ medications, open, setOpen }) => {
           // TODO: if anything, change the url to website name instead of localhost
 
           const newlyAdded = Medication.findOne({ name: name })._id;
-          console.log(`${SITE_URL}/dispenseqr/${newlyAdded}`);
+          // console.log(`${SITE_URL}/dispenseqr/${newlyAdded}`);
 
           QRCode.toDataURL(`${SITE_URL}/dispenseqr/${newlyAdded}`)
             .then(url => {
