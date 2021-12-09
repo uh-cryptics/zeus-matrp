@@ -64,16 +64,17 @@ const InventoryInformation = ({ table, list, currentUser, item, setItemInfo, ope
               <Header icon={table === 'medications' ? 'pills' : 'first aid'} content={name || item.name} />
             </Grid.Column>
             <Grid.Column>
-              <Dropdown
-                selection
-                placeholder='Select LOT'
-                options={
-                  list.filter((pro) => pro.name === item.name)
-                    .map((prop, i) => ({ key: `item${i}`, value: prop.lot, text: prop.lot }))
-                }
-                onChange={(e, { value }) => { findData(value); }}
-                style={{ maxWidth: 'fit-content' }}
-              />
+              {list.filter((pro) => pro.name === item.name).length > 1 ?
+                <Dropdown
+                  selection
+                  placeholder='Select LOT'
+                  options={
+                    list.filter((pro) => pro.name === item.name)
+                      .map((prop, i) => ({ key: `item${i}`, value: prop.lot, text: prop.lot }))
+                  }
+                  onChange={(e, { value }) => { findData(value); }}
+                  style={{ maxWidth: 'fit-content' }}
+                /> : ''}
             </Grid.Column>
           </Grid.Row>
         </Grid>
