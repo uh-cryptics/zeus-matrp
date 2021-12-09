@@ -15,8 +15,9 @@ import AddSupply from '../components/AddSupply';
 import DispenseSupply from '../components/DispenseSupply';
 import { UserProfiles } from '../../api/user/UserProfileCollection';
 import { AdminProfiles } from '../../api/user/AdminProfileCollection';
+import { History } from '../../api/history/HistoryCollection';
 
-const ListInventory = ({ currentUser, ready, medications, supplies }) => {
+const ListInventory = ({ currentUser, ready, medications, supplies, histories }) => {
   const [showTable, setShowTable] = useState('medications');
   const [open, setOpen] = useState(false);
   const [dispense, setDispense] = useState(false);
@@ -139,7 +140,7 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
         </>
       }
       {(showTable === 'medications') ?
-        <DispenseMedication set={medications} open={dispense} setOpen={setDispense} fullName={userNames}/>
+        <DispenseMedication set={medications} open={dispense} setOpen={setDispense} fullName={userNames} history={histories}/>
         :
         <DispenseSupply set={supplies} open={dispense} setOpen={setDispense} fullName={userNames} />
       }
@@ -153,6 +154,7 @@ const ListInventory = ({ currentUser, ready, medications, supplies }) => {
 ListInventory.propTypes = {
   medications: PropTypes.array.isRequired,
   supplies: PropTypes.array.isRequired,
+  histories: PropTypes.array.isRequired,
   ready: PropTypes.bool.isRequired,
   currentUser: PropTypes.bool.isRequired,
 };
@@ -166,14 +168,17 @@ export default withTracker(() => {
   const subscription2 = Supply.subscribeSupply();
   const subscription3 = UserProfiles.subscribe();
   const subscription4 = AdminProfiles.subscribe();
+  const subscription5 = History.subscribeHistory();
   // Determine if the subscription is ready
-  const ready = subscription.ready() && subscription2.ready() && subscription3.ready() && subscription4.ready();
+  const ready = subscription.ready() && subscription2.ready() && subscription3.ready() && subscription4.ready() && subscription5.ready();
   // Get the Medication and Supply documents and sort them by name.
   const medications = Medication.find({}, { sort: { name: 1 } }).fetch();
   const supplies = Supply.find({}, { sort: { name: 1 } }).fetch();
+  const histories = History.find({}, { sort: { name: 1 } }).fetch();
   return {
     medications,
     supplies,
+    histories,
     ready,
     currentUser,
   };
