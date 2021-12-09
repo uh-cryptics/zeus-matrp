@@ -43,11 +43,6 @@ const DispenseMedicationItem = forwardRef(({ history, set, setOpen, patientNumbe
     setLotList(lots);
     // Grabbing index of lot num in entire list
     const index = _.findIndex(uniqueLot, lots[0]);
-    const locations = _.flatten((set.find((i) => i._id === product).location).map((j) => uniqueLocation.filter((i) => i.value === j)));
-    setLocationList(locations);
-    // Grabbing index of lot num in entire list
-    // const locationIndex = _.findIndex(uniqueLocation, locations[0]);
-    // setLocation(uniqueLocation[locationIndex].text);
     setLotNumber(uniqueLot[index].text);
   };
 
@@ -152,7 +147,6 @@ DispenseMedicationItem.propTypes = {
 
 const DispenseMedication = ({ history, set, open, setOpen, fullName }) => {
   const [patientNumber, setPatientNumber] = useState('');
-  // const [clinicLocation, setClinicLocation] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
   const space = ' ';
   const [items, setItems] = useState([DispenseMedicationItem]);
@@ -160,7 +154,6 @@ const DispenseMedication = ({ history, set, open, setOpen, fullName }) => {
   const clear = () => {
     setItems([DispenseMedicationItem]);
     setPatientNumber('');
-    // setClinicLocation('');
     setError({ has: false, message: '' });
     setOpen(false);
   };
