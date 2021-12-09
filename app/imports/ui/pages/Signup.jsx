@@ -78,7 +78,7 @@ const Signup = ({ location }) => {
                     iconPosition="left"
                     name="firstName"
                     placeholder="First Name"
-                    type="firstname"
+                    type="firstName"
                     onChange={handleChange}
                   />
                   <Form.Input
@@ -86,7 +86,7 @@ const Signup = ({ location }) => {
                     id={COMPONENT_IDS.SIGN_UP_FORM_LASTNAME}
                     name="lastName"
                     placeholder="Last Name"
-                    type="lastname"
+                    type="lastName"
                     onChange={handleChange}
                   />
                 </Form.Group>

@@ -48,13 +48,13 @@ class UserCollection {
    * @returns { String } The docID of the newly created user.
    * @throws { Meteor.Error } If the user exists.
    */
-  define({ username, role, password }) {
+  define({ firstName, lastName, username, role, password }) {
     if (Meteor.isServer) {
       Roles.createRole(role, { unlessExists: true });
       // In test Meteor.settings is not set from settings.development.json so we use _.get to see if it is set.
       const credential = password || this._generateCredential();
       if (_.get(Meteor, 'settings.public.development', false)) {
-        const userID = Accounts.createUser({ username: username, email: username, password: credential });
+        const userID = Accounts.createUser({ firstName: firstName, lastName: lastName, username: username, email: username, password: credential });
         Roles.addUsersToRoles(userID, [role]);
         console.log(`Defining ${role} ${username} with password ${credential}`);
         return userID;
