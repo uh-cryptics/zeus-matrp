@@ -8,11 +8,11 @@ import { sortList } from '../utilities/ListFunctions';
 import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { Supply } from '../../api/supply/SupplyCollection';
 
-const DispenseSupplyItem = forwardRef(({ set, setOpen, patientNumber, fullName, setError }, ref) => {
+const DispenseSupplyItem = forwardRef(({ history, set, setOpen, patientNumber, fullName, setError }, ref) => {
   const uniqueNames = sortList(_.uniq(set.map(item => ({ _id: item._id, name: item.name })))
     .map((type) => ({ key: type._id, text: type.name, value: type._id })), (t) => t.text.toLowerCase());
   const uniqueLot = _.uniq(_.flattenDeep(set.map(item => item.lot))).map((lot, i) => ({ key: `loc${i}`, text: lot, value: lot }));
-  const uniqueLocation = _.uniq(_.flattenDeep(set.map(item => item.location))).map((location, i) => ({ key: `location${i}`, text: location, value: location }));
+  const uniqueLocation = _.uniq(_.flattenDeep(history.map(item => item.clinicLocation))).map((clinicLocation, i) => ({ key: `clinicLocation${i}`, text: clinicLocation, value: clinicLocation }));
   const [lotList, setLotList] = useState(uniqueLot);
   const [lotNumber, setLotNumber] = useState('');
   const [locationList, setLocationList] = useState(uniqueLocation);
@@ -46,8 +46,8 @@ const DispenseSupplyItem = forwardRef(({ set, setOpen, patientNumber, fullName, 
     const locations = _.flatten((set.find((i) => i._id === product).location).map((j) => uniqueLocation.filter((i) => i.value === j)));
     setLocationList(locations);
     // Grabbing index of lot num in entire list
-    const locationIndex = _.findIndex(uniqueLocation, locations[0]);
-    setLocation(uniqueLocation[locationIndex].text);
+    // const locationIndex = _.findIndex(uniqueLocation, locations[0]);
+    // setLocation(uniqueLocation[locationIndex].text);
     setLotNumber(uniqueLot[index].text);
   };
 
@@ -55,10 +55,6 @@ const DispenseSupplyItem = forwardRef(({ set, setOpen, patientNumber, fullName, 
     setLotNumber(lotNum);
     const collectionID = set.find((i) => i.lot.includes(lotNum))._id;
     setItem(collectionID);
-  };
-
-  const findLocation = (locCode) => {
-    setLocation(locCode);
   };
 
   const submit = () => {
@@ -99,12 +95,14 @@ const DispenseSupplyItem = forwardRef(({ set, setOpen, patientNumber, fullName, 
         <Form.Field required width="5">
           <label>Clinic Location</label>
           <Form.Dropdown
+            placeholder='Clinic Location'
             search
             selection
-            placeholder="Clinic Location"
+            allowAdditions
             options={locationList}
             value={location}
-            onChange={(e, data) => findLocation(data.value)}
+            onAddItem={(e, { value }) => setLocationList(sortList(locationList.concat([{ key: `location${locationList.length}`, text: value, value: value }]), (t) => t.text.toLowerCase()))}
+            onChange={(e, data) => setLocation(data.value)}
           />
         </Form.Field>
         <Form.Field required width="5">
@@ -143,15 +141,15 @@ const DispenseSupplyItem = forwardRef(({ set, setOpen, patientNumber, fullName, 
 DispenseSupplyItem.displayName = 'DispenseSupplyItem';
 
 DispenseSupplyItem.propTypes = {
+  history: PropTypes.array,
   set: PropTypes.array.isRequired,
   setOpen: PropTypes.func,
   setError: PropTypes.func,
-  patientNumber: PropTypes.String,
-  // clinicLocation: PropTypes.String,
+  patientNumber: PropTypes.string,
   fullName: PropTypes.object,
 };
 
-const DispenseSupply = ({ set, open, setOpen, fullName }) => {
+const DispenseSupply = ({ history, set, open, setOpen, fullName }) => {
   const [patientNumber, setPatientNumber] = useState('');
   // const [clinicLocation, setClinicLocation] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
@@ -213,7 +211,7 @@ const DispenseSupply = ({ set, open, setOpen, fullName }) => {
                 </Form.Field>
               </Form.Group>
               <Form.Field>
-                {items.map((Item, i) => <Item ref={(el) => { itemRefs.current[i] = el; }} key={i} set={set} setOpen={setOpen} patientNumber={patientNumber} fullName={fullName} setError={setError}/>)}
+                {items.map((Item, i) => <Item ref={(el) => { itemRefs.current[i] = el; }} key={i} history={history} set={set} setOpen={setOpen} patientNumber={patientNumber} fullName={fullName} setError={setError}/>)}
                 <Button icon="plus" onClick={() => setItems(prev => [...prev, DispenseSupplyItem])}/>
               </Form.Field>
               <Message error header='Error' content={error.message} />
@@ -236,6 +234,7 @@ const DispenseSupply = ({ set, open, setOpen, fullName }) => {
 };
 
 DispenseSupply.propTypes = {
+  history: PropTypes.array,
   set: PropTypes.array.isRequired,
   open: PropTypes.bool,
   setOpen: PropTypes.func,

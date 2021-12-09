@@ -142,7 +142,7 @@ const ListInventory = ({ currentUser, ready, medications, supplies, histories })
       {(showTable === 'medications') ?
         <DispenseMedication set={medications} open={dispense} setOpen={setDispense} fullName={userNames} history={histories}/>
         :
-        <DispenseSupply set={supplies} open={dispense} setOpen={setDispense} fullName={userNames} />
+        <DispenseSupply set={medications} open={dispense} setOpen={setDispense} fullName={userNames} history={histories} />
       }
     </Container>
   ) :
