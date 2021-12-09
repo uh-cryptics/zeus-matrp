@@ -8,12 +8,15 @@ import { sortList } from '../utilities/ListFunctions';
 import { defineMethod, updateMethod } from '../../api/base/BaseCollection.methods';
 import { Medication } from '../../api/medication/MedicationCollection';
 
-const DispenseMedicationItem = forwardRef(({ set, setOpen, patientNumber, clinicLocation, fullName, setError }, ref) => {
+const DispenseMedicationItem = forwardRef(({ history, set, setOpen, patientNumber, fullName, setError }, ref) => {
   const uniqueNames = sortList(_.uniq(set.map(item => ({ _id: item._id, name: item.name })))
     .map((type) => ({ key: type._id, text: type.name, value: type._id })), (t) => t.text.toLowerCase());
   const uniqueLot = _.uniq(_.flattenDeep(set.map(item => item.lot))).map((lot, i) => ({ key: `loc${i}`, text: lot, value: lot }));
+  const uniqueLocation = _.uniq(_.flattenDeep(history.map(item => item.clinicLocation))).map((clinicLocation, i) => ({ key: `clinicLocation${i}`, text: clinicLocation, value: clinicLocation }));
   const [lotList, setLotList] = useState(uniqueLot);
   const [lotNumber, setLotNumber] = useState('');
+  const [locationList, setLocationList] = useState(uniqueLocation);
+  const [location, setLocation] = useState('');
   const [item, setItem] = useState('');
   const [amount, setAmount] = useState('');
   const resetList = () => {
@@ -23,6 +26,7 @@ const DispenseMedicationItem = forwardRef(({ set, setOpen, patientNumber, clinic
   const clear = () => {
     resetList();
     setLotNumber('');
+    setLocation('');
     setItem('');
     setAmount('');
     setOpen(false);
@@ -49,14 +53,14 @@ const DispenseMedicationItem = forwardRef(({ set, setOpen, patientNumber, clinic
   };
 
   const submit = () => {
-    if (patientNumber && clinicLocation && lotNumber && item && amount && fullName) {
+    if (patientNumber && location && lotNumber && item && amount && fullName) {
       const itemName = _.find(uniqueNames, (i) => i.key === item).text;
       const oldAmount = _.find(set, (product) => product._id === item).quantity;
       const newAmount = _.toNumber(amount);
       if (oldAmount < newAmount) {
         swal('Error', `There is not enough inventory to dispense ${newAmount} ${itemName}`, 'error');
       } else {
-        const definitionData = { patientNumber, clinicLocation, lotNumber, item: itemName, amount: newAmount, provider: `${fullName.firstName} ${fullName.lastName}` };
+        const definitionData = { patientNumber, lotNumber, clinicLocation: location, item: itemName, amount: newAmount, provider: `${fullName.firstName} ${fullName.lastName}` };
         let collectionName = History.getCollectionName();
         defineMethod.callPromise({ collectionName, definitionData })
           .catch(e => swal('Error', e.message, 'error'))
@@ -81,40 +85,59 @@ const DispenseMedicationItem = forwardRef(({ set, setOpen, patientNumber, clinic
   }));
 
   return (
-    <Form.Group widths="equal">
-      <Form.Field required width="5">
-        <label>LOT</label>
-        <Form.Dropdown
-          search
-          selection
-          placeholder="Lot Number"
-          options={lotList}
-          value={lotNumber}
-          onChange={(e, data) => findItem(data.value)}
-        />
-      </Form.Field>
-      <Form.Field required>
-        <label>Item</label>
-        <Form.Dropdown
-          search
-          selection
-          placeholder="Select a medicine or supply to dispense..."
-          options={uniqueNames}
-          value={item}
-          onChange={(e, data) => findLOT(data.value)}
-        />
-      </Form.Field>
-      <Form.Field required width="5">
-        <label>Amount</label>
-        <Input type="number" name="amount" placeholder="1" value={amount} onChange={(e) => setAmount(e.target.value, 10)} />
-      </Form.Field>
-    </Form.Group>
+    <div>
+      <Form.Group widths="equal">
+        <Form.Field required width="5">
+          <label>Clinic Location</label>
+          <Form.Dropdown
+            placeholder='Clinic Location'
+            search
+            selection
+            allowAdditions
+            options={locationList}
+            value={location}
+            onAddItem={(e, { value }) => setLocationList(sortList(locationList.concat([{ key: `location${locationList.length}`, text: value, value: value }]), (t) => t.text.toLowerCase()))}
+            onChange={(e, data) => setLocation(data.value)}
+          >
+          </Form.Dropdown>
+        </Form.Field>
+        <Form.Field required width="5">
+          <label>LOT</label>
+          <Form.Dropdown
+            search
+            selection
+            placeholder="Lot Number"
+            options={lotList}
+            value={lotNumber}
+            onChange={(e, data) => findItem(data.value)}
+          />
+        </Form.Field>
+        <Form.Field required>
+          <label>Item</label>
+          <Form.Dropdown
+            search
+            selection
+            placeholder="Select a medicine or supply to dispense..."
+            options={uniqueNames}
+            value={item}
+            onChange={(e, data) => findLOT(data.value)}
+          />
+        </Form.Field>
+      </Form.Group>
+      <Form.Group>
+        <Form.Field required width="5">
+          <label>Amount</label>
+          <Input type="number" name="amount" placeholder="1" value={amount} onChange={(e) => setAmount(e.target.value, 10)} />
+        </Form.Field>
+      </Form.Group>
+    </div>
   );
 });
 
 DispenseMedicationItem.displayName = 'DispenseMedicationItem';
 
 DispenseMedicationItem.propTypes = {
+  history: PropTypes.array,
   set: PropTypes.array.isRequired,
   setOpen: PropTypes.func,
   setError: PropTypes.func,
@@ -122,9 +145,8 @@ DispenseMedicationItem.propTypes = {
   fullName: PropTypes.object,
 };
 
-const DispenseMedication = ({ set, open, setOpen, fullName }) => {
+const DispenseMedication = ({ history, set, open, setOpen, fullName }) => {
   const [patientNumber, setPatientNumber] = useState('');
-  const [clinicLocation, setClinicLocation] = useState('');
   const [error, setError] = useState({ has: false, message: '' });
   const space = ' ';
   const [items, setItems] = useState([DispenseMedicationItem]);
@@ -132,7 +154,6 @@ const DispenseMedication = ({ set, open, setOpen, fullName }) => {
   const clear = () => {
     setItems([DispenseMedicationItem]);
     setPatientNumber('');
-    setClinicLocation('');
     setError({ has: false, message: '' });
     setOpen(false);
   };
@@ -182,13 +203,9 @@ const DispenseMedication = ({ set, open, setOpen, fullName }) => {
                     </>
                   }
                 </Form.Field>
-                <Form.Field required width='10'>
-                  <label>Clinic Location</label>
-                  <Input placeholder="Clinic Location" name="clinic-location" value={clinicLocation} onChange={(e) => setClinicLocation(e.target.value)} />
-                </Form.Field>
               </Form.Group>
               <Form.Field>
-                {items.map((Item, i) => <Item ref={(el) => { itemRefs.current[i] = el; }} key={i} set={set} setOpen={setOpen} patientNumber={patientNumber} clinicLocation={clinicLocation} fullName={fullName} setError={setError}/>)}
+                {items.map((Item, i) => <Item ref={(el) => { itemRefs.current[i] = el; }} key={i} history={history} set={set} setOpen={setOpen} patientNumber={patientNumber} fullName={fullName} setError={setError}/>)}
                 <Button icon="plus" onClick={() => setItems(prev => [...prev, DispenseMedicationItem])}/>
               </Form.Field>
               <Message error header='Error' content={error.message} />
@@ -211,6 +228,7 @@ const DispenseMedication = ({ set, open, setOpen, fullName }) => {
 };
 
 DispenseMedication.propTypes = {
+  history: PropTypes.array,
   set: PropTypes.array.isRequired,
   open: PropTypes.bool,
   setOpen: PropTypes.func,
