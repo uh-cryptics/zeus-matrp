@@ -147,7 +147,6 @@ DispenseMedicationItem.propTypes = {
   setOpen: PropTypes.func,
   setError: PropTypes.func,
   patientNumber: PropTypes.String,
-  // clinicLocation: PropTypes.String,
   fullName: PropTypes.object,
 };
 
